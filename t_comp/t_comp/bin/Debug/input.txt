@@ -1,0 +1,17 @@
+write("program 2" == "pre" && true || true != false);
+
+/*
+read(a, b);
+
+if (a > b)
+{
+	tmp = b;
+	b = a;
+	a = tmp;
+}
+
+for(i = a; i < b + 1; i = i + 1)
+{
+	write(i);
+}
+*/
