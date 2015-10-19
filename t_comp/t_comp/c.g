@@ -8,7 +8,12 @@ options {
 
 tokens {
 	PROGRAM	;
+	
 	BLOCK	;
+	
+	FUNCCALL	;
+	CALL_PARAMS	;
+	
 }
 
 @lexer::namespace { t_comp }
@@ -55,6 +60,10 @@ FOR	:	'for'	;
 READ	:	'read'	;
 WRITE	:	'write'	;
 
+INT_TYPE	:	'int';
+BOOL_YTPE	:	'bool';
+STRING_TYPE	:	'string';
+
 NUMBER
 	:	('0'..'9')+
 	;
@@ -71,11 +80,20 @@ ID
 STRING
 	:	'"' (options { greedy=false; }: .)* '"'
 	;	
+	
 
-//	Parser
+/*	Value expr begin	*/
+
+primitive_value
+	:	NUMBER
+	|	STRING
+	|	LOGIC
+	|	ID
+	|	func_call
+	;
 
 value_group
-	:	'('! value_add ')'! | NUMBER | STRING | ID | LOGIC
+	:	'('! value_add ')'! | primitive_value
 	;
 	
 value_mult
@@ -88,7 +106,6 @@ value_add
 	
 
 logic_group
-//	:	'('! logic_add ')'! | value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT )^ value_add )?
 	:	value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT )^ value_add )?
 	;
 	
@@ -100,33 +117,36 @@ logic_add
 	:	logic_mult ( LADD^ logic_mult)*
 	;
 
+value_expr
+	:	logic_add
+	;
+	
+/*	Value expr end		*/
 
-assign
-	:	ID ASSIGN^ logic_add
-	;
-	
-assign_list
-	:	( assign ( ',' assign )* )? -> ^(BLOCK assign*)
+func_call
+	:	ID '(' ( value_expr ( ',' value_expr)* )? ')' -> ^(FUNCCALL ID ( ^(CALL_PARAMS value_expr*) )? )
 	;
 
-expr
-	:	'{'! expr_list '}'!
-	
-	|	assign ';'!
-	
-	|	READ^ '('! ID ( ','! ID)* ');'!
-	|	WRITE^ '('! logic_add ( ','! logic_add)* ');'!
-	
-	|	IF^ '('! logic_add ')'! expr ( ELSE! expr )?
-	|	FOR '(' assign_list ';' logic_add ';' assign_list ')' expr -> ^(FOR assign_list logic_add assign_list expr)
+simple_expr
+	:	ID ASSIGN^ value_expr	// Assign
+	|	func_call		// Funccall
+
+	|	READ^ '('! ID ( ','! ID)* ')'!
+	|	WRITE^ '('! value_expr ( ','! value_expr)* ')'!
+
 	;
 	
-expr_list
-	:	expr* -> ^(BLOCK expr*)
+
+construction
+	:	simple_expr ';'!
+	
+	|	'{' construction* '}' -> ^(BLOCK construction*)		// Block
+	|	IF^ '('! value_expr ')'! construction ( ELSE! construction )?
+	|	FOR '(' simple_expr ';' value_expr ';' simple_expr ')' construction -> ^(FOR simple_expr value_expr simple_expr construction)
 	;
 	
 result
-	:	expr_list EOF -> ^( PROGRAM expr_list )
+	:	construction* EOF -> ^( PROGRAM construction* )
 	;
 
 public execute

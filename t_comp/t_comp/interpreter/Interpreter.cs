@@ -21,7 +21,7 @@ namespace t_comp.interpreter
         {
             if (node.Type != cLexer.PROGRAM)
             {
-                throw new Exception("tree is not program");
+                throw new Exception("tree is not a program");
             }
 
             Expr(node.GetChild(0));

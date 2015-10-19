@@ -4,3 +4,9 @@ C:\Users\Alexandr\Desktop\t_comp\t_comp\bin\Debug\t_comp.pdb
 C:\Users\Alexandr\Desktop\t_comp\t_comp\obj\Debug\t_comp.exe
 C:\Users\Alexandr\Desktop\t_comp\t_comp\obj\Debug\t_comp.pdb
 C:\Users\Alexandr\Desktop\t_comp\t_comp\obj\Debug\t_comp.csprojResolveAssemblyReference.cache
+C:\Users\Alexandr\Documents\vsu_compiler\t_comp\t_comp\bin\Debug\t_comp.exe.config
+C:\Users\Alexandr\Documents\vsu_compiler\t_comp\t_comp\obj\Debug\t_comp.exe
+C:\Users\Alexandr\Documents\vsu_compiler\t_comp\t_comp\obj\Debug\t_comp.pdb
+C:\Users\Alexandr\Documents\vsu_compiler\t_comp\t_comp\bin\Debug\t_comp.exe
+C:\Users\Alexandr\Documents\vsu_compiler\t_comp\t_comp\bin\Debug\t_comp.pdb
+C:\Users\Alexandr\Documents\vsu_compiler\t_comp\t_comp\obj\Debug\t_comp.csprojResolveAssemblyReference.cache

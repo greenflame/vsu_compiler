@@ -1,7 +1,5 @@
-write("program 2" == "pre" && true || true != false);
-
-/*
-read(a, b);
+sth();
+sth(a, 3-5, "");
 
 if (a > b)
 {
@@ -9,9 +7,12 @@ if (a > b)
 	b = a;
 	a = tmp;
 }
+else
+{
+	write("sth");
+}
 
 for(i = a; i < b + 1; i = i + 1)
 {
 	write(i);
 }
-*/

@@ -21,8 +21,8 @@ namespace t_comp
 
             AstNodePrinter.Print(tree);
 
-            Interpreter interpreter = new Interpreter();
-            interpreter.Program(tree);
+            //Interpreter interpreter = new Interpreter();
+            //interpreter.Program(tree);
 
             Console.ReadKey();
         }
