@@ -7,13 +7,33 @@ options {
 }
 
 tokens {
-	PROGRAM	;
+	PROGRAM		;
 	
-	BLOCK	;
+	BLOCK		;
+
+	FUNC_ID		;
 	
-	FUNCCALL	;
-	CALL_PARAMS	;
+	FUNC_CALL	;
+	CALL_PARAMS	;	
+
+	FUNC_DEC	;
+	FUNC_TYPE	;
+	DEC_PARAMS	;
+	DEC_PARAM	;
+	FUNC_BODY	;
 	
+	VAR_DEC		;
+	DEC_INITED	;
+	DEC_NOT_INITED	;
+	
+	FOR_INIT	;
+	FOR_COND	;
+	FOR_STEP	;
+	FOR_BODY	;
+	
+	IF_COND		;
+	IF_BODY		;
+	IF_ELSE_BODY	;
 }
 
 @lexer::namespace { t_comp }
@@ -60,9 +80,12 @@ FOR	:	'for'	;
 READ	:	'read'	;
 WRITE	:	'write'	;
 
-INT_TYPE	:	'int';
-BOOL_YTPE	:	'bool';
-STRING_TYPE	:	'string';
+INT_TYPE	:	'int'		;
+BOOL_TYPE	:	'bool'		;
+STRING_TYPE	:	'string'	;
+VOID_TYPE	:	'void'		;
+
+RETURN		:	'return'	;
 
 NUMBER
 	:	('0'..'9')+
@@ -123,30 +146,73 @@ value_expr
 	
 /*	Value expr end		*/
 
+type
+	:	INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE
+	;
+
 func_call
-	:	ID '(' ( value_expr ( ',' value_expr)* )? ')' -> ^(FUNCCALL ID ( ^(CALL_PARAMS value_expr*) )? )
+	:	ID '(' ( value_expr ( ',' value_expr)* )? ')' -> ^(FUNC_CALL ^( FUNC_ID ID ) ^(CALL_PARAMS value_expr*) )
+	;
+
+assign
+	:	ID ASSIGN^ value_expr
+	;
+	
+var_declaration
+	:	type ( ID | assign ) ( ',' ( ID | assign ) )* -> ^(VAR_DEC ^( DEC_NOT_INITED ID* ) ^( DEC_INITED assign* ) )
 	;
 
 simple_expr
-	:	ID ASSIGN^ value_expr	// Assign
+	:	assign			// Assign
+	|	var_declaration		// Var declaration
 	|	func_call		// Funccall
 
-	|	READ^ '('! ID ( ','! ID)* ')'!
-	|	WRITE^ '('! value_expr ( ','! value_expr)* ')'!
+	|	READ^ '('! ID ( ','! ID)* ')'!				// Temporary
+	|	WRITE^ '('! value_expr ( ','! value_expr)* ')'!		// Temporary
 
 	;
 	
+for_construction
+	:	FOR '(' simple_expr ';' value_expr ';' simple_expr ')' complex_expr ->
+		^(FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) )
+	;
 
-construction
+if_construction
+	:	IF '(' value_expr ')' complex_expr ( ELSE complex_expr )? ->
+		^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY complex_expr? ) )
+	;
+
+block_construction
+	:	'{' complex_expr* '}' -> ^(BLOCK complex_expr*)
+	;
+
+/* Declaration */
+
+func_declaration
+	:	type ID '(' ( type ID ( ',' type ID )* )?  ')' '{' complex_expr* '}' ->
+		^(FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^(DEC_PARAMS ^( DEC_PARAM type ID )* ) ^( FUNC_BODY complex_expr* ) )
+	;
+
+return
+	:	RETURN^ value_expr? ';'!
+	;
+
+complex_expr
 	:	simple_expr ';'!
 	
-	|	'{' construction* '}' -> ^(BLOCK construction*)		// Block
-	|	IF^ '('! value_expr ')'! construction ( ELSE! construction )?
-	|	FOR '(' simple_expr ';' value_expr ';' simple_expr ')' construction -> ^(FOR simple_expr value_expr simple_expr construction)
+	|	func_declaration
+
+	|	return
+	
+	|	block_construction
+
+	|	if_construction
+	|	for_construction
 	;
 	
+
 result
-	:	construction* EOF -> ^( PROGRAM construction* )
+	:	complex_expr* EOF -> ^( PROGRAM complex_expr* )
 	;
 
 public execute
