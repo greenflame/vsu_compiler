@@ -21,107 +21,129 @@ namespace t_comp.interpreter
         {
             if (node.Type != cLexer.PROGRAM)
             {
-                throw new Exception("tree is not a program");
+                throw new Exception("Node is not a program.");
             }
 
-            Expr(node.GetChild(0));
+            Block(node);
         }
 
-        public void Expr(ITree node)
+        public void Block(ITree node)
         {
             for (int i = 0; i < node.ChildCount; i++)
             {
-                ITree child = node.GetChild(i);
-                switch (child.Type)
-                {
-                    case cLexer.READ:
-                        Read(child);
-                        break;
-                    case cLexer.WRITE:
-                        Write(child);
-                        break;
-                    case cLexer.ASSIGN:
-                        Assign(child);
-                        break;
-                    case cLexer.BLOCK:
-                        Expr(child);
-                        break;
-                    case cLexer.IF:
-                        If(child);
-                        break;
-                    case cLexer.FOR:
-                        For(child);
-                        break;
-                }
+                Execute(node.GetChild(i));
             }
         }
 
-        private void For(ITree node)
+        public void VarDeclaration(ITree typeNode, ITree nameNode)
         {
-            for (Expr(node.GetChild(0)); (Solve(node.GetChild(1)) as ABoolean).Value; Expr(node.GetChild(2)))
+            AObject var;
+
+            switch (typeNode.Type)
             {
-                Expr(node.GetChild(3));
+                case cLexer.INT_TYPE:
+                    var = new AInteger();
+                    break;
+
+                case cLexer.BOOL_TYPE:
+                    var = new ABoolean();
+                    break;
+
+                case cLexer.STRING_TYPE:
+                    var = new AString();
+                    break;
+
+                default:
+                    throw new Exception("Unexpected declaration type.");
+            }
+
+            string varName = nameNode.ToString();
+
+            _varStorage[varName] = var;
+        }
+
+        public void VarsDeclaration(ITree node)
+        {
+            ITree var_type = node.GetChild(0).GetChild(0);
+            ITree notInitedVars = node.GetChild(1);
+            ITree initedVars = node.GetChild(2);
+
+            // List of vars without assignmeng
+            for (int i = 0; i < notInitedVars.ChildCount; i++)
+            {
+                ITree var_name = notInitedVars.GetChild(i);
+                VarDeclaration(var_type, var_name);
+            }
+
+            // Declaration and assignment
+            for (int i = 0; i < initedVars.ChildCount; i++)
+            {
+                // Declaration
+                ITree var_name = initedVars.GetChild(i).GetChild(0);
+                VarDeclaration(var_type, var_name);
+
+                // Assignment
+                Assign(initedVars.GetChild(i));
             }
         }
 
-        private void If(ITree node)
+        public void Assign(ITree node)
         {
-            if ((Solve(node.GetChild(0)) as ABoolean).Value)
+            string var_name = node.GetChild(0).ToString();
+            ITree node_to_solve = node.GetChild(1);
+
+            _varStorage[var_name].Assign(Solve(node_to_solve));
+        }
+
+        public void If(ITree node)
+        {
+            if ((Solve(node.GetChild(0).GetChild(0)) as ABoolean).Value)
             {
-                Expr(node.GetChild(1));
+                Execute(node.GetChild(1).GetChild(0));
             }
             else
             {
-                if (node.ChildCount == 3)
+                if (node.GetChild(2).ChildCount != 0)
                 {
-                    Expr(node.GetChild(2));
+                    Execute(node.GetChild(2).GetChild(0));
                 }
             }
         }
 
-        private void Read(ITree node)
+        public void Execute(ITree node)
         {
-            for (int i = 0; i < node.ChildCount; i++)
+            switch (node.Type)
             {
-                ITree child = node.GetChild(i);
+                case cLexer.ASSIGN:
+                    Assign(node);
+                    break;
 
-                string val = Console.ReadLine();
-                AObject objVal;
+                case cLexer.VAR_DEC:
+                    VarsDeclaration(node);
+                    break;
 
-                switch (TypeOf(val))
-                {
-                    case "string":
-                        objVal = new AString(val);
-                        break;
-                    case "integer":
-                        objVal = new AInteger(int.Parse(val));
-                        break;
-                    case "boolean":
-                        objVal = new ABoolean(bool.Parse(val));
-                        break;
-                    default:
-                        throw new Exception("can't detect type");
-                }
+                // todo funccall
 
-                _varStorage[child.ToString()] = objVal;
+                // todo read
+                // todo write
+
+                // todo func_declaration
+
+                // todo return
+
+                case cLexer.BLOCK:
+                    Block(node);
+                    break;
+
+                case cLexer.IF:
+                    If(node);
+                    break;
+
+                // todo for_construction
+
+                default:
+                    throw new Exception("Non executable node.");
             }
-        }
-
-        private void Write(ITree node)
-        {
-            for (int i = 0; i < node.ChildCount; i++)
-            {
-                ITree child = node.GetChild(i);
-                Console.WriteLine(Solve(child));
-            }
-        }
-
-        private void Assign(ITree node)
-        {
-            string varName = node.GetChild(0).ToString();
-            AObject value = Solve(node.GetChild(1));
-
-            _varStorage[varName] = value;
         }
 
         private AObject Solve(ITree node)
@@ -145,39 +167,16 @@ namespace t_comp.interpreter
                 case cLexer.EQUALS: return Solve(node.GetChild(0)).Eq(Solve(node.GetChild(1)));
 
                 case cLexer.ID: return _varStorage[node.ToString()];
+                // todo func call on lower level
 
                 case cLexer.NUMBER: return new AInteger(int.Parse(node.ToString()));
                 case cLexer.STRING: return new AString(node.ToString());
                 case cLexer.LOGIC: return new ABoolean(bool.Parse(node.ToString()));
 
                 default:
-                    throw new Exception("unexpected node type");
+                    throw new Exception("Can't solve node.");
             }
         }
 
-        string TypeOf(string s)
-        {
-            if (s.Length == 0)
-            {
-                throw new Exception("var val length is 0");
-            }
-
-            if (s.ToLower() == "true" || s.ToLower() == "false")
-            {
-                return "boolean";
-            }
-
-            if (s[0] == '"')
-            {
-                return "string";
-            }
-
-            if (s[0] >= '0' && s[0] <= '9')
-            {
-                return "integer";
-            }
-
-            throw new Exception("type detection error");
-        }
     }
 }

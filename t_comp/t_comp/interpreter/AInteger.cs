@@ -15,9 +15,26 @@ namespace t_comp.interpreter
             Value = value;
         }
 
+        public AInteger()
+        {
+            Value = 0;
+        }
+
         public override string ToString()
         {
             return Value.ToString();
+        }
+
+        public override void Assign(AObject other)
+        {
+            if (other is AInteger)
+            {
+                Value = (other as AInteger).Value;
+            }
+            else
+            {
+                throw new InvalidTypeException();
+            }
         }
 
         public override AObject Add(AObject other)

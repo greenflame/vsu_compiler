@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 c.g 2015-10-20 22:46:30
+// $ANTLR 3.5.2 c.g 2015-10-22 09:22:53
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -31,12 +31,12 @@ namespace  t_comp
 public partial class cLexer : Antlr.Runtime.Lexer
 {
 	public const int EOF=-1;
-	public const int T__54=54;
 	public const int T__55=55;
 	public const int T__56=56;
 	public const int T__57=57;
 	public const int T__58=58;
 	public const int T__59=59;
+	public const int T__60=60;
 	public const int ADD=4;
 	public const int ASSIGN=5;
 	public const int BLOCK=6;
@@ -84,9 +84,10 @@ public partial class cLexer : Antlr.Runtime.Lexer
 	public const int STRING_TYPE=48;
 	public const int SUB=49;
 	public const int VAR_DEC=50;
-	public const int VOID_TYPE=51;
-	public const int WRITE=52;
-	public const int WS=53;
+	public const int VAR_TYPE=51;
+	public const int VOID_TYPE=52;
+	public const int WRITE=53;
+	public const int WS=54;
 
 	// delegates
 	// delegators
@@ -114,19 +115,19 @@ public partial class cLexer : Antlr.Runtime.Lexer
 	partial void EnterRule(string ruleName, int ruleIndex);
 	partial void LeaveRule(string ruleName, int ruleIndex);
 
-	partial void EnterRule_T__54();
-	partial void LeaveRule_T__54();
+	partial void EnterRule_T__55();
+	partial void LeaveRule_T__55();
 
-	// $ANTLR start "T__54"
-	[GrammarRule("T__54")]
-	private void mT__54()
+	// $ANTLR start "T__55"
+	[GrammarRule("T__55")]
+	private void mT__55()
 	{
-		EnterRule_T__54();
-		EnterRule("T__54", 1);
-		TraceIn("T__54", 1);
+		EnterRule_T__55();
+		EnterRule("T__55", 1);
+		TraceIn("T__55", 1);
 		try
 		{
-			int _type = T__54;
+			int _type = T__55;
 			int _channel = DefaultTokenChannel;
 			// c.g:9:7: ( '(' )
 			DebugEnterAlt(1);
@@ -142,26 +143,26 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__54", 1);
-			LeaveRule("T__54", 1);
-			LeaveRule_T__54();
+			TraceOut("T__55", 1);
+			LeaveRule("T__55", 1);
+			LeaveRule_T__55();
 		}
 	}
-	// $ANTLR end "T__54"
+	// $ANTLR end "T__55"
 
-	partial void EnterRule_T__55();
-	partial void LeaveRule_T__55();
+	partial void EnterRule_T__56();
+	partial void LeaveRule_T__56();
 
-	// $ANTLR start "T__55"
-	[GrammarRule("T__55")]
-	private void mT__55()
+	// $ANTLR start "T__56"
+	[GrammarRule("T__56")]
+	private void mT__56()
 	{
-		EnterRule_T__55();
-		EnterRule("T__55", 2);
-		TraceIn("T__55", 2);
+		EnterRule_T__56();
+		EnterRule("T__56", 2);
+		TraceIn("T__56", 2);
 		try
 		{
-			int _type = T__55;
+			int _type = T__56;
 			int _channel = DefaultTokenChannel;
 			// c.g:10:7: ( ')' )
 			DebugEnterAlt(1);
@@ -177,26 +178,26 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__55", 2);
-			LeaveRule("T__55", 2);
-			LeaveRule_T__55();
+			TraceOut("T__56", 2);
+			LeaveRule("T__56", 2);
+			LeaveRule_T__56();
 		}
 	}
-	// $ANTLR end "T__55"
+	// $ANTLR end "T__56"
 
-	partial void EnterRule_T__56();
-	partial void LeaveRule_T__56();
+	partial void EnterRule_T__57();
+	partial void LeaveRule_T__57();
 
-	// $ANTLR start "T__56"
-	[GrammarRule("T__56")]
-	private void mT__56()
+	// $ANTLR start "T__57"
+	[GrammarRule("T__57")]
+	private void mT__57()
 	{
-		EnterRule_T__56();
-		EnterRule("T__56", 3);
-		TraceIn("T__56", 3);
+		EnterRule_T__57();
+		EnterRule("T__57", 3);
+		TraceIn("T__57", 3);
 		try
 		{
-			int _type = T__56;
+			int _type = T__57;
 			int _channel = DefaultTokenChannel;
 			// c.g:11:7: ( ',' )
 			DebugEnterAlt(1);
@@ -212,26 +213,26 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__56", 3);
-			LeaveRule("T__56", 3);
-			LeaveRule_T__56();
+			TraceOut("T__57", 3);
+			LeaveRule("T__57", 3);
+			LeaveRule_T__57();
 		}
 	}
-	// $ANTLR end "T__56"
+	// $ANTLR end "T__57"
 
-	partial void EnterRule_T__57();
-	partial void LeaveRule_T__57();
+	partial void EnterRule_T__58();
+	partial void LeaveRule_T__58();
 
-	// $ANTLR start "T__57"
-	[GrammarRule("T__57")]
-	private void mT__57()
+	// $ANTLR start "T__58"
+	[GrammarRule("T__58")]
+	private void mT__58()
 	{
-		EnterRule_T__57();
-		EnterRule("T__57", 4);
-		TraceIn("T__57", 4);
+		EnterRule_T__58();
+		EnterRule("T__58", 4);
+		TraceIn("T__58", 4);
 		try
 		{
-			int _type = T__57;
+			int _type = T__58;
 			int _channel = DefaultTokenChannel;
 			// c.g:12:7: ( ';' )
 			DebugEnterAlt(1);
@@ -247,26 +248,26 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__57", 4);
-			LeaveRule("T__57", 4);
-			LeaveRule_T__57();
+			TraceOut("T__58", 4);
+			LeaveRule("T__58", 4);
+			LeaveRule_T__58();
 		}
 	}
-	// $ANTLR end "T__57"
+	// $ANTLR end "T__58"
 
-	partial void EnterRule_T__58();
-	partial void LeaveRule_T__58();
+	partial void EnterRule_T__59();
+	partial void LeaveRule_T__59();
 
-	// $ANTLR start "T__58"
-	[GrammarRule("T__58")]
-	private void mT__58()
+	// $ANTLR start "T__59"
+	[GrammarRule("T__59")]
+	private void mT__59()
 	{
-		EnterRule_T__58();
-		EnterRule("T__58", 5);
-		TraceIn("T__58", 5);
+		EnterRule_T__59();
+		EnterRule("T__59", 5);
+		TraceIn("T__59", 5);
 		try
 		{
-			int _type = T__58;
+			int _type = T__59;
 			int _channel = DefaultTokenChannel;
 			// c.g:13:7: ( '{' )
 			DebugEnterAlt(1);
@@ -282,26 +283,26 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__58", 5);
-			LeaveRule("T__58", 5);
-			LeaveRule_T__58();
+			TraceOut("T__59", 5);
+			LeaveRule("T__59", 5);
+			LeaveRule_T__59();
 		}
 	}
-	// $ANTLR end "T__58"
+	// $ANTLR end "T__59"
 
-	partial void EnterRule_T__59();
-	partial void LeaveRule_T__59();
+	partial void EnterRule_T__60();
+	partial void LeaveRule_T__60();
 
-	// $ANTLR start "T__59"
-	[GrammarRule("T__59")]
-	private void mT__59()
+	// $ANTLR start "T__60"
+	[GrammarRule("T__60")]
+	private void mT__60()
 	{
-		EnterRule_T__59();
-		EnterRule("T__59", 6);
-		TraceIn("T__59", 6);
+		EnterRule_T__60();
+		EnterRule("T__60", 6);
+		TraceIn("T__60", 6);
 		try
 		{
-			int _type = T__59;
+			int _type = T__60;
 			int _channel = DefaultTokenChannel;
 			// c.g:14:7: ( '}' )
 			DebugEnterAlt(1);
@@ -317,12 +318,12 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__59", 6);
-			LeaveRule("T__59", 6);
-			LeaveRule_T__59();
+			TraceOut("T__60", 6);
+			LeaveRule("T__60", 6);
+			LeaveRule_T__60();
 		}
 	}
-	// $ANTLR end "T__59"
+	// $ANTLR end "T__60"
 
 	partial void EnterRule_WS();
 	partial void LeaveRule_WS();
@@ -338,12 +339,12 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WS;
 			int _channel = DefaultTokenChannel;
-			// c.g:45:2: ( ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+ )
+			// c.g:46:2: ( ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+ )
 			DebugEnterAlt(1);
-			// c.g:45:4: ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+
+			// c.g:46:4: ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+
 			{
-			DebugLocation(45, 4);
-			// c.g:45:4: ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+
+			DebugLocation(46, 4);
+			// c.g:46:4: ( ' ' | '\\t' | '\\f' | '\\r' | '\\n' )+
 			int cnt1=0;
 			try { DebugEnterSubRule(1);
 			while (true)
@@ -365,7 +366,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// c.g:
 					{
-					DebugLocation(45, 4);
+					DebugLocation(46, 4);
 					input.Consume();
 
 
@@ -387,7 +388,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(1); }
 
-			DebugLocation(45, 42);
+			DebugLocation(46, 42);
 			 _channel=Hidden; 
 
 			}
@@ -418,15 +419,15 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SL_COMMENT;
 			int _channel = DefaultTokenChannel;
-			// c.g:49:2: ( '//' ( options {greedy=false; } : . )* ( '\\r' )? '\\n' )
+			// c.g:50:2: ( '//' ( options {greedy=false; } : . )* ( '\\r' )? '\\n' )
 			DebugEnterAlt(1);
-			// c.g:49:4: '//' ( options {greedy=false; } : . )* ( '\\r' )? '\\n'
+			// c.g:50:4: '//' ( options {greedy=false; } : . )* ( '\\r' )? '\\n'
 			{
-			DebugLocation(49, 4);
+			DebugLocation(50, 4);
 			Match("//"); 
 
-			DebugLocation(49, 9);
-			// c.g:49:9: ( options {greedy=false; } : . )*
+			DebugLocation(50, 9);
+			// c.g:50:9: ( options {greedy=false; } : . )*
 			try { DebugEnterSubRule(2);
 			while (true)
 			{
@@ -453,9 +454,9 @@ public partial class cLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:49:37: .
+					// c.g:50:37: .
 					{
-					DebugLocation(49, 37);
+					DebugLocation(50, 37);
 					MatchAny(); 
 
 					}
@@ -471,8 +472,8 @@ public partial class cLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(2); }
 
-			DebugLocation(49, 41);
-			// c.g:49:41: ( '\\r' )?
+			DebugLocation(50, 41);
+			// c.g:50:41: ( '\\r' )?
 			int alt3=2;
 			try { DebugEnterSubRule(3);
 			try { DebugEnterDecision(3, false);
@@ -487,9 +488,9 @@ public partial class cLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:49:41: '\\r'
+				// c.g:50:41: '\\r'
 				{
-				DebugLocation(49, 41);
+				DebugLocation(50, 41);
 				Match('\r'); 
 
 				}
@@ -498,9 +499,9 @@ public partial class cLexer : Antlr.Runtime.Lexer
 			}
 			} finally { DebugExitSubRule(3); }
 
-			DebugLocation(49, 47);
+			DebugLocation(50, 47);
 			Match('\n'); 
-			DebugLocation(49, 52);
+			DebugLocation(50, 52);
 			 _channel=Hidden; 
 
 			}
@@ -531,15 +532,15 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ML_COMMENT;
 			int _channel = DefaultTokenChannel;
-			// c.g:53:2: ( '/*' ( options {greedy=false; } : . )* '*/' )
+			// c.g:54:2: ( '/*' ( options {greedy=false; } : . )* '*/' )
 			DebugEnterAlt(1);
-			// c.g:53:4: '/*' ( options {greedy=false; } : . )* '*/'
+			// c.g:54:4: '/*' ( options {greedy=false; } : . )* '*/'
 			{
-			DebugLocation(53, 4);
+			DebugLocation(54, 4);
 			Match("/*"); 
 
-			DebugLocation(53, 9);
-			// c.g:53:9: ( options {greedy=false; } : . )*
+			DebugLocation(54, 9);
+			// c.g:54:9: ( options {greedy=false; } : . )*
 			try { DebugEnterSubRule(4);
 			while (true)
 			{
@@ -573,9 +574,9 @@ public partial class cLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:53:37: .
+					// c.g:54:37: .
 					{
-					DebugLocation(53, 37);
+					DebugLocation(54, 37);
 					MatchAny(); 
 
 					}
@@ -591,10 +592,10 @@ public partial class cLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(4); }
 
-			DebugLocation(53, 41);
+			DebugLocation(54, 41);
 			Match("*/"); 
 
-			DebugLocation(53, 46);
+			DebugLocation(54, 46);
 			 _channel=Hidden; 
 
 			}
@@ -625,11 +626,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ADD;
 			int _channel = DefaultTokenChannel;
-			// c.g:58:5: ( '+' )
+			// c.g:59:5: ( '+' )
 			DebugEnterAlt(1);
-			// c.g:58:7: '+'
+			// c.g:59:7: '+'
 			{
-			DebugLocation(58, 7);
+			DebugLocation(59, 7);
 			Match('+'); 
 
 			}
@@ -660,11 +661,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SUB;
 			int _channel = DefaultTokenChannel;
-			// c.g:59:5: ( '-' )
+			// c.g:60:5: ( '-' )
 			DebugEnterAlt(1);
-			// c.g:59:7: '-'
+			// c.g:60:7: '-'
 			{
-			DebugLocation(59, 7);
+			DebugLocation(60, 7);
 			Match('-'); 
 
 			}
@@ -695,11 +696,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = MUL;
 			int _channel = DefaultTokenChannel;
-			// c.g:60:5: ( '*' )
+			// c.g:61:5: ( '*' )
 			DebugEnterAlt(1);
-			// c.g:60:7: '*'
+			// c.g:61:7: '*'
 			{
-			DebugLocation(60, 7);
+			DebugLocation(61, 7);
 			Match('*'); 
 
 			}
@@ -730,11 +731,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DIV;
 			int _channel = DefaultTokenChannel;
-			// c.g:61:5: ( '/' )
+			// c.g:62:5: ( '/' )
 			DebugEnterAlt(1);
-			// c.g:61:7: '/'
+			// c.g:62:7: '/'
 			{
-			DebugLocation(61, 7);
+			DebugLocation(62, 7);
 			Match('/'); 
 
 			}
@@ -765,11 +766,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LADD;
 			int _channel = DefaultTokenChannel;
-			// c.g:63:6: ( '||' )
+			// c.g:64:6: ( '||' )
 			DebugEnterAlt(1);
-			// c.g:63:8: '||'
+			// c.g:64:8: '||'
 			{
-			DebugLocation(63, 8);
+			DebugLocation(64, 8);
 			Match("||"); 
 
 
@@ -801,11 +802,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LMUL;
 			int _channel = DefaultTokenChannel;
-			// c.g:64:6: ( '&&' )
+			// c.g:65:6: ( '&&' )
 			DebugEnterAlt(1);
-			// c.g:64:8: '&&'
+			// c.g:65:8: '&&'
 			{
-			DebugLocation(64, 8);
+			DebugLocation(65, 8);
 			Match("&&"); 
 
 
@@ -837,11 +838,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GE;
 			int _channel = DefaultTokenChannel;
-			// c.g:66:4: ( '>=' )
+			// c.g:67:4: ( '>=' )
 			DebugEnterAlt(1);
-			// c.g:66:6: '>='
+			// c.g:67:6: '>='
 			{
-			DebugLocation(66, 6);
+			DebugLocation(67, 6);
 			Match(">="); 
 
 
@@ -873,11 +874,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LE;
 			int _channel = DefaultTokenChannel;
-			// c.g:67:4: ( '<=' )
+			// c.g:68:4: ( '<=' )
 			DebugEnterAlt(1);
-			// c.g:67:6: '<='
+			// c.g:68:6: '<='
 			{
-			DebugLocation(67, 6);
+			DebugLocation(68, 6);
 			Match("<="); 
 
 
@@ -909,11 +910,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NEQUALS;
 			int _channel = DefaultTokenChannel;
-			// c.g:68:9: ( '!=' )
+			// c.g:69:9: ( '!=' )
 			DebugEnterAlt(1);
-			// c.g:68:11: '!='
+			// c.g:69:11: '!='
 			{
-			DebugLocation(68, 11);
+			DebugLocation(69, 11);
 			Match("!="); 
 
 
@@ -945,11 +946,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EQUALS;
 			int _channel = DefaultTokenChannel;
-			// c.g:69:8: ( '==' )
+			// c.g:70:8: ( '==' )
 			DebugEnterAlt(1);
-			// c.g:69:10: '=='
+			// c.g:70:10: '=='
 			{
-			DebugLocation(69, 10);
+			DebugLocation(70, 10);
 			Match("=="); 
 
 
@@ -981,11 +982,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GT;
 			int _channel = DefaultTokenChannel;
-			// c.g:70:4: ( '>' )
+			// c.g:71:4: ( '>' )
 			DebugEnterAlt(1);
-			// c.g:70:6: '>'
+			// c.g:71:6: '>'
 			{
-			DebugLocation(70, 6);
+			DebugLocation(71, 6);
 			Match('>'); 
 
 			}
@@ -1016,11 +1017,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LT;
 			int _channel = DefaultTokenChannel;
-			// c.g:71:4: ( '<' )
+			// c.g:72:4: ( '<' )
 			DebugEnterAlt(1);
-			// c.g:71:6: '<'
+			// c.g:72:6: '<'
 			{
-			DebugLocation(71, 6);
+			DebugLocation(72, 6);
 			Match('<'); 
 
 			}
@@ -1051,11 +1052,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ASSIGN;
 			int _channel = DefaultTokenChannel;
-			// c.g:73:8: ( '=' )
+			// c.g:74:8: ( '=' )
 			DebugEnterAlt(1);
-			// c.g:73:10: '='
+			// c.g:74:10: '='
 			{
-			DebugLocation(73, 10);
+			DebugLocation(74, 10);
 			Match('='); 
 
 			}
@@ -1086,11 +1087,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = IF;
 			int _channel = DefaultTokenChannel;
-			// c.g:75:4: ( 'if' )
+			// c.g:76:4: ( 'if' )
 			DebugEnterAlt(1);
-			// c.g:75:6: 'if'
+			// c.g:76:6: 'if'
 			{
-			DebugLocation(75, 6);
+			DebugLocation(76, 6);
 			Match("if"); 
 
 
@@ -1122,11 +1123,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ELSE;
 			int _channel = DefaultTokenChannel;
-			// c.g:76:6: ( 'else' )
+			// c.g:77:6: ( 'else' )
 			DebugEnterAlt(1);
-			// c.g:76:8: 'else'
+			// c.g:77:8: 'else'
 			{
-			DebugLocation(76, 8);
+			DebugLocation(77, 8);
 			Match("else"); 
 
 
@@ -1158,11 +1159,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FOR;
 			int _channel = DefaultTokenChannel;
-			// c.g:78:5: ( 'for' )
+			// c.g:79:5: ( 'for' )
 			DebugEnterAlt(1);
-			// c.g:78:7: 'for'
+			// c.g:79:7: 'for'
 			{
-			DebugLocation(78, 7);
+			DebugLocation(79, 7);
 			Match("for"); 
 
 
@@ -1194,11 +1195,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = READ;
 			int _channel = DefaultTokenChannel;
-			// c.g:80:6: ( 'read' )
+			// c.g:81:6: ( 'read' )
 			DebugEnterAlt(1);
-			// c.g:80:8: 'read'
+			// c.g:81:8: 'read'
 			{
-			DebugLocation(80, 8);
+			DebugLocation(81, 8);
 			Match("read"); 
 
 
@@ -1230,11 +1231,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = WRITE;
 			int _channel = DefaultTokenChannel;
-			// c.g:81:7: ( 'write' )
+			// c.g:82:7: ( 'write' )
 			DebugEnterAlt(1);
-			// c.g:81:9: 'write'
+			// c.g:82:9: 'write'
 			{
-			DebugLocation(81, 9);
+			DebugLocation(82, 9);
 			Match("write"); 
 
 
@@ -1266,11 +1267,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INT_TYPE;
 			int _channel = DefaultTokenChannel;
-			// c.g:83:10: ( 'int' )
+			// c.g:84:10: ( 'int' )
 			DebugEnterAlt(1);
-			// c.g:83:12: 'int'
+			// c.g:84:12: 'int'
 			{
-			DebugLocation(83, 12);
+			DebugLocation(84, 12);
 			Match("int"); 
 
 
@@ -1302,11 +1303,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = BOOL_TYPE;
 			int _channel = DefaultTokenChannel;
-			// c.g:84:11: ( 'bool' )
+			// c.g:85:11: ( 'bool' )
 			DebugEnterAlt(1);
-			// c.g:84:13: 'bool'
+			// c.g:85:13: 'bool'
 			{
-			DebugLocation(84, 13);
+			DebugLocation(85, 13);
 			Match("bool"); 
 
 
@@ -1338,11 +1339,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = STRING_TYPE;
 			int _channel = DefaultTokenChannel;
-			// c.g:85:13: ( 'string' )
+			// c.g:86:13: ( 'string' )
 			DebugEnterAlt(1);
-			// c.g:85:15: 'string'
+			// c.g:86:15: 'string'
 			{
-			DebugLocation(85, 15);
+			DebugLocation(86, 15);
 			Match("string"); 
 
 
@@ -1374,11 +1375,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = VOID_TYPE;
 			int _channel = DefaultTokenChannel;
-			// c.g:86:11: ( 'void' )
+			// c.g:87:11: ( 'void' )
 			DebugEnterAlt(1);
-			// c.g:86:13: 'void'
+			// c.g:87:13: 'void'
 			{
-			DebugLocation(86, 13);
+			DebugLocation(87, 13);
 			Match("void"); 
 
 
@@ -1410,11 +1411,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = RETURN;
 			int _channel = DefaultTokenChannel;
-			// c.g:88:9: ( 'return' )
+			// c.g:89:9: ( 'return' )
 			DebugEnterAlt(1);
-			// c.g:88:11: 'return'
+			// c.g:89:11: 'return'
 			{
-			DebugLocation(88, 11);
+			DebugLocation(89, 11);
 			Match("return"); 
 
 
@@ -1446,12 +1447,12 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NUMBER;
 			int _channel = DefaultTokenChannel;
-			// c.g:91:2: ( ( '0' .. '9' )+ )
+			// c.g:92:2: ( ( '0' .. '9' )+ )
 			DebugEnterAlt(1);
-			// c.g:91:4: ( '0' .. '9' )+
+			// c.g:92:4: ( '0' .. '9' )+
 			{
-			DebugLocation(91, 4);
-			// c.g:91:4: ( '0' .. '9' )+
+			DebugLocation(92, 4);
+			// c.g:92:4: ( '0' .. '9' )+
 			int cnt5=0;
 			try { DebugEnterSubRule(5);
 			while (true)
@@ -1473,7 +1474,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// c.g:
 					{
-					DebugLocation(91, 4);
+					DebugLocation(92, 4);
 					input.Consume();
 
 
@@ -1524,7 +1525,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LOGIC;
 			int _channel = DefaultTokenChannel;
-			// c.g:95:2: ( 'true' | 'false' )
+			// c.g:96:2: ( 'true' | 'false' )
 			int alt6=2;
 			try { DebugEnterDecision(6, false);
 			int LA6_1 = input.LA(1);
@@ -1548,9 +1549,9 @@ public partial class cLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:95:4: 'true'
+				// c.g:96:4: 'true'
 				{
-				DebugLocation(95, 4);
+				DebugLocation(96, 4);
 				Match("true"); 
 
 
@@ -1558,9 +1559,9 @@ public partial class cLexer : Antlr.Runtime.Lexer
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// c.g:95:13: 'false'
+				// c.g:96:13: 'false'
 				{
-				DebugLocation(95, 13);
+				DebugLocation(96, 13);
 				Match("false"); 
 
 
@@ -1594,11 +1595,11 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ID;
 			int _channel = DefaultTokenChannel;
-			// c.g:99:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+			// c.g:100:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
 			DebugEnterAlt(1);
-			// c.g:99:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+			// c.g:100:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
 			{
-			DebugLocation(99, 4);
+			DebugLocation(100, 4);
 			if ((input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z'))
 			{
 				input.Consume();
@@ -1611,8 +1612,8 @@ public partial class cLexer : Antlr.Runtime.Lexer
 				throw mse;
 			}
 
-			DebugLocation(100, 3);
-			// c.g:100:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+			DebugLocation(101, 3);
+			// c.g:101:3: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
 			try { DebugEnterSubRule(7);
 			while (true)
 			{
@@ -1633,7 +1634,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// c.g:
 					{
-					DebugLocation(100, 3);
+					DebugLocation(101, 3);
 					input.Consume();
 
 
@@ -1679,14 +1680,14 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 			int _type = STRING;
 			int _channel = DefaultTokenChannel;
-			// c.g:104:2: ( '\"' ( options {greedy=false; } : . )* '\"' )
+			// c.g:105:2: ( '\"' ( options {greedy=false; } : . )* '\"' )
 			DebugEnterAlt(1);
-			// c.g:104:4: '\"' ( options {greedy=false; } : . )* '\"'
+			// c.g:105:4: '\"' ( options {greedy=false; } : . )* '\"'
 			{
-			DebugLocation(104, 4);
+			DebugLocation(105, 4);
 			Match('\"'); 
-			DebugLocation(104, 8);
-			// c.g:104:8: ( options {greedy=false; } : . )*
+			DebugLocation(105, 8);
+			// c.g:105:8: ( options {greedy=false; } : . )*
 			try { DebugEnterSubRule(8);
 			while (true)
 			{
@@ -1709,9 +1710,9 @@ public partial class cLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:104:36: .
+					// c.g:105:36: .
 					{
-					DebugLocation(104, 36);
+					DebugLocation(105, 36);
 					MatchAny(); 
 
 					}
@@ -1727,7 +1728,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(8); }
 
-			DebugLocation(104, 40);
+			DebugLocation(105, 40);
 			Match('\"'); 
 
 			}
@@ -1746,7 +1747,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 
 	public override void mTokens()
 	{
-		// c.g:1:8: ( T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | WS | SL_COMMENT | ML_COMMENT | ADD | SUB | MUL | DIV | LADD | LMUL | GE | LE | NEQUALS | EQUALS | GT | LT | ASSIGN | IF | ELSE | FOR | READ | WRITE | INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE | RETURN | NUMBER | LOGIC | ID | STRING )
+		// c.g:1:8: ( T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | WS | SL_COMMENT | ML_COMMENT | ADD | SUB | MUL | DIV | LADD | LMUL | GE | LE | NEQUALS | EQUALS | GT | LT | ASSIGN | IF | ELSE | FOR | READ | WRITE | INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE | RETURN | NUMBER | LOGIC | ID | STRING )
 		int alt9=36;
 		try { DebugEnterDecision(9, false);
 		try
@@ -1763,55 +1764,55 @@ public partial class cLexer : Antlr.Runtime.Lexer
 		{
 		case 1:
 			DebugEnterAlt(1);
-			// c.g:1:10: T__54
+			// c.g:1:10: T__55
 			{
 			DebugLocation(1, 10);
-			mT__54(); 
+			mT__55(); 
 
 			}
 			break;
 		case 2:
 			DebugEnterAlt(2);
-			// c.g:1:16: T__55
+			// c.g:1:16: T__56
 			{
 			DebugLocation(1, 16);
-			mT__55(); 
+			mT__56(); 
 
 			}
 			break;
 		case 3:
 			DebugEnterAlt(3);
-			// c.g:1:22: T__56
+			// c.g:1:22: T__57
 			{
 			DebugLocation(1, 22);
-			mT__56(); 
+			mT__57(); 
 
 			}
 			break;
 		case 4:
 			DebugEnterAlt(4);
-			// c.g:1:28: T__57
+			// c.g:1:28: T__58
 			{
 			DebugLocation(1, 28);
-			mT__57(); 
+			mT__58(); 
 
 			}
 			break;
 		case 5:
 			DebugEnterAlt(5);
-			// c.g:1:34: T__58
+			// c.g:1:34: T__59
 			{
 			DebugLocation(1, 34);
-			mT__58(); 
+			mT__59(); 
 
 			}
 			break;
 		case 6:
 			DebugEnterAlt(6);
-			// c.g:1:40: T__59
+			// c.g:1:40: T__60
 			{
 			DebugLocation(1, 40);
-			mT__59(); 
+			mT__60(); 
 
 			}
 			break;
@@ -2261,7 +2262,7 @@ public partial class cLexer : Antlr.Runtime.Lexer
 			this.transition = DFA9_transition;
 		}
 
-		public override string Description { get { return "1:1: Tokens : ( T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | WS | SL_COMMENT | ML_COMMENT | ADD | SUB | MUL | DIV | LADD | LMUL | GE | LE | NEQUALS | EQUALS | GT | LT | ASSIGN | IF | ELSE | FOR | READ | WRITE | INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE | RETURN | NUMBER | LOGIC | ID | STRING );"; } }
+		public override string Description { get { return "1:1: Tokens : ( T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | WS | SL_COMMENT | ML_COMMENT | ADD | SUB | MUL | DIV | LADD | LMUL | GE | LE | NEQUALS | EQUALS | GT | LT | ASSIGN | IF | ELSE | FOR | READ | WRITE | INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE | RETURN | NUMBER | LOGIC | ID | STRING );"; } }
 
 		public override void Error(NoViableAltException nvae)
 		{

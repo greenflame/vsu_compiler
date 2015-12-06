@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.2 c.g 2015-10-20 22:46:26
+// $ANTLR 3.5.2 c.g 2015-10-22 09:22:50
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -35,15 +35,15 @@ namespace  t_comp
 public partial class cParser : Antlr.Runtime.Parser
 {
 	internal static readonly string[] tokenNames = new string[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ADD", "ASSIGN", "BLOCK", "BOOL_TYPE", "CALL_PARAMS", "DEC_INITED", "DEC_NOT_INITED", "DEC_PARAM", "DEC_PARAMS", "DIV", "ELSE", "EQUALS", "FOR", "FOR_BODY", "FOR_COND", "FOR_INIT", "FOR_STEP", "FUNC_BODY", "FUNC_CALL", "FUNC_DEC", "FUNC_ID", "FUNC_TYPE", "GE", "GT", "ID", "IF", "IF_BODY", "IF_COND", "IF_ELSE_BODY", "INT_TYPE", "LADD", "LE", "LMUL", "LOGIC", "LT", "ML_COMMENT", "MUL", "NEQUALS", "NUMBER", "PROGRAM", "READ", "RETURN", "SL_COMMENT", "STRING", "STRING_TYPE", "SUB", "VAR_DEC", "VOID_TYPE", "WRITE", "WS", "'('", "')'", "','", "';'", "'{'", "'}'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ADD", "ASSIGN", "BLOCK", "BOOL_TYPE", "CALL_PARAMS", "DEC_INITED", "DEC_NOT_INITED", "DEC_PARAM", "DEC_PARAMS", "DIV", "ELSE", "EQUALS", "FOR", "FOR_BODY", "FOR_COND", "FOR_INIT", "FOR_STEP", "FUNC_BODY", "FUNC_CALL", "FUNC_DEC", "FUNC_ID", "FUNC_TYPE", "GE", "GT", "ID", "IF", "IF_BODY", "IF_COND", "IF_ELSE_BODY", "INT_TYPE", "LADD", "LE", "LMUL", "LOGIC", "LT", "ML_COMMENT", "MUL", "NEQUALS", "NUMBER", "PROGRAM", "READ", "RETURN", "SL_COMMENT", "STRING", "STRING_TYPE", "SUB", "VAR_DEC", "VAR_TYPE", "VOID_TYPE", "WRITE", "WS", "'('", "')'", "','", "';'", "'{'", "'}'"
 	};
 	public const int EOF=-1;
-	public const int T__54=54;
 	public const int T__55=55;
 	public const int T__56=56;
 	public const int T__57=57;
 	public const int T__58=58;
 	public const int T__59=59;
+	public const int T__60=60;
 	public const int ADD=4;
 	public const int ASSIGN=5;
 	public const int BLOCK=6;
@@ -91,9 +91,10 @@ public partial class cParser : Antlr.Runtime.Parser
 	public const int STRING_TYPE=48;
 	public const int SUB=49;
 	public const int VAR_DEC=50;
-	public const int VOID_TYPE=51;
-	public const int WRITE=52;
-	public const int WS=53;
+	public const int VAR_TYPE=51;
+	public const int VOID_TYPE=52;
+	public const int WRITE=53;
+	public const int WS=54;
 
 	public cParser(ITokenStream input)
 		: this(input, new RecognizerSharedState())
@@ -137,7 +138,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_primitive_value();
 	partial void LeaveRule_primitive_value();
 	// $ANTLR start "primitive_value"
-	// c.g:110:1: primitive_value : ( NUMBER | STRING | LOGIC | ID | func_call );
+	// c.g:111:1: primitive_value : ( NUMBER | STRING | LOGIC | ID | func_call );
 	[GrammarRule("primitive_value")]
 	private AstParserRuleReturnScope<object, IToken> primitive_value()
 	{
@@ -160,10 +161,10 @@ public partial class cParser : Antlr.Runtime.Parser
 		object LOGIC3_tree = default(object);
 		object ID4_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "primitive_value");
-		DebugLocation(110, 1);
+		DebugLocation(111, 1);
 		try
 		{
-			// c.g:111:2: ( NUMBER | STRING | LOGIC | ID | func_call )
+			// c.g:112:2: ( NUMBER | STRING | LOGIC | ID | func_call )
 			int alt1=5;
 			try { DebugEnterDecision(1, false);
 			switch (input.LA(1))
@@ -187,11 +188,11 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				int LA1_2 = input.LA(2);
 
-				if ((LA1_2==54))
+				if ((LA1_2==55))
 				{
 					alt1 = 5;
 				}
-				else if ((LA1_2==ADD||LA1_2==DIV||LA1_2==EQUALS||(LA1_2>=GE && LA1_2<=GT)||(LA1_2>=LADD && LA1_2<=LMUL)||LA1_2==LT||(LA1_2>=MUL && LA1_2<=NEQUALS)||LA1_2==SUB||(LA1_2>=55 && LA1_2<=57)))
+				else if ((LA1_2==ADD||LA1_2==DIV||LA1_2==EQUALS||(LA1_2>=GE && LA1_2<=GT)||(LA1_2>=LADD && LA1_2<=LMUL)||LA1_2==LT||(LA1_2>=MUL && LA1_2<=NEQUALS)||LA1_2==SUB||(LA1_2>=56 && LA1_2<=58)))
 				{
 					alt1 = 4;
 				}
@@ -216,12 +217,12 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:111:4: NUMBER
+				// c.g:112:4: NUMBER
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(111, 4);
-				NUMBER1=(IToken)Match(input,NUMBER,Follow._NUMBER_in_primitive_value588); 
+				DebugLocation(112, 4);
+				NUMBER1=(IToken)Match(input,NUMBER,Follow._NUMBER_in_primitive_value593); 
 				NUMBER1_tree = (object)adaptor.Create(NUMBER1);
 				adaptor.AddChild(root_0, NUMBER1_tree);
 
@@ -229,12 +230,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// c.g:112:4: STRING
+				// c.g:113:4: STRING
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(112, 4);
-				STRING2=(IToken)Match(input,STRING,Follow._STRING_in_primitive_value593); 
+				DebugLocation(113, 4);
+				STRING2=(IToken)Match(input,STRING,Follow._STRING_in_primitive_value598); 
 				STRING2_tree = (object)adaptor.Create(STRING2);
 				adaptor.AddChild(root_0, STRING2_tree);
 
@@ -242,12 +243,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// c.g:113:4: LOGIC
+				// c.g:114:4: LOGIC
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(113, 4);
-				LOGIC3=(IToken)Match(input,LOGIC,Follow._LOGIC_in_primitive_value598); 
+				DebugLocation(114, 4);
+				LOGIC3=(IToken)Match(input,LOGIC,Follow._LOGIC_in_primitive_value603); 
 				LOGIC3_tree = (object)adaptor.Create(LOGIC3);
 				adaptor.AddChild(root_0, LOGIC3_tree);
 
@@ -255,12 +256,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 4:
 				DebugEnterAlt(4);
-				// c.g:114:4: ID
+				// c.g:115:4: ID
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(114, 4);
-				ID4=(IToken)Match(input,ID,Follow._ID_in_primitive_value603); 
+				DebugLocation(115, 4);
+				ID4=(IToken)Match(input,ID,Follow._ID_in_primitive_value608); 
 				ID4_tree = (object)adaptor.Create(ID4);
 				adaptor.AddChild(root_0, ID4_tree);
 
@@ -268,12 +269,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 5:
 				DebugEnterAlt(5);
-				// c.g:115:4: func_call
+				// c.g:116:4: func_call
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(115, 4);
-				PushFollow(Follow._func_call_in_primitive_value608);
+				DebugLocation(116, 4);
+				PushFollow(Follow._func_call_in_primitive_value613);
 				func_call5=func_call();
 				PopFollow();
 
@@ -302,7 +303,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("primitive_value", 1);
 			LeaveRule_primitive_value();
 		}
-		DebugLocation(116, 1);
+		DebugLocation(117, 1);
 		} finally { DebugExitRule(GrammarFileName, "primitive_value"); }
 		return retval;
 
@@ -312,7 +313,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_value_group();
 	partial void LeaveRule_value_group();
 	// $ANTLR start "value_group"
-	// c.g:118:1: value_group : ( '(' ! value_add ')' !| primitive_value );
+	// c.g:119:1: value_group : ( '(' ! value_add ')' !| primitive_value );
 	[GrammarRule("value_group")]
 	private AstParserRuleReturnScope<object, IToken> value_group()
 	{
@@ -332,15 +333,15 @@ public partial class cParser : Antlr.Runtime.Parser
 		object char_literal6_tree = default(object);
 		object char_literal8_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "value_group");
-		DebugLocation(118, 1);
+		DebugLocation(119, 1);
 		try
 		{
-			// c.g:119:2: ( '(' ! value_add ')' !| primitive_value )
+			// c.g:120:2: ( '(' ! value_add ')' !| primitive_value )
 			int alt2=2;
 			try { DebugEnterDecision(2, false);
 			int LA2_1 = input.LA(1);
 
-			if ((LA2_1==54))
+			if ((LA2_1==55))
 			{
 				alt2 = 1;
 			}
@@ -359,31 +360,31 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:119:4: '(' ! value_add ')' !
+				// c.g:120:4: '(' ! value_add ')' !
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(119, 7);
-				char_literal6=(IToken)Match(input,54,Follow._54_in_value_group619); 
-				DebugLocation(119, 9);
-				PushFollow(Follow._value_add_in_value_group622);
+				DebugLocation(120, 7);
+				char_literal6=(IToken)Match(input,55,Follow._55_in_value_group624); 
+				DebugLocation(120, 9);
+				PushFollow(Follow._value_add_in_value_group627);
 				value_add7=value_add();
 				PopFollow();
 
 				adaptor.AddChild(root_0, value_add7.Tree);
-				DebugLocation(119, 22);
-				char_literal8=(IToken)Match(input,55,Follow._55_in_value_group624); 
+				DebugLocation(120, 22);
+				char_literal8=(IToken)Match(input,56,Follow._56_in_value_group629); 
 
 				}
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// c.g:119:26: primitive_value
+				// c.g:120:26: primitive_value
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(119, 26);
-				PushFollow(Follow._primitive_value_in_value_group629);
+				DebugLocation(120, 26);
+				PushFollow(Follow._primitive_value_in_value_group634);
 				primitive_value9=primitive_value();
 				PopFollow();
 
@@ -412,7 +413,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("value_group", 2);
 			LeaveRule_value_group();
 		}
-		DebugLocation(120, 1);
+		DebugLocation(121, 1);
 		} finally { DebugExitRule(GrammarFileName, "value_group"); }
 		return retval;
 
@@ -422,7 +423,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_value_mult();
 	partial void LeaveRule_value_mult();
 	// $ANTLR start "value_mult"
-	// c.g:122:1: value_mult : value_group ( ( MUL | DIV ) ^ value_group )* ;
+	// c.g:123:1: value_mult : value_group ( ( MUL | DIV ) ^ value_group )* ;
 	[GrammarRule("value_mult")]
 	private AstParserRuleReturnScope<object, IToken> value_mult()
 	{
@@ -440,23 +441,23 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object set11_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "value_mult");
-		DebugLocation(122, 1);
+		DebugLocation(123, 1);
 		try
 		{
-			// c.g:123:2: ( value_group ( ( MUL | DIV ) ^ value_group )* )
+			// c.g:124:2: ( value_group ( ( MUL | DIV ) ^ value_group )* )
 			DebugEnterAlt(1);
-			// c.g:123:4: value_group ( ( MUL | DIV ) ^ value_group )*
+			// c.g:124:4: value_group ( ( MUL | DIV ) ^ value_group )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(123, 4);
-			PushFollow(Follow._value_group_in_value_mult641);
+			DebugLocation(124, 4);
+			PushFollow(Follow._value_group_in_value_mult646);
 			value_group10=value_group();
 			PopFollow();
 
 			adaptor.AddChild(root_0, value_group10.Tree);
-			DebugLocation(123, 16);
-			// c.g:123:16: ( ( MUL | DIV ) ^ value_group )*
+			DebugLocation(124, 16);
+			// c.g:124:16: ( ( MUL | DIV ) ^ value_group )*
 			try { DebugEnterSubRule(3);
 			while (true)
 			{
@@ -475,9 +476,9 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:123:18: ( MUL | DIV ) ^ value_group
+					// c.g:124:18: ( MUL | DIV ) ^ value_group
 					{
-					DebugLocation(123, 31);
+					DebugLocation(124, 31);
 
 					set11=(IToken)input.LT(1);
 					set11=(IToken)input.LT(1);
@@ -494,8 +495,8 @@ public partial class cParser : Antlr.Runtime.Parser
 						throw mse;
 					}
 
-					DebugLocation(123, 33);
-					PushFollow(Follow._value_group_in_value_mult656);
+					DebugLocation(124, 33);
+					PushFollow(Follow._value_group_in_value_mult661);
 					value_group12=value_group();
 					PopFollow();
 
@@ -536,7 +537,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("value_mult", 3);
 			LeaveRule_value_mult();
 		}
-		DebugLocation(124, 1);
+		DebugLocation(125, 1);
 		} finally { DebugExitRule(GrammarFileName, "value_mult"); }
 		return retval;
 
@@ -546,7 +547,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_value_add();
 	partial void LeaveRule_value_add();
 	// $ANTLR start "value_add"
-	// c.g:126:1: value_add : value_mult ( ( ADD | SUB ) ^ value_mult )* ;
+	// c.g:127:1: value_add : value_mult ( ( ADD | SUB ) ^ value_mult )* ;
 	[GrammarRule("value_add")]
 	private AstParserRuleReturnScope<object, IToken> value_add()
 	{
@@ -564,23 +565,23 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object set14_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "value_add");
-		DebugLocation(126, 1);
+		DebugLocation(127, 1);
 		try
 		{
-			// c.g:127:2: ( value_mult ( ( ADD | SUB ) ^ value_mult )* )
+			// c.g:128:2: ( value_mult ( ( ADD | SUB ) ^ value_mult )* )
 			DebugEnterAlt(1);
-			// c.g:127:4: value_mult ( ( ADD | SUB ) ^ value_mult )*
+			// c.g:128:4: value_mult ( ( ADD | SUB ) ^ value_mult )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(127, 4);
-			PushFollow(Follow._value_mult_in_value_add671);
+			DebugLocation(128, 4);
+			PushFollow(Follow._value_mult_in_value_add676);
 			value_mult13=value_mult();
 			PopFollow();
 
 			adaptor.AddChild(root_0, value_mult13.Tree);
-			DebugLocation(127, 15);
-			// c.g:127:15: ( ( ADD | SUB ) ^ value_mult )*
+			DebugLocation(128, 15);
+			// c.g:128:15: ( ( ADD | SUB ) ^ value_mult )*
 			try { DebugEnterSubRule(4);
 			while (true)
 			{
@@ -599,9 +600,9 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:127:17: ( ADD | SUB ) ^ value_mult
+					// c.g:128:17: ( ADD | SUB ) ^ value_mult
 					{
-					DebugLocation(127, 30);
+					DebugLocation(128, 30);
 
 					set14=(IToken)input.LT(1);
 					set14=(IToken)input.LT(1);
@@ -618,8 +619,8 @@ public partial class cParser : Antlr.Runtime.Parser
 						throw mse;
 					}
 
-					DebugLocation(127, 32);
-					PushFollow(Follow._value_mult_in_value_add686);
+					DebugLocation(128, 32);
+					PushFollow(Follow._value_mult_in_value_add691);
 					value_mult15=value_mult();
 					PopFollow();
 
@@ -660,7 +661,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("value_add", 4);
 			LeaveRule_value_add();
 		}
-		DebugLocation(128, 1);
+		DebugLocation(129, 1);
 		} finally { DebugExitRule(GrammarFileName, "value_add"); }
 		return retval;
 
@@ -670,7 +671,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_logic_group();
 	partial void LeaveRule_logic_group();
 	// $ANTLR start "logic_group"
-	// c.g:131:1: logic_group : value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )? ;
+	// c.g:132:1: logic_group : value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )? ;
 	[GrammarRule("logic_group")]
 	private AstParserRuleReturnScope<object, IToken> logic_group()
 	{
@@ -688,23 +689,23 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object set17_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "logic_group");
-		DebugLocation(131, 1);
+		DebugLocation(132, 1);
 		try
 		{
-			// c.g:132:2: ( value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )? )
+			// c.g:133:2: ( value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )? )
 			DebugEnterAlt(1);
-			// c.g:132:4: value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )?
+			// c.g:133:4: value_add ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )?
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(132, 4);
-			PushFollow(Follow._value_add_in_logic_group702);
+			DebugLocation(133, 4);
+			PushFollow(Follow._value_add_in_logic_group707);
 			value_add16=value_add();
 			PopFollow();
 
 			adaptor.AddChild(root_0, value_add16.Tree);
-			DebugLocation(132, 14);
-			// c.g:132:14: ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )?
+			DebugLocation(133, 14);
+			// c.g:133:14: ( ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add )?
 			int alt5=2;
 			try { DebugEnterSubRule(5);
 			try { DebugEnterDecision(5, false);
@@ -719,9 +720,9 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:132:16: ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add
+				// c.g:133:16: ( GE | LE | NEQUALS | EQUALS | GT | LT ) ^ value_add
 				{
-				DebugLocation(132, 56);
+				DebugLocation(133, 56);
 
 				set17=(IToken)input.LT(1);
 				set17=(IToken)input.LT(1);
@@ -738,8 +739,8 @@ public partial class cParser : Antlr.Runtime.Parser
 					throw mse;
 				}
 
-				DebugLocation(132, 58);
-				PushFollow(Follow._value_add_in_logic_group733);
+				DebugLocation(133, 58);
+				PushFollow(Follow._value_add_in_logic_group738);
 				value_add18=value_add();
 				PopFollow();
 
@@ -773,7 +774,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("logic_group", 5);
 			LeaveRule_logic_group();
 		}
-		DebugLocation(133, 1);
+		DebugLocation(134, 1);
 		} finally { DebugExitRule(GrammarFileName, "logic_group"); }
 		return retval;
 
@@ -783,7 +784,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_logic_mult();
 	partial void LeaveRule_logic_mult();
 	// $ANTLR start "logic_mult"
-	// c.g:135:1: logic_mult : logic_group ( LMUL ^ logic_group )* ;
+	// c.g:136:1: logic_mult : logic_group ( LMUL ^ logic_group )* ;
 	[GrammarRule("logic_mult")]
 	private AstParserRuleReturnScope<object, IToken> logic_mult()
 	{
@@ -801,23 +802,23 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object LMUL20_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "logic_mult");
-		DebugLocation(135, 1);
+		DebugLocation(136, 1);
 		try
 		{
-			// c.g:136:2: ( logic_group ( LMUL ^ logic_group )* )
+			// c.g:137:2: ( logic_group ( LMUL ^ logic_group )* )
 			DebugEnterAlt(1);
-			// c.g:136:4: logic_group ( LMUL ^ logic_group )*
+			// c.g:137:4: logic_group ( LMUL ^ logic_group )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(136, 4);
-			PushFollow(Follow._logic_group_in_logic_mult748);
+			DebugLocation(137, 4);
+			PushFollow(Follow._logic_group_in_logic_mult753);
 			logic_group19=logic_group();
 			PopFollow();
 
 			adaptor.AddChild(root_0, logic_group19.Tree);
-			DebugLocation(136, 16);
-			// c.g:136:16: ( LMUL ^ logic_group )*
+			DebugLocation(137, 16);
+			// c.g:137:16: ( LMUL ^ logic_group )*
 			try { DebugEnterSubRule(6);
 			while (true)
 			{
@@ -836,14 +837,14 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:136:18: LMUL ^ logic_group
+					// c.g:137:18: LMUL ^ logic_group
 					{
-					DebugLocation(136, 22);
-					LMUL20=(IToken)Match(input,LMUL,Follow._LMUL_in_logic_mult752); 
+					DebugLocation(137, 22);
+					LMUL20=(IToken)Match(input,LMUL,Follow._LMUL_in_logic_mult757); 
 					LMUL20_tree = (object)adaptor.Create(LMUL20);
 					root_0 = (object)adaptor.BecomeRoot(LMUL20_tree, root_0);
-					DebugLocation(136, 24);
-					PushFollow(Follow._logic_group_in_logic_mult755);
+					DebugLocation(137, 24);
+					PushFollow(Follow._logic_group_in_logic_mult760);
 					logic_group21=logic_group();
 					PopFollow();
 
@@ -884,7 +885,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("logic_mult", 6);
 			LeaveRule_logic_mult();
 		}
-		DebugLocation(137, 1);
+		DebugLocation(138, 1);
 		} finally { DebugExitRule(GrammarFileName, "logic_mult"); }
 		return retval;
 
@@ -894,7 +895,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_logic_add();
 	partial void LeaveRule_logic_add();
 	// $ANTLR start "logic_add"
-	// c.g:139:1: logic_add : logic_mult ( LADD ^ logic_mult )* ;
+	// c.g:140:1: logic_add : logic_mult ( LADD ^ logic_mult )* ;
 	[GrammarRule("logic_add")]
 	private AstParserRuleReturnScope<object, IToken> logic_add()
 	{
@@ -912,23 +913,23 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object LADD23_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "logic_add");
-		DebugLocation(139, 1);
+		DebugLocation(140, 1);
 		try
 		{
-			// c.g:140:2: ( logic_mult ( LADD ^ logic_mult )* )
+			// c.g:141:2: ( logic_mult ( LADD ^ logic_mult )* )
 			DebugEnterAlt(1);
-			// c.g:140:4: logic_mult ( LADD ^ logic_mult )*
+			// c.g:141:4: logic_mult ( LADD ^ logic_mult )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(140, 4);
-			PushFollow(Follow._logic_mult_in_logic_add769);
+			DebugLocation(141, 4);
+			PushFollow(Follow._logic_mult_in_logic_add774);
 			logic_mult22=logic_mult();
 			PopFollow();
 
 			adaptor.AddChild(root_0, logic_mult22.Tree);
-			DebugLocation(140, 15);
-			// c.g:140:15: ( LADD ^ logic_mult )*
+			DebugLocation(141, 15);
+			// c.g:141:15: ( LADD ^ logic_mult )*
 			try { DebugEnterSubRule(7);
 			while (true)
 			{
@@ -947,14 +948,14 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:140:17: LADD ^ logic_mult
+					// c.g:141:17: LADD ^ logic_mult
 					{
-					DebugLocation(140, 21);
-					LADD23=(IToken)Match(input,LADD,Follow._LADD_in_logic_add773); 
+					DebugLocation(141, 21);
+					LADD23=(IToken)Match(input,LADD,Follow._LADD_in_logic_add778); 
 					LADD23_tree = (object)adaptor.Create(LADD23);
 					root_0 = (object)adaptor.BecomeRoot(LADD23_tree, root_0);
-					DebugLocation(140, 23);
-					PushFollow(Follow._logic_mult_in_logic_add776);
+					DebugLocation(141, 23);
+					PushFollow(Follow._logic_mult_in_logic_add781);
 					logic_mult24=logic_mult();
 					PopFollow();
 
@@ -995,7 +996,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("logic_add", 7);
 			LeaveRule_logic_add();
 		}
-		DebugLocation(141, 1);
+		DebugLocation(142, 1);
 		} finally { DebugExitRule(GrammarFileName, "logic_add"); }
 		return retval;
 
@@ -1005,7 +1006,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_value_expr();
 	partial void LeaveRule_value_expr();
 	// $ANTLR start "value_expr"
-	// c.g:143:1: value_expr : logic_add ;
+	// c.g:144:1: value_expr : logic_add ;
 	[GrammarRule("value_expr")]
 	private AstParserRuleReturnScope<object, IToken> value_expr()
 	{
@@ -1020,17 +1021,17 @@ public partial class cParser : Antlr.Runtime.Parser
 		AstParserRuleReturnScope<object, IToken> logic_add25 = default(AstParserRuleReturnScope<object, IToken>);
 
 		try { DebugEnterRule(GrammarFileName, "value_expr");
-		DebugLocation(143, 1);
+		DebugLocation(144, 1);
 		try
 		{
-			// c.g:144:2: ( logic_add )
+			// c.g:145:2: ( logic_add )
 			DebugEnterAlt(1);
-			// c.g:144:4: logic_add
+			// c.g:145:4: logic_add
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(144, 4);
-			PushFollow(Follow._logic_add_in_value_expr789);
+			DebugLocation(145, 4);
+			PushFollow(Follow._logic_add_in_value_expr794);
 			logic_add25=logic_add();
 			PopFollow();
 
@@ -1057,7 +1058,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("value_expr", 8);
 			LeaveRule_value_expr();
 		}
-		DebugLocation(145, 1);
+		DebugLocation(146, 1);
 		} finally { DebugExitRule(GrammarFileName, "value_expr"); }
 		return retval;
 
@@ -1067,7 +1068,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_type();
 	partial void LeaveRule_type();
 	// $ANTLR start "type"
-	// c.g:149:1: type : ( INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE );
+	// c.g:150:1: type : ( INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE );
 	[GrammarRule("type")]
 	private AstParserRuleReturnScope<object, IToken> type()
 	{
@@ -1083,16 +1084,16 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object set26_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "type");
-		DebugLocation(149, 1);
+		DebugLocation(150, 1);
 		try
 		{
-			// c.g:150:2: ( INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE )
+			// c.g:151:2: ( INT_TYPE | BOOL_TYPE | STRING_TYPE | VOID_TYPE )
 			DebugEnterAlt(1);
 			// c.g:
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(150, 2);
+			DebugLocation(151, 2);
 
 			set26=(IToken)input.LT(1);
 			if (input.LA(1)==BOOL_TYPE||input.LA(1)==INT_TYPE||input.LA(1)==STRING_TYPE||input.LA(1)==VOID_TYPE)
@@ -1130,7 +1131,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("type", 9);
 			LeaveRule_type();
 		}
-		DebugLocation(151, 1);
+		DebugLocation(152, 1);
 		} finally { DebugExitRule(GrammarFileName, "type"); }
 		return retval;
 
@@ -1140,7 +1141,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_func_call();
 	partial void LeaveRule_func_call();
 	// $ANTLR start "func_call"
-	// c.g:153:1: func_call : ID '(' ( value_expr ( ',' value_expr )* )? ')' -> ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) ) ;
+	// c.g:154:1: func_call : ID '(' ( value_expr ( ',' value_expr )* )? ')' -> ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) ) ;
 	[GrammarRule("func_call")]
 	private AstParserRuleReturnScope<object, IToken> func_call()
 	{
@@ -1165,33 +1166,33 @@ public partial class cParser : Antlr.Runtime.Parser
 		object char_literal32_tree = default(object);
 		RewriteRuleITokenStream stream_55=new RewriteRuleITokenStream(adaptor,"token 55");
 		RewriteRuleITokenStream stream_56=new RewriteRuleITokenStream(adaptor,"token 56");
+		RewriteRuleITokenStream stream_57=new RewriteRuleITokenStream(adaptor,"token 57");
 		RewriteRuleITokenStream stream_ID=new RewriteRuleITokenStream(adaptor,"token ID");
-		RewriteRuleITokenStream stream_54=new RewriteRuleITokenStream(adaptor,"token 54");
 		RewriteRuleSubtreeStream stream_value_expr=new RewriteRuleSubtreeStream(adaptor,"rule value_expr");
 		try { DebugEnterRule(GrammarFileName, "func_call");
-		DebugLocation(153, 1);
+		DebugLocation(154, 1);
 		try
 		{
-			// c.g:154:2: ( ID '(' ( value_expr ( ',' value_expr )* )? ')' -> ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) ) )
+			// c.g:155:2: ( ID '(' ( value_expr ( ',' value_expr )* )? ')' -> ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) ) )
 			DebugEnterAlt(1);
-			// c.g:154:4: ID '(' ( value_expr ( ',' value_expr )* )? ')'
+			// c.g:155:4: ID '(' ( value_expr ( ',' value_expr )* )? ')'
 			{
-			DebugLocation(154, 4);
-			ID27=(IToken)Match(input,ID,Follow._ID_in_func_call827);  
+			DebugLocation(155, 4);
+			ID27=(IToken)Match(input,ID,Follow._ID_in_func_call832);  
 			stream_ID.Add(ID27);
 
-			DebugLocation(154, 7);
-			char_literal28=(IToken)Match(input,54,Follow._54_in_func_call829);  
-			stream_54.Add(char_literal28);
+			DebugLocation(155, 7);
+			char_literal28=(IToken)Match(input,55,Follow._55_in_func_call834);  
+			stream_55.Add(char_literal28);
 
-			DebugLocation(154, 11);
-			// c.g:154:11: ( value_expr ( ',' value_expr )* )?
+			DebugLocation(155, 11);
+			// c.g:155:11: ( value_expr ( ',' value_expr )* )?
 			int alt9=2;
 			try { DebugEnterSubRule(9);
 			try { DebugEnterDecision(9, false);
 			int LA9_1 = input.LA(1);
 
-			if ((LA9_1==ID||LA9_1==LOGIC||LA9_1==NUMBER||LA9_1==STRING||LA9_1==54))
+			if ((LA9_1==ID||LA9_1==LOGIC||LA9_1==NUMBER||LA9_1==STRING||LA9_1==55))
 			{
 				alt9 = 1;
 			}
@@ -1200,16 +1201,16 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:154:13: value_expr ( ',' value_expr )*
+				// c.g:155:13: value_expr ( ',' value_expr )*
 				{
-				DebugLocation(154, 13);
-				PushFollow(Follow._value_expr_in_func_call833);
+				DebugLocation(155, 13);
+				PushFollow(Follow._value_expr_in_func_call838);
 				value_expr29=value_expr();
 				PopFollow();
 
 				stream_value_expr.Add(value_expr29.Tree);
-				DebugLocation(154, 24);
-				// c.g:154:24: ( ',' value_expr )*
+				DebugLocation(155, 24);
+				// c.g:155:24: ( ',' value_expr )*
 				try { DebugEnterSubRule(8);
 				while (true)
 				{
@@ -1217,7 +1218,7 @@ public partial class cParser : Antlr.Runtime.Parser
 					try { DebugEnterDecision(8, false);
 					int LA8_1 = input.LA(1);
 
-					if ((LA8_1==56))
+					if ((LA8_1==57))
 					{
 						alt8 = 1;
 					}
@@ -1228,14 +1229,14 @@ public partial class cParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// c.g:154:26: ',' value_expr
+						// c.g:155:26: ',' value_expr
 						{
-						DebugLocation(154, 26);
-						char_literal30=(IToken)Match(input,56,Follow._56_in_func_call837);  
-						stream_56.Add(char_literal30);
+						DebugLocation(155, 26);
+						char_literal30=(IToken)Match(input,57,Follow._57_in_func_call842);  
+						stream_57.Add(char_literal30);
 
-						DebugLocation(154, 30);
-						PushFollow(Follow._value_expr_in_func_call839);
+						DebugLocation(155, 30);
+						PushFollow(Follow._value_expr_in_func_call844);
 						value_expr31=value_expr();
 						PopFollow();
 
@@ -1261,9 +1262,9 @@ public partial class cParser : Antlr.Runtime.Parser
 			}
 			} finally { DebugExitSubRule(9); }
 
-			DebugLocation(154, 46);
-			char_literal32=(IToken)Match(input,55,Follow._55_in_func_call846);  
-			stream_55.Add(char_literal32);
+			DebugLocation(155, 46);
+			char_literal32=(IToken)Match(input,56,Follow._56_in_func_call851);  
+			stream_56.Add(char_literal32);
 
 
 
@@ -1279,39 +1280,39 @@ public partial class cParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 154:50: -> ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) )
+			// 155:50: -> ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) )
 			{
-				DebugLocation(154, 53);
-				// c.g:154:53: ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) )
+				DebugLocation(155, 53);
+				// c.g:155:53: ^( FUNC_CALL ^( FUNC_ID ID ) ^( CALL_PARAMS ( value_expr )* ) )
 				{
 				object root_1 = (object)adaptor.Nil();
-				DebugLocation(154, 55);
+				DebugLocation(155, 55);
 				root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(FUNC_CALL, "FUNC_CALL"), root_1);
 
-				DebugLocation(154, 65);
-				// c.g:154:65: ^( FUNC_ID ID )
+				DebugLocation(155, 65);
+				// c.g:155:65: ^( FUNC_ID ID )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(154, 68);
+				DebugLocation(155, 68);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FUNC_ID, "FUNC_ID"), root_2);
 
-				DebugLocation(154, 76);
+				DebugLocation(155, 76);
 				adaptor.AddChild(root_2, stream_ID.NextNode());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(154, 81);
-				// c.g:154:81: ^( CALL_PARAMS ( value_expr )* )
+				DebugLocation(155, 81);
+				// c.g:155:81: ^( CALL_PARAMS ( value_expr )* )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(154, 83);
+				DebugLocation(155, 83);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(CALL_PARAMS, "CALL_PARAMS"), root_2);
 
-				DebugLocation(154, 95);
-				// c.g:154:95: ( value_expr )*
+				DebugLocation(155, 95);
+				// c.g:155:95: ( value_expr )*
 				while ( stream_value_expr.HasNext )
 				{
-					DebugLocation(154, 95);
+					DebugLocation(155, 95);
 					adaptor.AddChild(root_2, stream_value_expr.NextTree());
 
 				}
@@ -1349,7 +1350,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("func_call", 10);
 			LeaveRule_func_call();
 		}
-		DebugLocation(155, 1);
+		DebugLocation(156, 1);
 		} finally { DebugExitRule(GrammarFileName, "func_call"); }
 		return retval;
 
@@ -1359,7 +1360,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_assign();
 	partial void LeaveRule_assign();
 	// $ANTLR start "assign"
-	// c.g:157:1: assign : ID ASSIGN ^ value_expr ;
+	// c.g:158:1: assign : ID ASSIGN ^ value_expr ;
 	[GrammarRule("assign")]
 	private AstParserRuleReturnScope<object, IToken> assign()
 	{
@@ -1378,25 +1379,25 @@ public partial class cParser : Antlr.Runtime.Parser
 		object ID33_tree = default(object);
 		object ASSIGN34_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "assign");
-		DebugLocation(157, 1);
+		DebugLocation(158, 1);
 		try
 		{
-			// c.g:158:2: ( ID ASSIGN ^ value_expr )
+			// c.g:159:2: ( ID ASSIGN ^ value_expr )
 			DebugEnterAlt(1);
-			// c.g:158:4: ID ASSIGN ^ value_expr
+			// c.g:159:4: ID ASSIGN ^ value_expr
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(158, 4);
-			ID33=(IToken)Match(input,ID,Follow._ID_in_assign879); 
+			DebugLocation(159, 4);
+			ID33=(IToken)Match(input,ID,Follow._ID_in_assign884); 
 			ID33_tree = (object)adaptor.Create(ID33);
 			adaptor.AddChild(root_0, ID33_tree);
-			DebugLocation(158, 13);
-			ASSIGN34=(IToken)Match(input,ASSIGN,Follow._ASSIGN_in_assign881); 
+			DebugLocation(159, 13);
+			ASSIGN34=(IToken)Match(input,ASSIGN,Follow._ASSIGN_in_assign886); 
 			ASSIGN34_tree = (object)adaptor.Create(ASSIGN34);
 			root_0 = (object)adaptor.BecomeRoot(ASSIGN34_tree, root_0);
-			DebugLocation(158, 15);
-			PushFollow(Follow._value_expr_in_assign884);
+			DebugLocation(159, 15);
+			PushFollow(Follow._value_expr_in_assign889);
 			value_expr35=value_expr();
 			PopFollow();
 
@@ -1423,7 +1424,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("assign", 11);
 			LeaveRule_assign();
 		}
-		DebugLocation(159, 1);
+		DebugLocation(160, 1);
 		} finally { DebugExitRule(GrammarFileName, "assign"); }
 		return retval;
 
@@ -1433,7 +1434,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_var_declaration();
 	partial void LeaveRule_var_declaration();
 	// $ANTLR start "var_declaration"
-	// c.g:161:1: var_declaration : type ( ID | assign ) ( ',' ( ID | assign ) )* -> ^( VAR_DEC ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) ) ;
+	// c.g:162:1: var_declaration : type ( ID | assign ) ( ',' ( ID | assign ) )* -> ^( VAR_DEC ^( VAR_TYPE type ) ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) ) ;
 	[GrammarRule("var_declaration")]
 	private AstParserRuleReturnScope<object, IToken> var_declaration()
 	{
@@ -1455,26 +1456,26 @@ public partial class cParser : Antlr.Runtime.Parser
 		object ID37_tree = default(object);
 		object char_literal39_tree = default(object);
 		object ID40_tree = default(object);
-		RewriteRuleITokenStream stream_56=new RewriteRuleITokenStream(adaptor,"token 56");
+		RewriteRuleITokenStream stream_57=new RewriteRuleITokenStream(adaptor,"token 57");
 		RewriteRuleITokenStream stream_ID=new RewriteRuleITokenStream(adaptor,"token ID");
 		RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
 		RewriteRuleSubtreeStream stream_assign=new RewriteRuleSubtreeStream(adaptor,"rule assign");
 		try { DebugEnterRule(GrammarFileName, "var_declaration");
-		DebugLocation(161, 1);
+		DebugLocation(162, 1);
 		try
 		{
-			// c.g:162:2: ( type ( ID | assign ) ( ',' ( ID | assign ) )* -> ^( VAR_DEC ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) ) )
+			// c.g:163:2: ( type ( ID | assign ) ( ',' ( ID | assign ) )* -> ^( VAR_DEC ^( VAR_TYPE type ) ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) ) )
 			DebugEnterAlt(1);
-			// c.g:162:4: type ( ID | assign ) ( ',' ( ID | assign ) )*
+			// c.g:163:4: type ( ID | assign ) ( ',' ( ID | assign ) )*
 			{
-			DebugLocation(162, 4);
-			PushFollow(Follow._type_in_var_declaration896);
+			DebugLocation(163, 4);
+			PushFollow(Follow._type_in_var_declaration901);
 			type36=type();
 			PopFollow();
 
 			stream_type.Add(type36.Tree);
-			DebugLocation(162, 9);
-			// c.g:162:9: ( ID | assign )
+			DebugLocation(163, 9);
+			// c.g:163:9: ( ID | assign )
 			int alt10=2;
 			try { DebugEnterSubRule(10);
 			try { DebugEnterDecision(10, false);
@@ -1488,7 +1489,7 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 					alt10 = 2;
 				}
-				else if (((LA10_2>=55 && LA10_2<=57)))
+				else if (((LA10_2>=56 && LA10_2<=58)))
 				{
 					alt10 = 1;
 				}
@@ -1510,10 +1511,10 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:162:11: ID
+				// c.g:163:11: ID
 				{
-				DebugLocation(162, 11);
-				ID37=(IToken)Match(input,ID,Follow._ID_in_var_declaration900);  
+				DebugLocation(163, 11);
+				ID37=(IToken)Match(input,ID,Follow._ID_in_var_declaration905);  
 				stream_ID.Add(ID37);
 
 
@@ -1521,10 +1522,10 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// c.g:162:16: assign
+				// c.g:163:16: assign
 				{
-				DebugLocation(162, 16);
-				PushFollow(Follow._assign_in_var_declaration904);
+				DebugLocation(163, 16);
+				PushFollow(Follow._assign_in_var_declaration909);
 				assign38=assign();
 				PopFollow();
 
@@ -1536,8 +1537,8 @@ public partial class cParser : Antlr.Runtime.Parser
 			}
 			} finally { DebugExitSubRule(10); }
 
-			DebugLocation(162, 25);
-			// c.g:162:25: ( ',' ( ID | assign ) )*
+			DebugLocation(163, 25);
+			// c.g:163:25: ( ',' ( ID | assign ) )*
 			try { DebugEnterSubRule(12);
 			while (true)
 			{
@@ -1545,7 +1546,7 @@ public partial class cParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(12, false);
 				int LA12_1 = input.LA(1);
 
-				if ((LA12_1==56))
+				if ((LA12_1==57))
 				{
 					alt12 = 1;
 				}
@@ -1556,14 +1557,14 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:162:27: ',' ( ID | assign )
+					// c.g:163:27: ',' ( ID | assign )
 					{
-					DebugLocation(162, 27);
-					char_literal39=(IToken)Match(input,56,Follow._56_in_var_declaration910);  
-					stream_56.Add(char_literal39);
+					DebugLocation(163, 27);
+					char_literal39=(IToken)Match(input,57,Follow._57_in_var_declaration915);  
+					stream_57.Add(char_literal39);
 
-					DebugLocation(162, 31);
-					// c.g:162:31: ( ID | assign )
+					DebugLocation(163, 31);
+					// c.g:163:31: ( ID | assign )
 					int alt11=2;
 					try { DebugEnterSubRule(11);
 					try { DebugEnterDecision(11, false);
@@ -1577,7 +1578,7 @@ public partial class cParser : Antlr.Runtime.Parser
 						{
 							alt11 = 2;
 						}
-						else if (((LA11_2>=55 && LA11_2<=57)))
+						else if (((LA11_2>=56 && LA11_2<=58)))
 						{
 							alt11 = 1;
 						}
@@ -1599,10 +1600,10 @@ public partial class cParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// c.g:162:33: ID
+						// c.g:163:33: ID
 						{
-						DebugLocation(162, 33);
-						ID40=(IToken)Match(input,ID,Follow._ID_in_var_declaration914);  
+						DebugLocation(163, 33);
+						ID40=(IToken)Match(input,ID,Follow._ID_in_var_declaration919);  
 						stream_ID.Add(ID40);
 
 
@@ -1610,10 +1611,10 @@ public partial class cParser : Antlr.Runtime.Parser
 						break;
 					case 2:
 						DebugEnterAlt(2);
-						// c.g:162:38: assign
+						// c.g:163:38: assign
 						{
-						DebugLocation(162, 38);
-						PushFollow(Follow._assign_in_var_declaration918);
+						DebugLocation(163, 38);
+						PushFollow(Follow._assign_in_var_declaration923);
 						assign41=assign();
 						PopFollow();
 
@@ -1643,7 +1644,7 @@ public partial class cParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: ID, assign
+			// elements: assign, type, ID
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -1653,27 +1654,39 @@ public partial class cParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 162:50: -> ^( VAR_DEC ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) )
+			// 163:50: -> ^( VAR_DEC ^( VAR_TYPE type ) ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) )
 			{
-				DebugLocation(162, 53);
-				// c.g:162:53: ^( VAR_DEC ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) )
+				DebugLocation(163, 53);
+				// c.g:163:53: ^( VAR_DEC ^( VAR_TYPE type ) ^( DEC_NOT_INITED ( ID )* ) ^( DEC_INITED ( assign )* ) )
 				{
 				object root_1 = (object)adaptor.Nil();
-				DebugLocation(162, 55);
+				DebugLocation(163, 55);
 				root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(VAR_DEC, "VAR_DEC"), root_1);
 
-				DebugLocation(162, 63);
-				// c.g:162:63: ^( DEC_NOT_INITED ( ID )* )
+				DebugLocation(163, 63);
+				// c.g:163:63: ^( VAR_TYPE type )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(162, 66);
+				DebugLocation(163, 66);
+				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(VAR_TYPE, "VAR_TYPE"), root_2);
+
+				DebugLocation(163, 75);
+				adaptor.AddChild(root_2, stream_type.NextTree());
+
+				adaptor.AddChild(root_1, root_2);
+				}
+				DebugLocation(163, 82);
+				// c.g:163:82: ^( DEC_NOT_INITED ( ID )* )
+				{
+				object root_2 = (object)adaptor.Nil();
+				DebugLocation(163, 85);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(DEC_NOT_INITED, "DEC_NOT_INITED"), root_2);
 
-				DebugLocation(162, 81);
-				// c.g:162:81: ( ID )*
+				DebugLocation(163, 100);
+				// c.g:163:100: ( ID )*
 				while ( stream_ID.HasNext )
 				{
-					DebugLocation(162, 81);
+					DebugLocation(163, 100);
 					adaptor.AddChild(root_2, stream_ID.NextNode());
 
 				}
@@ -1681,18 +1694,18 @@ public partial class cParser : Antlr.Runtime.Parser
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(162, 87);
-				// c.g:162:87: ^( DEC_INITED ( assign )* )
+				DebugLocation(163, 106);
+				// c.g:163:106: ^( DEC_INITED ( assign )* )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(162, 90);
+				DebugLocation(163, 109);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(DEC_INITED, "DEC_INITED"), root_2);
 
-				DebugLocation(162, 101);
-				// c.g:162:101: ( assign )*
+				DebugLocation(163, 120);
+				// c.g:163:120: ( assign )*
 				while ( stream_assign.HasNext )
 				{
-					DebugLocation(162, 101);
+					DebugLocation(163, 120);
 					adaptor.AddChild(root_2, stream_assign.NextTree());
 
 				}
@@ -1730,7 +1743,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("var_declaration", 12);
 			LeaveRule_var_declaration();
 		}
-		DebugLocation(163, 1);
+		DebugLocation(164, 1);
 		} finally { DebugExitRule(GrammarFileName, "var_declaration"); }
 		return retval;
 
@@ -1740,7 +1753,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_simple_expr();
 	partial void LeaveRule_simple_expr();
 	// $ANTLR start "simple_expr"
-	// c.g:165:1: simple_expr : ( assign | var_declaration | func_call | READ ^ '(' ! ID ( ',' ! ID )* ')' !| WRITE ^ '(' ! value_expr ( ',' ! value_expr )* ')' !);
+	// c.g:166:1: simple_expr : ( assign | var_declaration | func_call | READ ^ '(' ! ID ( ',' ! ID )* ')' !| WRITE ^ '(' ! value_expr ( ',' ! value_expr )* ')' !);
 	[GrammarRule("simple_expr")]
 	private AstParserRuleReturnScope<object, IToken> simple_expr()
 	{
@@ -1779,10 +1792,10 @@ public partial class cParser : Antlr.Runtime.Parser
 		object char_literal54_tree = default(object);
 		object char_literal56_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "simple_expr");
-		DebugLocation(165, 1);
+		DebugLocation(166, 1);
 		try
 		{
-			// c.g:166:2: ( assign | var_declaration | func_call | READ ^ '(' ! ID ( ',' ! ID )* ')' !| WRITE ^ '(' ! value_expr ( ',' ! value_expr )* ')' !)
+			// c.g:167:2: ( assign | var_declaration | func_call | READ ^ '(' ! ID ( ',' ! ID )* ')' !| WRITE ^ '(' ! value_expr ( ',' ! value_expr )* ')' !)
 			int alt15=5;
 			try { DebugEnterDecision(15, false);
 			switch (input.LA(1))
@@ -1795,7 +1808,7 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 					alt15 = 1;
 				}
-				else if ((LA15_2==54))
+				else if ((LA15_2==55))
 				{
 					alt15 = 3;
 				}
@@ -1838,12 +1851,12 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:166:4: assign
+				// c.g:167:4: assign
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(166, 4);
-				PushFollow(Follow._assign_in_simple_expr959);
+				DebugLocation(167, 4);
+				PushFollow(Follow._assign_in_simple_expr972);
 				assign42=assign();
 				PopFollow();
 
@@ -1853,12 +1866,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// c.g:167:4: var_declaration
+				// c.g:168:4: var_declaration
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(167, 4);
-				PushFollow(Follow._var_declaration_in_simple_expr967);
+				DebugLocation(168, 4);
+				PushFollow(Follow._var_declaration_in_simple_expr980);
 				var_declaration43=var_declaration();
 				PopFollow();
 
@@ -1868,12 +1881,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// c.g:168:4: func_call
+				// c.g:169:4: func_call
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(168, 4);
-				PushFollow(Follow._func_call_in_simple_expr974);
+				DebugLocation(169, 4);
+				PushFollow(Follow._func_call_in_simple_expr987);
 				func_call44=func_call();
 				PopFollow();
 
@@ -1883,22 +1896,22 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 4:
 				DebugEnterAlt(4);
-				// c.g:170:4: READ ^ '(' ! ID ( ',' ! ID )* ')' !
+				// c.g:171:4: READ ^ '(' ! ID ( ',' ! ID )* ')' !
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(170, 8);
-				READ45=(IToken)Match(input,READ,Follow._READ_in_simple_expr982); 
+				DebugLocation(171, 8);
+				READ45=(IToken)Match(input,READ,Follow._READ_in_simple_expr995); 
 				READ45_tree = (object)adaptor.Create(READ45);
 				root_0 = (object)adaptor.BecomeRoot(READ45_tree, root_0);
-				DebugLocation(170, 13);
-				char_literal46=(IToken)Match(input,54,Follow._54_in_simple_expr985); 
-				DebugLocation(170, 15);
-				ID47=(IToken)Match(input,ID,Follow._ID_in_simple_expr988); 
+				DebugLocation(171, 13);
+				char_literal46=(IToken)Match(input,55,Follow._55_in_simple_expr998); 
+				DebugLocation(171, 15);
+				ID47=(IToken)Match(input,ID,Follow._ID_in_simple_expr1001); 
 				ID47_tree = (object)adaptor.Create(ID47);
 				adaptor.AddChild(root_0, ID47_tree);
-				DebugLocation(170, 18);
-				// c.g:170:18: ( ',' ! ID )*
+				DebugLocation(171, 18);
+				// c.g:171:18: ( ',' ! ID )*
 				try { DebugEnterSubRule(13);
 				while (true)
 				{
@@ -1906,7 +1919,7 @@ public partial class cParser : Antlr.Runtime.Parser
 					try { DebugEnterDecision(13, false);
 					int LA13_1 = input.LA(1);
 
-					if ((LA13_1==56))
+					if ((LA13_1==57))
 					{
 						alt13 = 1;
 					}
@@ -1917,12 +1930,12 @@ public partial class cParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// c.g:170:20: ',' ! ID
+						// c.g:171:20: ',' ! ID
 						{
-						DebugLocation(170, 23);
-						char_literal48=(IToken)Match(input,56,Follow._56_in_simple_expr992); 
-						DebugLocation(170, 25);
-						ID49=(IToken)Match(input,ID,Follow._ID_in_simple_expr995); 
+						DebugLocation(171, 23);
+						char_literal48=(IToken)Match(input,57,Follow._57_in_simple_expr1005); 
+						DebugLocation(171, 25);
+						ID49=(IToken)Match(input,ID,Follow._ID_in_simple_expr1008); 
 						ID49_tree = (object)adaptor.Create(ID49);
 						adaptor.AddChild(root_0, ID49_tree);
 
@@ -1939,31 +1952,31 @@ public partial class cParser : Antlr.Runtime.Parser
 
 				} finally { DebugExitSubRule(13); }
 
-				DebugLocation(170, 33);
-				char_literal50=(IToken)Match(input,55,Follow._55_in_simple_expr999); 
+				DebugLocation(171, 33);
+				char_literal50=(IToken)Match(input,56,Follow._56_in_simple_expr1012); 
 
 				}
 				break;
 			case 5:
 				DebugEnterAlt(5);
-				// c.g:171:4: WRITE ^ '(' ! value_expr ( ',' ! value_expr )* ')' !
+				// c.g:172:4: WRITE ^ '(' ! value_expr ( ',' ! value_expr )* ')' !
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(171, 9);
-				WRITE51=(IToken)Match(input,WRITE,Follow._WRITE_in_simple_expr1009); 
+				DebugLocation(172, 9);
+				WRITE51=(IToken)Match(input,WRITE,Follow._WRITE_in_simple_expr1022); 
 				WRITE51_tree = (object)adaptor.Create(WRITE51);
 				root_0 = (object)adaptor.BecomeRoot(WRITE51_tree, root_0);
-				DebugLocation(171, 14);
-				char_literal52=(IToken)Match(input,54,Follow._54_in_simple_expr1012); 
-				DebugLocation(171, 16);
-				PushFollow(Follow._value_expr_in_simple_expr1015);
+				DebugLocation(172, 14);
+				char_literal52=(IToken)Match(input,55,Follow._55_in_simple_expr1025); 
+				DebugLocation(172, 16);
+				PushFollow(Follow._value_expr_in_simple_expr1028);
 				value_expr53=value_expr();
 				PopFollow();
 
 				adaptor.AddChild(root_0, value_expr53.Tree);
-				DebugLocation(171, 27);
-				// c.g:171:27: ( ',' ! value_expr )*
+				DebugLocation(172, 27);
+				// c.g:172:27: ( ',' ! value_expr )*
 				try { DebugEnterSubRule(14);
 				while (true)
 				{
@@ -1971,7 +1984,7 @@ public partial class cParser : Antlr.Runtime.Parser
 					try { DebugEnterDecision(14, false);
 					int LA14_1 = input.LA(1);
 
-					if ((LA14_1==56))
+					if ((LA14_1==57))
 					{
 						alt14 = 1;
 					}
@@ -1982,12 +1995,12 @@ public partial class cParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// c.g:171:29: ',' ! value_expr
+						// c.g:172:29: ',' ! value_expr
 						{
-						DebugLocation(171, 32);
-						char_literal54=(IToken)Match(input,56,Follow._56_in_simple_expr1019); 
-						DebugLocation(171, 34);
-						PushFollow(Follow._value_expr_in_simple_expr1022);
+						DebugLocation(172, 32);
+						char_literal54=(IToken)Match(input,57,Follow._57_in_simple_expr1032); 
+						DebugLocation(172, 34);
+						PushFollow(Follow._value_expr_in_simple_expr1035);
 						value_expr55=value_expr();
 						PopFollow();
 
@@ -2006,8 +2019,8 @@ public partial class cParser : Antlr.Runtime.Parser
 
 				} finally { DebugExitSubRule(14); }
 
-				DebugLocation(171, 50);
-				char_literal56=(IToken)Match(input,55,Follow._55_in_simple_expr1026); 
+				DebugLocation(172, 50);
+				char_literal56=(IToken)Match(input,56,Follow._56_in_simple_expr1039); 
 
 				}
 				break;
@@ -2032,7 +2045,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("simple_expr", 13);
 			LeaveRule_simple_expr();
 		}
-		DebugLocation(173, 1);
+		DebugLocation(174, 1);
 		} finally { DebugExitRule(GrammarFileName, "simple_expr"); }
 		return retval;
 
@@ -2042,7 +2055,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_for_construction();
 	partial void LeaveRule_for_construction();
 	// $ANTLR start "for_construction"
-	// c.g:175:1: for_construction : FOR '(' simple_expr ';' value_expr ';' simple_expr ')' complex_expr -> ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) ) ;
+	// c.g:176:1: for_construction : FOR '(' simple_expr ';' value_expr ';' simple_expr ')' complex_expr -> ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) ) ;
 	[GrammarRule("for_construction")]
 	private AstParserRuleReturnScope<object, IToken> for_construction()
 	{
@@ -2070,60 +2083,60 @@ public partial class cParser : Antlr.Runtime.Parser
 		object char_literal62_tree = default(object);
 		object char_literal64_tree = default(object);
 		RewriteRuleITokenStream stream_55=new RewriteRuleITokenStream(adaptor,"token 55");
-		RewriteRuleITokenStream stream_57=new RewriteRuleITokenStream(adaptor,"token 57");
+		RewriteRuleITokenStream stream_56=new RewriteRuleITokenStream(adaptor,"token 56");
+		RewriteRuleITokenStream stream_58=new RewriteRuleITokenStream(adaptor,"token 58");
 		RewriteRuleITokenStream stream_FOR=new RewriteRuleITokenStream(adaptor,"token FOR");
-		RewriteRuleITokenStream stream_54=new RewriteRuleITokenStream(adaptor,"token 54");
 		RewriteRuleSubtreeStream stream_complex_expr=new RewriteRuleSubtreeStream(adaptor,"rule complex_expr");
 		RewriteRuleSubtreeStream stream_simple_expr=new RewriteRuleSubtreeStream(adaptor,"rule simple_expr");
 		RewriteRuleSubtreeStream stream_value_expr=new RewriteRuleSubtreeStream(adaptor,"rule value_expr");
 		try { DebugEnterRule(GrammarFileName, "for_construction");
-		DebugLocation(175, 1);
+		DebugLocation(176, 1);
 		try
 		{
-			// c.g:176:2: ( FOR '(' simple_expr ';' value_expr ';' simple_expr ')' complex_expr -> ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) ) )
+			// c.g:177:2: ( FOR '(' simple_expr ';' value_expr ';' simple_expr ')' complex_expr -> ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) ) )
 			DebugEnterAlt(1);
-			// c.g:176:4: FOR '(' simple_expr ';' value_expr ';' simple_expr ')' complex_expr
+			// c.g:177:4: FOR '(' simple_expr ';' value_expr ';' simple_expr ')' complex_expr
 			{
-			DebugLocation(176, 4);
-			FOR57=(IToken)Match(input,FOR,Follow._FOR_in_for_construction1042);  
+			DebugLocation(177, 4);
+			FOR57=(IToken)Match(input,FOR,Follow._FOR_in_for_construction1055);  
 			stream_FOR.Add(FOR57);
 
-			DebugLocation(176, 8);
-			char_literal58=(IToken)Match(input,54,Follow._54_in_for_construction1044);  
-			stream_54.Add(char_literal58);
+			DebugLocation(177, 8);
+			char_literal58=(IToken)Match(input,55,Follow._55_in_for_construction1057);  
+			stream_55.Add(char_literal58);
 
-			DebugLocation(176, 12);
-			PushFollow(Follow._simple_expr_in_for_construction1046);
+			DebugLocation(177, 12);
+			PushFollow(Follow._simple_expr_in_for_construction1059);
 			simple_expr59=simple_expr();
 			PopFollow();
 
 			stream_simple_expr.Add(simple_expr59.Tree);
-			DebugLocation(176, 24);
-			char_literal60=(IToken)Match(input,57,Follow._57_in_for_construction1048);  
-			stream_57.Add(char_literal60);
+			DebugLocation(177, 24);
+			char_literal60=(IToken)Match(input,58,Follow._58_in_for_construction1061);  
+			stream_58.Add(char_literal60);
 
-			DebugLocation(176, 28);
-			PushFollow(Follow._value_expr_in_for_construction1050);
+			DebugLocation(177, 28);
+			PushFollow(Follow._value_expr_in_for_construction1063);
 			value_expr61=value_expr();
 			PopFollow();
 
 			stream_value_expr.Add(value_expr61.Tree);
-			DebugLocation(176, 39);
-			char_literal62=(IToken)Match(input,57,Follow._57_in_for_construction1052);  
-			stream_57.Add(char_literal62);
+			DebugLocation(177, 39);
+			char_literal62=(IToken)Match(input,58,Follow._58_in_for_construction1065);  
+			stream_58.Add(char_literal62);
 
-			DebugLocation(176, 43);
-			PushFollow(Follow._simple_expr_in_for_construction1054);
+			DebugLocation(177, 43);
+			PushFollow(Follow._simple_expr_in_for_construction1067);
 			simple_expr63=simple_expr();
 			PopFollow();
 
 			stream_simple_expr.Add(simple_expr63.Tree);
-			DebugLocation(176, 55);
-			char_literal64=(IToken)Match(input,55,Follow._55_in_for_construction1056);  
-			stream_55.Add(char_literal64);
+			DebugLocation(177, 55);
+			char_literal64=(IToken)Match(input,56,Follow._56_in_for_construction1069);  
+			stream_56.Add(char_literal64);
 
-			DebugLocation(176, 59);
-			PushFollow(Follow._complex_expr_in_for_construction1058);
+			DebugLocation(177, 59);
+			PushFollow(Follow._complex_expr_in_for_construction1071);
 			complex_expr65=complex_expr();
 			PopFollow();
 
@@ -2132,7 +2145,7 @@ public partial class cParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: FOR, value_expr, complex_expr, simple_expr, simple_expr
+			// elements: complex_expr, simple_expr, simple_expr, value_expr, FOR
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2142,59 +2155,59 @@ public partial class cParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 176:72: -> ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) )
+			// 177:72: -> ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) )
 			{
-				DebugLocation(177, 3);
-				// c.g:177:3: ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) )
+				DebugLocation(178, 3);
+				// c.g:178:3: ^( FOR ^( FOR_INIT simple_expr ) ^( FOR_COND value_expr ) ^( FOR_STEP simple_expr ) ^( FOR_BODY complex_expr ) )
 				{
 				object root_1 = (object)adaptor.Nil();
-				DebugLocation(177, 5);
+				DebugLocation(178, 5);
 				root_1 = (object)adaptor.BecomeRoot(stream_FOR.NextNode(), root_1);
 
-				DebugLocation(177, 9);
-				// c.g:177:9: ^( FOR_INIT simple_expr )
+				DebugLocation(178, 9);
+				// c.g:178:9: ^( FOR_INIT simple_expr )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(177, 12);
+				DebugLocation(178, 12);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FOR_INIT, "FOR_INIT"), root_2);
 
-				DebugLocation(177, 21);
+				DebugLocation(178, 21);
 				adaptor.AddChild(root_2, stream_simple_expr.NextTree());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(177, 35);
-				// c.g:177:35: ^( FOR_COND value_expr )
+				DebugLocation(178, 35);
+				// c.g:178:35: ^( FOR_COND value_expr )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(177, 38);
+				DebugLocation(178, 38);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FOR_COND, "FOR_COND"), root_2);
 
-				DebugLocation(177, 47);
+				DebugLocation(178, 47);
 				adaptor.AddChild(root_2, stream_value_expr.NextTree());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(177, 60);
-				// c.g:177:60: ^( FOR_STEP simple_expr )
+				DebugLocation(178, 60);
+				// c.g:178:60: ^( FOR_STEP simple_expr )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(177, 63);
+				DebugLocation(178, 63);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FOR_STEP, "FOR_STEP"), root_2);
 
-				DebugLocation(177, 72);
+				DebugLocation(178, 72);
 				adaptor.AddChild(root_2, stream_simple_expr.NextTree());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(177, 86);
-				// c.g:177:86: ^( FOR_BODY complex_expr )
+				DebugLocation(178, 86);
+				// c.g:178:86: ^( FOR_BODY complex_expr )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(177, 89);
+				DebugLocation(178, 89);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FOR_BODY, "FOR_BODY"), root_2);
 
-				DebugLocation(177, 98);
+				DebugLocation(178, 98);
 				adaptor.AddChild(root_2, stream_complex_expr.NextTree());
 
 				adaptor.AddChild(root_1, root_2);
@@ -2229,7 +2242,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("for_construction", 14);
 			LeaveRule_for_construction();
 		}
-		DebugLocation(178, 1);
+		DebugLocation(179, 1);
 		} finally { DebugExitRule(GrammarFileName, "for_construction"); }
 		return retval;
 
@@ -2239,7 +2252,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_if_construction();
 	partial void LeaveRule_if_construction();
 	// $ANTLR start "if_construction"
-	// c.g:180:1: if_construction : IF '(' value_expr ')' complex_expr ( ELSE complex_expr )? -> ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) ) ;
+	// c.g:181:1: if_construction : IF '(' value_expr ')' complex_expr ( ELSE complex_expr )? -> ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) ) ;
 	[GrammarRule("if_construction")]
 	private AstParserRuleReturnScope<object, IToken> if_construction()
 	{
@@ -2264,45 +2277,45 @@ public partial class cParser : Antlr.Runtime.Parser
 		object char_literal69_tree = default(object);
 		object ELSE71_tree = default(object);
 		RewriteRuleITokenStream stream_55=new RewriteRuleITokenStream(adaptor,"token 55");
+		RewriteRuleITokenStream stream_56=new RewriteRuleITokenStream(adaptor,"token 56");
 		RewriteRuleITokenStream stream_ELSE=new RewriteRuleITokenStream(adaptor,"token ELSE");
 		RewriteRuleITokenStream stream_IF=new RewriteRuleITokenStream(adaptor,"token IF");
-		RewriteRuleITokenStream stream_54=new RewriteRuleITokenStream(adaptor,"token 54");
 		RewriteRuleSubtreeStream stream_complex_expr=new RewriteRuleSubtreeStream(adaptor,"rule complex_expr");
 		RewriteRuleSubtreeStream stream_value_expr=new RewriteRuleSubtreeStream(adaptor,"rule value_expr");
 		try { DebugEnterRule(GrammarFileName, "if_construction");
-		DebugLocation(180, 1);
+		DebugLocation(181, 1);
 		try
 		{
-			// c.g:181:2: ( IF '(' value_expr ')' complex_expr ( ELSE complex_expr )? -> ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) ) )
+			// c.g:182:2: ( IF '(' value_expr ')' complex_expr ( ELSE complex_expr )? -> ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) ) )
 			DebugEnterAlt(1);
-			// c.g:181:4: IF '(' value_expr ')' complex_expr ( ELSE complex_expr )?
+			// c.g:182:4: IF '(' value_expr ')' complex_expr ( ELSE complex_expr )?
 			{
-			DebugLocation(181, 4);
-			IF66=(IToken)Match(input,IF,Follow._IF_in_if_construction1110);  
+			DebugLocation(182, 4);
+			IF66=(IToken)Match(input,IF,Follow._IF_in_if_construction1123);  
 			stream_IF.Add(IF66);
 
-			DebugLocation(181, 7);
-			char_literal67=(IToken)Match(input,54,Follow._54_in_if_construction1112);  
-			stream_54.Add(char_literal67);
+			DebugLocation(182, 7);
+			char_literal67=(IToken)Match(input,55,Follow._55_in_if_construction1125);  
+			stream_55.Add(char_literal67);
 
-			DebugLocation(181, 11);
-			PushFollow(Follow._value_expr_in_if_construction1114);
+			DebugLocation(182, 11);
+			PushFollow(Follow._value_expr_in_if_construction1127);
 			value_expr68=value_expr();
 			PopFollow();
 
 			stream_value_expr.Add(value_expr68.Tree);
-			DebugLocation(181, 22);
-			char_literal69=(IToken)Match(input,55,Follow._55_in_if_construction1116);  
-			stream_55.Add(char_literal69);
+			DebugLocation(182, 22);
+			char_literal69=(IToken)Match(input,56,Follow._56_in_if_construction1129);  
+			stream_56.Add(char_literal69);
 
-			DebugLocation(181, 26);
-			PushFollow(Follow._complex_expr_in_if_construction1118);
+			DebugLocation(182, 26);
+			PushFollow(Follow._complex_expr_in_if_construction1131);
 			complex_expr70=complex_expr();
 			PopFollow();
 
 			stream_complex_expr.Add(complex_expr70.Tree);
-			DebugLocation(181, 39);
-			// c.g:181:39: ( ELSE complex_expr )?
+			DebugLocation(182, 39);
+			// c.g:182:39: ( ELSE complex_expr )?
 			int alt16=2;
 			try { DebugEnterSubRule(16);
 			try { DebugEnterDecision(16, false);
@@ -2317,14 +2330,14 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:181:41: ELSE complex_expr
+				// c.g:182:41: ELSE complex_expr
 				{
-				DebugLocation(181, 41);
-				ELSE71=(IToken)Match(input,ELSE,Follow._ELSE_in_if_construction1122);  
+				DebugLocation(182, 41);
+				ELSE71=(IToken)Match(input,ELSE,Follow._ELSE_in_if_construction1135);  
 				stream_ELSE.Add(ELSE71);
 
-				DebugLocation(181, 46);
-				PushFollow(Follow._complex_expr_in_if_construction1124);
+				DebugLocation(182, 46);
+				PushFollow(Follow._complex_expr_in_if_construction1137);
 				complex_expr72=complex_expr();
 				PopFollow();
 
@@ -2340,7 +2353,7 @@ public partial class cParser : Antlr.Runtime.Parser
 
 			{
 			// AST REWRITE
-			// elements: value_expr, complex_expr, IF, complex_expr
+			// elements: IF, complex_expr, value_expr, complex_expr
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2350,51 +2363,51 @@ public partial class cParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 181:62: -> ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) )
+			// 182:62: -> ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) )
 			{
-				DebugLocation(182, 3);
-				// c.g:182:3: ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) )
+				DebugLocation(183, 3);
+				// c.g:183:3: ^( IF ^( IF_COND value_expr ) ^( IF_BODY complex_expr ) ^( IF_ELSE_BODY ( complex_expr )? ) )
 				{
 				object root_1 = (object)adaptor.Nil();
-				DebugLocation(182, 6);
+				DebugLocation(183, 6);
 				root_1 = (object)adaptor.BecomeRoot(stream_IF.NextNode(), root_1);
 
-				DebugLocation(182, 9);
-				// c.g:182:9: ^( IF_COND value_expr )
+				DebugLocation(183, 9);
+				// c.g:183:9: ^( IF_COND value_expr )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(182, 12);
+				DebugLocation(183, 12);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(IF_COND, "IF_COND"), root_2);
 
-				DebugLocation(182, 20);
+				DebugLocation(183, 20);
 				adaptor.AddChild(root_2, stream_value_expr.NextTree());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(182, 33);
-				// c.g:182:33: ^( IF_BODY complex_expr )
+				DebugLocation(183, 33);
+				// c.g:183:33: ^( IF_BODY complex_expr )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(182, 36);
+				DebugLocation(183, 36);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(IF_BODY, "IF_BODY"), root_2);
 
-				DebugLocation(182, 44);
+				DebugLocation(183, 44);
 				adaptor.AddChild(root_2, stream_complex_expr.NextTree());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(182, 59);
-				// c.g:182:59: ^( IF_ELSE_BODY ( complex_expr )? )
+				DebugLocation(183, 59);
+				// c.g:183:59: ^( IF_ELSE_BODY ( complex_expr )? )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(182, 62);
+				DebugLocation(183, 62);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(IF_ELSE_BODY, "IF_ELSE_BODY"), root_2);
 
-				DebugLocation(182, 75);
-				// c.g:182:75: ( complex_expr )?
+				DebugLocation(183, 75);
+				// c.g:183:75: ( complex_expr )?
 				if (stream_complex_expr.HasNext)
 				{
-					DebugLocation(182, 75);
+					DebugLocation(183, 75);
 					adaptor.AddChild(root_2, stream_complex_expr.NextTree());
 
 				}
@@ -2432,7 +2445,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("if_construction", 15);
 			LeaveRule_if_construction();
 		}
-		DebugLocation(183, 1);
+		DebugLocation(184, 1);
 		} finally { DebugExitRule(GrammarFileName, "if_construction"); }
 		return retval;
 
@@ -2442,7 +2455,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_block_construction();
 	partial void LeaveRule_block_construction();
 	// $ANTLR start "block_construction"
-	// c.g:185:1: block_construction : '{' ( complex_expr )* '}' -> ^( BLOCK ( complex_expr )* ) ;
+	// c.g:186:1: block_construction : '{' ( complex_expr )* '}' -> ^( BLOCK ( complex_expr )* ) ;
 	[GrammarRule("block_construction")]
 	private AstParserRuleReturnScope<object, IToken> block_construction()
 	{
@@ -2460,23 +2473,23 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object char_literal73_tree = default(object);
 		object char_literal75_tree = default(object);
-		RewriteRuleITokenStream stream_58=new RewriteRuleITokenStream(adaptor,"token 58");
 		RewriteRuleITokenStream stream_59=new RewriteRuleITokenStream(adaptor,"token 59");
+		RewriteRuleITokenStream stream_60=new RewriteRuleITokenStream(adaptor,"token 60");
 		RewriteRuleSubtreeStream stream_complex_expr=new RewriteRuleSubtreeStream(adaptor,"rule complex_expr");
 		try { DebugEnterRule(GrammarFileName, "block_construction");
-		DebugLocation(185, 1);
+		DebugLocation(186, 1);
 		try
 		{
-			// c.g:186:2: ( '{' ( complex_expr )* '}' -> ^( BLOCK ( complex_expr )* ) )
+			// c.g:187:2: ( '{' ( complex_expr )* '}' -> ^( BLOCK ( complex_expr )* ) )
 			DebugEnterAlt(1);
-			// c.g:186:4: '{' ( complex_expr )* '}'
+			// c.g:187:4: '{' ( complex_expr )* '}'
 			{
-			DebugLocation(186, 4);
-			char_literal73=(IToken)Match(input,58,Follow._58_in_block_construction1173);  
-			stream_58.Add(char_literal73);
+			DebugLocation(187, 4);
+			char_literal73=(IToken)Match(input,59,Follow._59_in_block_construction1186);  
+			stream_59.Add(char_literal73);
 
-			DebugLocation(186, 8);
-			// c.g:186:8: ( complex_expr )*
+			DebugLocation(187, 8);
+			// c.g:187:8: ( complex_expr )*
 			try { DebugEnterSubRule(17);
 			while (true)
 			{
@@ -2484,7 +2497,7 @@ public partial class cParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(17, false);
 				int LA17_1 = input.LA(1);
 
-				if ((LA17_1==BOOL_TYPE||LA17_1==FOR||(LA17_1>=ID && LA17_1<=IF)||LA17_1==INT_TYPE||(LA17_1>=READ && LA17_1<=RETURN)||LA17_1==STRING_TYPE||(LA17_1>=VOID_TYPE && LA17_1<=WRITE)||LA17_1==58))
+				if ((LA17_1==BOOL_TYPE||LA17_1==FOR||(LA17_1>=ID && LA17_1<=IF)||LA17_1==INT_TYPE||(LA17_1>=READ && LA17_1<=RETURN)||LA17_1==STRING_TYPE||(LA17_1>=VOID_TYPE && LA17_1<=WRITE)||LA17_1==59))
 				{
 					alt17 = 1;
 				}
@@ -2495,10 +2508,10 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:186:8: complex_expr
+					// c.g:187:8: complex_expr
 					{
-					DebugLocation(186, 8);
-					PushFollow(Follow._complex_expr_in_block_construction1175);
+					DebugLocation(187, 8);
+					PushFollow(Follow._complex_expr_in_block_construction1188);
 					complex_expr74=complex_expr();
 					PopFollow();
 
@@ -2517,9 +2530,9 @@ public partial class cParser : Antlr.Runtime.Parser
 
 			} finally { DebugExitSubRule(17); }
 
-			DebugLocation(186, 22);
-			char_literal75=(IToken)Match(input,59,Follow._59_in_block_construction1178);  
-			stream_59.Add(char_literal75);
+			DebugLocation(187, 22);
+			char_literal75=(IToken)Match(input,60,Follow._60_in_block_construction1191);  
+			stream_60.Add(char_literal75);
 
 
 
@@ -2535,20 +2548,20 @@ public partial class cParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 186:26: -> ^( BLOCK ( complex_expr )* )
+			// 187:26: -> ^( BLOCK ( complex_expr )* )
 			{
-				DebugLocation(186, 29);
-				// c.g:186:29: ^( BLOCK ( complex_expr )* )
+				DebugLocation(187, 29);
+				// c.g:187:29: ^( BLOCK ( complex_expr )* )
 				{
 				object root_1 = (object)adaptor.Nil();
-				DebugLocation(186, 31);
+				DebugLocation(187, 31);
 				root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(BLOCK, "BLOCK"), root_1);
 
-				DebugLocation(186, 37);
-				// c.g:186:37: ( complex_expr )*
+				DebugLocation(187, 37);
+				// c.g:187:37: ( complex_expr )*
 				while ( stream_complex_expr.HasNext )
 				{
-					DebugLocation(186, 37);
+					DebugLocation(187, 37);
 					adaptor.AddChild(root_1, stream_complex_expr.NextTree());
 
 				}
@@ -2583,7 +2596,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("block_construction", 16);
 			LeaveRule_block_construction();
 		}
-		DebugLocation(187, 1);
+		DebugLocation(188, 1);
 		} finally { DebugExitRule(GrammarFileName, "block_construction"); }
 		return retval;
 
@@ -2593,7 +2606,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_func_declaration();
 	partial void LeaveRule_func_declaration();
 	// $ANTLR start "func_declaration"
-	// c.g:191:1: func_declaration : type ID '(' ( type ID ( ',' type ID )* )? ')' '{' ( complex_expr )* '}' -> ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) ) ;
+	// c.g:192:1: func_declaration : type ID '(' ( type ID ( ',' type ID )* )? ')' '{' ( complex_expr )* '}' -> ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) ) ;
 	[GrammarRule("func_declaration")]
 	private AstParserRuleReturnScope<object, IToken> func_declaration()
 	{
@@ -2628,36 +2641,36 @@ public partial class cParser : Antlr.Runtime.Parser
 		object char_literal87_tree = default(object);
 		RewriteRuleITokenStream stream_55=new RewriteRuleITokenStream(adaptor,"token 55");
 		RewriteRuleITokenStream stream_56=new RewriteRuleITokenStream(adaptor,"token 56");
-		RewriteRuleITokenStream stream_58=new RewriteRuleITokenStream(adaptor,"token 58");
+		RewriteRuleITokenStream stream_57=new RewriteRuleITokenStream(adaptor,"token 57");
 		RewriteRuleITokenStream stream_59=new RewriteRuleITokenStream(adaptor,"token 59");
+		RewriteRuleITokenStream stream_60=new RewriteRuleITokenStream(adaptor,"token 60");
 		RewriteRuleITokenStream stream_ID=new RewriteRuleITokenStream(adaptor,"token ID");
-		RewriteRuleITokenStream stream_54=new RewriteRuleITokenStream(adaptor,"token 54");
 		RewriteRuleSubtreeStream stream_complex_expr=new RewriteRuleSubtreeStream(adaptor,"rule complex_expr");
 		RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
 		try { DebugEnterRule(GrammarFileName, "func_declaration");
-		DebugLocation(191, 1);
+		DebugLocation(192, 1);
 		try
 		{
-			// c.g:192:2: ( type ID '(' ( type ID ( ',' type ID )* )? ')' '{' ( complex_expr )* '}' -> ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) ) )
+			// c.g:193:2: ( type ID '(' ( type ID ( ',' type ID )* )? ')' '{' ( complex_expr )* '}' -> ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) ) )
 			DebugEnterAlt(1);
-			// c.g:192:4: type ID '(' ( type ID ( ',' type ID )* )? ')' '{' ( complex_expr )* '}'
+			// c.g:193:4: type ID '(' ( type ID ( ',' type ID )* )? ')' '{' ( complex_expr )* '}'
 			{
-			DebugLocation(192, 4);
-			PushFollow(Follow._type_in_func_declaration1201);
+			DebugLocation(193, 4);
+			PushFollow(Follow._type_in_func_declaration1214);
 			type76=type();
 			PopFollow();
 
 			stream_type.Add(type76.Tree);
-			DebugLocation(192, 9);
-			ID77=(IToken)Match(input,ID,Follow._ID_in_func_declaration1203);  
+			DebugLocation(193, 9);
+			ID77=(IToken)Match(input,ID,Follow._ID_in_func_declaration1216);  
 			stream_ID.Add(ID77);
 
-			DebugLocation(192, 12);
-			char_literal78=(IToken)Match(input,54,Follow._54_in_func_declaration1205);  
-			stream_54.Add(char_literal78);
+			DebugLocation(193, 12);
+			char_literal78=(IToken)Match(input,55,Follow._55_in_func_declaration1218);  
+			stream_55.Add(char_literal78);
 
-			DebugLocation(192, 16);
-			// c.g:192:16: ( type ID ( ',' type ID )* )?
+			DebugLocation(193, 16);
+			// c.g:193:16: ( type ID ( ',' type ID )* )?
 			int alt19=2;
 			try { DebugEnterSubRule(19);
 			try { DebugEnterDecision(19, false);
@@ -2672,20 +2685,20 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:192:18: type ID ( ',' type ID )*
+				// c.g:193:18: type ID ( ',' type ID )*
 				{
-				DebugLocation(192, 18);
-				PushFollow(Follow._type_in_func_declaration1209);
+				DebugLocation(193, 18);
+				PushFollow(Follow._type_in_func_declaration1222);
 				type79=type();
 				PopFollow();
 
 				stream_type.Add(type79.Tree);
-				DebugLocation(192, 23);
-				ID80=(IToken)Match(input,ID,Follow._ID_in_func_declaration1211);  
+				DebugLocation(193, 23);
+				ID80=(IToken)Match(input,ID,Follow._ID_in_func_declaration1224);  
 				stream_ID.Add(ID80);
 
-				DebugLocation(192, 26);
-				// c.g:192:26: ( ',' type ID )*
+				DebugLocation(193, 26);
+				// c.g:193:26: ( ',' type ID )*
 				try { DebugEnterSubRule(18);
 				while (true)
 				{
@@ -2693,7 +2706,7 @@ public partial class cParser : Antlr.Runtime.Parser
 					try { DebugEnterDecision(18, false);
 					int LA18_1 = input.LA(1);
 
-					if ((LA18_1==56))
+					if ((LA18_1==57))
 					{
 						alt18 = 1;
 					}
@@ -2704,20 +2717,20 @@ public partial class cParser : Antlr.Runtime.Parser
 					{
 					case 1:
 						DebugEnterAlt(1);
-						// c.g:192:28: ',' type ID
+						// c.g:193:28: ',' type ID
 						{
-						DebugLocation(192, 28);
-						char_literal81=(IToken)Match(input,56,Follow._56_in_func_declaration1215);  
-						stream_56.Add(char_literal81);
+						DebugLocation(193, 28);
+						char_literal81=(IToken)Match(input,57,Follow._57_in_func_declaration1228);  
+						stream_57.Add(char_literal81);
 
-						DebugLocation(192, 32);
-						PushFollow(Follow._type_in_func_declaration1217);
+						DebugLocation(193, 32);
+						PushFollow(Follow._type_in_func_declaration1230);
 						type82=type();
 						PopFollow();
 
 						stream_type.Add(type82.Tree);
-						DebugLocation(192, 37);
-						ID83=(IToken)Match(input,ID,Follow._ID_in_func_declaration1219);  
+						DebugLocation(193, 37);
+						ID83=(IToken)Match(input,ID,Follow._ID_in_func_declaration1232);  
 						stream_ID.Add(ID83);
 
 
@@ -2741,16 +2754,16 @@ public partial class cParser : Antlr.Runtime.Parser
 			}
 			} finally { DebugExitSubRule(19); }
 
-			DebugLocation(192, 47);
-			char_literal84=(IToken)Match(input,55,Follow._55_in_func_declaration1228);  
-			stream_55.Add(char_literal84);
+			DebugLocation(193, 47);
+			char_literal84=(IToken)Match(input,56,Follow._56_in_func_declaration1241);  
+			stream_56.Add(char_literal84);
 
-			DebugLocation(192, 51);
-			char_literal85=(IToken)Match(input,58,Follow._58_in_func_declaration1230);  
-			stream_58.Add(char_literal85);
+			DebugLocation(193, 51);
+			char_literal85=(IToken)Match(input,59,Follow._59_in_func_declaration1243);  
+			stream_59.Add(char_literal85);
 
-			DebugLocation(192, 55);
-			// c.g:192:55: ( complex_expr )*
+			DebugLocation(193, 55);
+			// c.g:193:55: ( complex_expr )*
 			try { DebugEnterSubRule(20);
 			while (true)
 			{
@@ -2758,7 +2771,7 @@ public partial class cParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(20, false);
 				int LA20_1 = input.LA(1);
 
-				if ((LA20_1==BOOL_TYPE||LA20_1==FOR||(LA20_1>=ID && LA20_1<=IF)||LA20_1==INT_TYPE||(LA20_1>=READ && LA20_1<=RETURN)||LA20_1==STRING_TYPE||(LA20_1>=VOID_TYPE && LA20_1<=WRITE)||LA20_1==58))
+				if ((LA20_1==BOOL_TYPE||LA20_1==FOR||(LA20_1>=ID && LA20_1<=IF)||LA20_1==INT_TYPE||(LA20_1>=READ && LA20_1<=RETURN)||LA20_1==STRING_TYPE||(LA20_1>=VOID_TYPE && LA20_1<=WRITE)||LA20_1==59))
 				{
 					alt20 = 1;
 				}
@@ -2769,10 +2782,10 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:192:55: complex_expr
+					// c.g:193:55: complex_expr
 					{
-					DebugLocation(192, 55);
-					PushFollow(Follow._complex_expr_in_func_declaration1232);
+					DebugLocation(193, 55);
+					PushFollow(Follow._complex_expr_in_func_declaration1245);
 					complex_expr86=complex_expr();
 					PopFollow();
 
@@ -2791,15 +2804,15 @@ public partial class cParser : Antlr.Runtime.Parser
 
 			} finally { DebugExitSubRule(20); }
 
-			DebugLocation(192, 69);
-			char_literal87=(IToken)Match(input,59,Follow._59_in_func_declaration1235);  
-			stream_59.Add(char_literal87);
+			DebugLocation(193, 69);
+			char_literal87=(IToken)Match(input,60,Follow._60_in_func_declaration1248);  
+			stream_60.Add(char_literal87);
 
 
 
 			{
 			// AST REWRITE
-			// elements: type, complex_expr, ID, type, ID
+			// elements: ID, ID, type, complex_expr, type
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -2809,83 +2822,83 @@ public partial class cParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 192:73: -> ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) )
+			// 193:73: -> ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) )
 			{
-				DebugLocation(193, 3);
-				// c.g:193:3: ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) )
+				DebugLocation(194, 3);
+				// c.g:194:3: ^( FUNC_DEC ^( FUNC_TYPE type ) ^( FUNC_ID ID ) ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* ) ^( FUNC_BODY ( complex_expr )* ) )
 				{
 				object root_1 = (object)adaptor.Nil();
-				DebugLocation(193, 5);
+				DebugLocation(194, 5);
 				root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(FUNC_DEC, "FUNC_DEC"), root_1);
 
-				DebugLocation(193, 14);
-				// c.g:193:14: ^( FUNC_TYPE type )
+				DebugLocation(194, 14);
+				// c.g:194:14: ^( FUNC_TYPE type )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(193, 17);
+				DebugLocation(194, 17);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FUNC_TYPE, "FUNC_TYPE"), root_2);
 
-				DebugLocation(193, 27);
+				DebugLocation(194, 27);
 				adaptor.AddChild(root_2, stream_type.NextTree());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(193, 34);
-				// c.g:193:34: ^( FUNC_ID ID )
+				DebugLocation(194, 34);
+				// c.g:194:34: ^( FUNC_ID ID )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(193, 37);
+				DebugLocation(194, 37);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FUNC_ID, "FUNC_ID"), root_2);
 
-				DebugLocation(193, 45);
+				DebugLocation(194, 45);
 				adaptor.AddChild(root_2, stream_ID.NextNode());
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(193, 50);
-				// c.g:193:50: ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* )
+				DebugLocation(194, 50);
+				// c.g:194:50: ^( DEC_PARAMS ( ^( DEC_PARAM type ID ) )* )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(193, 52);
+				DebugLocation(194, 52);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(DEC_PARAMS, "DEC_PARAMS"), root_2);
 
-				DebugLocation(193, 63);
-				// c.g:193:63: ( ^( DEC_PARAM type ID ) )*
-				while ( stream_type.HasNext||stream_ID.HasNext )
+				DebugLocation(194, 63);
+				// c.g:194:63: ( ^( DEC_PARAM type ID ) )*
+				while ( stream_ID.HasNext||stream_type.HasNext )
 				{
-					DebugLocation(193, 63);
-					// c.g:193:63: ^( DEC_PARAM type ID )
+					DebugLocation(194, 63);
+					// c.g:194:63: ^( DEC_PARAM type ID )
 					{
 					object root_3 = (object)adaptor.Nil();
-					DebugLocation(193, 66);
+					DebugLocation(194, 66);
 					root_3 = (object)adaptor.BecomeRoot((object)adaptor.Create(DEC_PARAM, "DEC_PARAM"), root_3);
 
-					DebugLocation(193, 76);
+					DebugLocation(194, 76);
 					adaptor.AddChild(root_3, stream_type.NextTree());
-					DebugLocation(193, 81);
+					DebugLocation(194, 81);
 					adaptor.AddChild(root_3, stream_ID.NextNode());
 
 					adaptor.AddChild(root_2, root_3);
 					}
 
 				}
-				stream_type.Reset();
 				stream_ID.Reset();
+				stream_type.Reset();
 
 				adaptor.AddChild(root_1, root_2);
 				}
-				DebugLocation(193, 89);
-				// c.g:193:89: ^( FUNC_BODY ( complex_expr )* )
+				DebugLocation(194, 89);
+				// c.g:194:89: ^( FUNC_BODY ( complex_expr )* )
 				{
 				object root_2 = (object)adaptor.Nil();
-				DebugLocation(193, 92);
+				DebugLocation(194, 92);
 				root_2 = (object)adaptor.BecomeRoot((object)adaptor.Create(FUNC_BODY, "FUNC_BODY"), root_2);
 
-				DebugLocation(193, 102);
-				// c.g:193:102: ( complex_expr )*
+				DebugLocation(194, 102);
+				// c.g:194:102: ( complex_expr )*
 				while ( stream_complex_expr.HasNext )
 				{
-					DebugLocation(193, 102);
+					DebugLocation(194, 102);
 					adaptor.AddChild(root_2, stream_complex_expr.NextTree());
 
 				}
@@ -2923,7 +2936,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("func_declaration", 17);
 			LeaveRule_func_declaration();
 		}
-		DebugLocation(194, 1);
+		DebugLocation(195, 1);
 		} finally { DebugExitRule(GrammarFileName, "func_declaration"); }
 		return retval;
 
@@ -2933,7 +2946,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_return();
 	partial void LeaveRule_return();
 	// $ANTLR start "return"
-	// c.g:196:1: return : RETURN ^ ( value_expr )? ';' !;
+	// c.g:197:1: return : RETURN ^ ( value_expr )? ';' !;
 	[GrammarRule("return")]
 	private AstParserRuleReturnScope<object, IToken> @return()
 	{
@@ -2952,27 +2965,27 @@ public partial class cParser : Antlr.Runtime.Parser
 		object RETURN88_tree = default(object);
 		object char_literal90_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "return");
-		DebugLocation(196, 1);
+		DebugLocation(197, 1);
 		try
 		{
-			// c.g:197:2: ( RETURN ^ ( value_expr )? ';' !)
+			// c.g:198:2: ( RETURN ^ ( value_expr )? ';' !)
 			DebugEnterAlt(1);
-			// c.g:197:4: RETURN ^ ( value_expr )? ';' !
+			// c.g:198:4: RETURN ^ ( value_expr )? ';' !
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(197, 10);
-			RETURN88=(IToken)Match(input,RETURN,Follow._RETURN_in_return1296); 
+			DebugLocation(198, 10);
+			RETURN88=(IToken)Match(input,RETURN,Follow._RETURN_in_return1309); 
 			RETURN88_tree = (object)adaptor.Create(RETURN88);
 			root_0 = (object)adaptor.BecomeRoot(RETURN88_tree, root_0);
-			DebugLocation(197, 12);
-			// c.g:197:12: ( value_expr )?
+			DebugLocation(198, 12);
+			// c.g:198:12: ( value_expr )?
 			int alt21=2;
 			try { DebugEnterSubRule(21);
 			try { DebugEnterDecision(21, false);
 			int LA21_1 = input.LA(1);
 
-			if ((LA21_1==ID||LA21_1==LOGIC||LA21_1==NUMBER||LA21_1==STRING||LA21_1==54))
+			if ((LA21_1==ID||LA21_1==LOGIC||LA21_1==NUMBER||LA21_1==STRING||LA21_1==55))
 			{
 				alt21 = 1;
 			}
@@ -2981,10 +2994,10 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:197:12: value_expr
+				// c.g:198:12: value_expr
 				{
-				DebugLocation(197, 12);
-				PushFollow(Follow._value_expr_in_return1299);
+				DebugLocation(198, 12);
+				PushFollow(Follow._value_expr_in_return1312);
 				value_expr89=value_expr();
 				PopFollow();
 
@@ -2996,8 +3009,8 @@ public partial class cParser : Antlr.Runtime.Parser
 			}
 			} finally { DebugExitSubRule(21); }
 
-			DebugLocation(197, 27);
-			char_literal90=(IToken)Match(input,57,Follow._57_in_return1302); 
+			DebugLocation(198, 27);
+			char_literal90=(IToken)Match(input,58,Follow._58_in_return1315); 
 
 			}
 
@@ -3020,7 +3033,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("return", 18);
 			LeaveRule_return();
 		}
-		DebugLocation(198, 1);
+		DebugLocation(199, 1);
 		} finally { DebugExitRule(GrammarFileName, "return"); }
 		return retval;
 
@@ -3030,7 +3043,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_complex_expr();
 	partial void LeaveRule_complex_expr();
 	// $ANTLR start "complex_expr"
-	// c.g:200:1: complex_expr : ( simple_expr ';' !| func_declaration | return | block_construction | if_construction | for_construction );
+	// c.g:201:1: complex_expr : ( simple_expr ';' !| func_declaration | return | block_construction | if_construction | for_construction );
 	[GrammarRule("complex_expr")]
 	private AstParserRuleReturnScope<object, IToken> complex_expr()
 	{
@@ -3052,10 +3065,10 @@ public partial class cParser : Antlr.Runtime.Parser
 
 		object char_literal92_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "complex_expr");
-		DebugLocation(200, 1);
+		DebugLocation(201, 1);
 		try
 		{
-			// c.g:201:2: ( simple_expr ';' !| func_declaration | return | block_construction | if_construction | for_construction )
+			// c.g:202:2: ( simple_expr ';' !| func_declaration | return | block_construction | if_construction | for_construction )
 			int alt22=6;
 			try { DebugEnterDecision(22, false);
 			switch (input.LA(1))
@@ -3078,11 +3091,11 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 					int LA22_3 = input.LA(3);
 
-					if ((LA22_3==ASSIGN||(LA22_3>=56 && LA22_3<=57)))
+					if ((LA22_3==ASSIGN||(LA22_3>=57 && LA22_3<=58)))
 					{
 						alt22 = 1;
 					}
-					else if ((LA22_3==54))
+					else if ((LA22_3==55))
 					{
 						alt22 = 2;
 					}
@@ -3106,7 +3119,7 @@ public partial class cParser : Antlr.Runtime.Parser
 				alt22 = 3;
 				}
 				break;
-			case 58:
+			case 59:
 				{
 				alt22 = 4;
 				}
@@ -3134,29 +3147,29 @@ public partial class cParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// c.g:201:4: simple_expr ';' !
+				// c.g:202:4: simple_expr ';' !
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(201, 4);
-				PushFollow(Follow._simple_expr_in_complex_expr1314);
+				DebugLocation(202, 4);
+				PushFollow(Follow._simple_expr_in_complex_expr1327);
 				simple_expr91=simple_expr();
 				PopFollow();
 
 				adaptor.AddChild(root_0, simple_expr91.Tree);
-				DebugLocation(201, 19);
-				char_literal92=(IToken)Match(input,57,Follow._57_in_complex_expr1316); 
+				DebugLocation(202, 19);
+				char_literal92=(IToken)Match(input,58,Follow._58_in_complex_expr1329); 
 
 				}
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// c.g:203:4: func_declaration
+				// c.g:204:4: func_declaration
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(203, 4);
-				PushFollow(Follow._func_declaration_in_complex_expr1324);
+				DebugLocation(204, 4);
+				PushFollow(Follow._func_declaration_in_complex_expr1337);
 				func_declaration93=func_declaration();
 				PopFollow();
 
@@ -3166,12 +3179,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// c.g:205:4: return
+				// c.g:206:4: return
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(205, 4);
-				PushFollow(Follow._return_in_complex_expr1330);
+				DebugLocation(206, 4);
+				PushFollow(Follow._return_in_complex_expr1343);
 				return94=@return();
 				PopFollow();
 
@@ -3181,12 +3194,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 4:
 				DebugEnterAlt(4);
-				// c.g:207:4: block_construction
+				// c.g:208:4: block_construction
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(207, 4);
-				PushFollow(Follow._block_construction_in_complex_expr1337);
+				DebugLocation(208, 4);
+				PushFollow(Follow._block_construction_in_complex_expr1350);
 				block_construction95=block_construction();
 				PopFollow();
 
@@ -3196,12 +3209,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 5:
 				DebugEnterAlt(5);
-				// c.g:209:4: if_construction
+				// c.g:210:4: if_construction
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(209, 4);
-				PushFollow(Follow._if_construction_in_complex_expr1343);
+				DebugLocation(210, 4);
+				PushFollow(Follow._if_construction_in_complex_expr1356);
 				if_construction96=if_construction();
 				PopFollow();
 
@@ -3211,12 +3224,12 @@ public partial class cParser : Antlr.Runtime.Parser
 				break;
 			case 6:
 				DebugEnterAlt(6);
-				// c.g:210:4: for_construction
+				// c.g:211:4: for_construction
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(210, 4);
-				PushFollow(Follow._for_construction_in_complex_expr1348);
+				DebugLocation(211, 4);
+				PushFollow(Follow._for_construction_in_complex_expr1361);
 				for_construction97=for_construction();
 				PopFollow();
 
@@ -3245,7 +3258,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("complex_expr", 19);
 			LeaveRule_complex_expr();
 		}
-		DebugLocation(211, 1);
+		DebugLocation(212, 1);
 		} finally { DebugExitRule(GrammarFileName, "complex_expr"); }
 		return retval;
 
@@ -3255,7 +3268,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_result();
 	partial void LeaveRule_result();
 	// $ANTLR start "result"
-	// c.g:214:1: result : ( complex_expr )* EOF -> ^( PROGRAM ( complex_expr )* ) ;
+	// c.g:215:1: result : ( complex_expr )* EOF -> ^( PROGRAM ( complex_expr )* ) ;
 	[GrammarRule("result")]
 	private AstParserRuleReturnScope<object, IToken> result()
 	{
@@ -3274,15 +3287,15 @@ public partial class cParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_EOF=new RewriteRuleITokenStream(adaptor,"token EOF");
 		RewriteRuleSubtreeStream stream_complex_expr=new RewriteRuleSubtreeStream(adaptor,"rule complex_expr");
 		try { DebugEnterRule(GrammarFileName, "result");
-		DebugLocation(214, 1);
+		DebugLocation(215, 1);
 		try
 		{
-			// c.g:215:2: ( ( complex_expr )* EOF -> ^( PROGRAM ( complex_expr )* ) )
+			// c.g:216:2: ( ( complex_expr )* EOF -> ^( PROGRAM ( complex_expr )* ) )
 			DebugEnterAlt(1);
-			// c.g:215:4: ( complex_expr )* EOF
+			// c.g:216:4: ( complex_expr )* EOF
 			{
-			DebugLocation(215, 4);
-			// c.g:215:4: ( complex_expr )*
+			DebugLocation(216, 4);
+			// c.g:216:4: ( complex_expr )*
 			try { DebugEnterSubRule(23);
 			while (true)
 			{
@@ -3290,7 +3303,7 @@ public partial class cParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(23, false);
 				int LA23_1 = input.LA(1);
 
-				if ((LA23_1==BOOL_TYPE||LA23_1==FOR||(LA23_1>=ID && LA23_1<=IF)||LA23_1==INT_TYPE||(LA23_1>=READ && LA23_1<=RETURN)||LA23_1==STRING_TYPE||(LA23_1>=VOID_TYPE && LA23_1<=WRITE)||LA23_1==58))
+				if ((LA23_1==BOOL_TYPE||LA23_1==FOR||(LA23_1>=ID && LA23_1<=IF)||LA23_1==INT_TYPE||(LA23_1>=READ && LA23_1<=RETURN)||LA23_1==STRING_TYPE||(LA23_1>=VOID_TYPE && LA23_1<=WRITE)||LA23_1==59))
 				{
 					alt23 = 1;
 				}
@@ -3301,10 +3314,10 @@ public partial class cParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// c.g:215:4: complex_expr
+					// c.g:216:4: complex_expr
 					{
-					DebugLocation(215, 4);
-					PushFollow(Follow._complex_expr_in_result1361);
+					DebugLocation(216, 4);
+					PushFollow(Follow._complex_expr_in_result1374);
 					complex_expr98=complex_expr();
 					PopFollow();
 
@@ -3323,8 +3336,8 @@ public partial class cParser : Antlr.Runtime.Parser
 
 			} finally { DebugExitSubRule(23); }
 
-			DebugLocation(215, 18);
-			EOF99=(IToken)Match(input,EOF,Follow._EOF_in_result1364);  
+			DebugLocation(216, 18);
+			EOF99=(IToken)Match(input,EOF,Follow._EOF_in_result1377);  
 			stream_EOF.Add(EOF99);
 
 
@@ -3341,20 +3354,20 @@ public partial class cParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 215:22: -> ^( PROGRAM ( complex_expr )* )
+			// 216:22: -> ^( PROGRAM ( complex_expr )* )
 			{
-				DebugLocation(215, 25);
-				// c.g:215:25: ^( PROGRAM ( complex_expr )* )
+				DebugLocation(216, 25);
+				// c.g:216:25: ^( PROGRAM ( complex_expr )* )
 				{
 				object root_1 = (object)adaptor.Nil();
-				DebugLocation(215, 28);
+				DebugLocation(216, 28);
 				root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(PROGRAM, "PROGRAM"), root_1);
 
-				DebugLocation(215, 36);
-				// c.g:215:36: ( complex_expr )*
+				DebugLocation(216, 36);
+				// c.g:216:36: ( complex_expr )*
 				while ( stream_complex_expr.HasNext )
 				{
-					DebugLocation(215, 36);
+					DebugLocation(216, 36);
 					adaptor.AddChild(root_1, stream_complex_expr.NextTree());
 
 				}
@@ -3389,7 +3402,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("result", 20);
 			LeaveRule_result();
 		}
-		DebugLocation(216, 1);
+		DebugLocation(217, 1);
 		} finally { DebugExitRule(GrammarFileName, "result"); }
 		return retval;
 
@@ -3399,7 +3412,7 @@ public partial class cParser : Antlr.Runtime.Parser
 	partial void EnterRule_execute();
 	partial void LeaveRule_execute();
 	// $ANTLR start "execute"
-	// c.g:218:8: public execute : result ;
+	// c.g:219:8: public execute : result ;
 	[GrammarRule("execute")]
 	public AstParserRuleReturnScope<object, IToken> execute()
 	{
@@ -3414,17 +3427,17 @@ public partial class cParser : Antlr.Runtime.Parser
 		AstParserRuleReturnScope<object, IToken> result100 = default(AstParserRuleReturnScope<object, IToken>);
 
 		try { DebugEnterRule(GrammarFileName, "execute");
-		DebugLocation(218, 1);
+		DebugLocation(219, 1);
 		try
 		{
-			// c.g:219:2: ( result )
+			// c.g:220:2: ( result )
 			DebugEnterAlt(1);
-			// c.g:219:4: result
+			// c.g:220:4: result
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(219, 4);
-			PushFollow(Follow._result_in_execute1388);
+			DebugLocation(220, 4);
+			PushFollow(Follow._result_in_execute1401);
 			result100=result();
 			PopFollow();
 
@@ -3451,7 +3464,7 @@ public partial class cParser : Antlr.Runtime.Parser
 			LeaveRule("execute", 21);
 			LeaveRule_execute();
 		}
-		DebugLocation(220, 1);
+		DebugLocation(221, 1);
 		} finally { DebugExitRule(GrammarFileName, "execute"); }
 		return retval;
 
@@ -3463,105 +3476,105 @@ public partial class cParser : Antlr.Runtime.Parser
 	#region Follow sets
 	private static class Follow
 	{
-		public static readonly BitSet _NUMBER_in_primitive_value588 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _STRING_in_primitive_value593 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _LOGIC_in_primitive_value598 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ID_in_primitive_value603 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _func_call_in_primitive_value608 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _54_in_value_group619 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_add_in_value_group622 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _55_in_value_group624 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _primitive_value_in_value_group629 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _value_group_in_value_mult641 = new BitSet(new ulong[]{0x10000002002UL});
-		public static readonly BitSet _set_in_value_mult645 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_group_in_value_mult656 = new BitSet(new ulong[]{0x10000002002UL});
-		public static readonly BitSet _value_mult_in_value_add671 = new BitSet(new ulong[]{0x2000000000012UL});
-		public static readonly BitSet _set_in_value_add675 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_mult_in_value_add686 = new BitSet(new ulong[]{0x2000000000012UL});
-		public static readonly BitSet _value_add_in_logic_group702 = new BitSet(new ulong[]{0x2480C008002UL});
-		public static readonly BitSet _set_in_logic_group706 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_add_in_logic_group733 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _logic_group_in_logic_mult748 = new BitSet(new ulong[]{0x1000000002UL});
-		public static readonly BitSet _LMUL_in_logic_mult752 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _logic_group_in_logic_mult755 = new BitSet(new ulong[]{0x1000000002UL});
-		public static readonly BitSet _logic_mult_in_logic_add769 = new BitSet(new ulong[]{0x400000002UL});
-		public static readonly BitSet _LADD_in_logic_add773 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _logic_mult_in_logic_add776 = new BitSet(new ulong[]{0x400000002UL});
-		public static readonly BitSet _logic_add_in_value_expr789 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ID_in_func_call827 = new BitSet(new ulong[]{0x40000000000000UL});
-		public static readonly BitSet _54_in_func_call829 = new BitSet(new ulong[]{0xC0842010000000UL});
-		public static readonly BitSet _value_expr_in_func_call833 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _56_in_func_call837 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_expr_in_func_call839 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _55_in_func_call846 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ID_in_assign879 = new BitSet(new ulong[]{0x20UL});
-		public static readonly BitSet _ASSIGN_in_assign881 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_expr_in_assign884 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _type_in_var_declaration896 = new BitSet(new ulong[]{0x10000000UL});
-		public static readonly BitSet _ID_in_var_declaration900 = new BitSet(new ulong[]{0x100000000000002UL});
-		public static readonly BitSet _assign_in_var_declaration904 = new BitSet(new ulong[]{0x100000000000002UL});
-		public static readonly BitSet _56_in_var_declaration910 = new BitSet(new ulong[]{0x10000000UL});
-		public static readonly BitSet _ID_in_var_declaration914 = new BitSet(new ulong[]{0x100000000000002UL});
-		public static readonly BitSet _assign_in_var_declaration918 = new BitSet(new ulong[]{0x100000000000002UL});
-		public static readonly BitSet _assign_in_simple_expr959 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _var_declaration_in_simple_expr967 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _func_call_in_simple_expr974 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _READ_in_simple_expr982 = new BitSet(new ulong[]{0x40000000000000UL});
-		public static readonly BitSet _54_in_simple_expr985 = new BitSet(new ulong[]{0x10000000UL});
-		public static readonly BitSet _ID_in_simple_expr988 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _56_in_simple_expr992 = new BitSet(new ulong[]{0x10000000UL});
-		public static readonly BitSet _ID_in_simple_expr995 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _55_in_simple_expr999 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _WRITE_in_simple_expr1009 = new BitSet(new ulong[]{0x40000000000000UL});
-		public static readonly BitSet _54_in_simple_expr1012 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_expr_in_simple_expr1015 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _56_in_simple_expr1019 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_expr_in_simple_expr1022 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _55_in_simple_expr1026 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _FOR_in_for_construction1042 = new BitSet(new ulong[]{0x40000000000000UL});
-		public static readonly BitSet _54_in_for_construction1044 = new BitSet(new ulong[]{0x19100210000080UL});
-		public static readonly BitSet _simple_expr_in_for_construction1046 = new BitSet(new ulong[]{0x200000000000000UL});
-		public static readonly BitSet _57_in_for_construction1048 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_expr_in_for_construction1050 = new BitSet(new ulong[]{0x200000000000000UL});
-		public static readonly BitSet _57_in_for_construction1052 = new BitSet(new ulong[]{0x19100210000080UL});
-		public static readonly BitSet _simple_expr_in_for_construction1054 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _55_in_for_construction1056 = new BitSet(new ulong[]{0x419300230010080UL});
-		public static readonly BitSet _complex_expr_in_for_construction1058 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _IF_in_if_construction1110 = new BitSet(new ulong[]{0x40000000000000UL});
-		public static readonly BitSet _54_in_if_construction1112 = new BitSet(new ulong[]{0x40842010000000UL});
-		public static readonly BitSet _value_expr_in_if_construction1114 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _55_in_if_construction1116 = new BitSet(new ulong[]{0x419300230010080UL});
-		public static readonly BitSet _complex_expr_in_if_construction1118 = new BitSet(new ulong[]{0x4002UL});
-		public static readonly BitSet _ELSE_in_if_construction1122 = new BitSet(new ulong[]{0x419300230010080UL});
-		public static readonly BitSet _complex_expr_in_if_construction1124 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _58_in_block_construction1173 = new BitSet(new ulong[]{0xC19300230010080UL});
-		public static readonly BitSet _complex_expr_in_block_construction1175 = new BitSet(new ulong[]{0xC19300230010080UL});
-		public static readonly BitSet _59_in_block_construction1178 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _type_in_func_declaration1201 = new BitSet(new ulong[]{0x10000000UL});
-		public static readonly BitSet _ID_in_func_declaration1203 = new BitSet(new ulong[]{0x40000000000000UL});
-		public static readonly BitSet _54_in_func_declaration1205 = new BitSet(new ulong[]{0x89000200000080UL});
-		public static readonly BitSet _type_in_func_declaration1209 = new BitSet(new ulong[]{0x10000000UL});
-		public static readonly BitSet _ID_in_func_declaration1211 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _56_in_func_declaration1215 = new BitSet(new ulong[]{0x9000200000080UL});
-		public static readonly BitSet _type_in_func_declaration1217 = new BitSet(new ulong[]{0x10000000UL});
-		public static readonly BitSet _ID_in_func_declaration1219 = new BitSet(new ulong[]{0x180000000000000UL});
-		public static readonly BitSet _55_in_func_declaration1228 = new BitSet(new ulong[]{0x400000000000000UL});
-		public static readonly BitSet _58_in_func_declaration1230 = new BitSet(new ulong[]{0xC19300230010080UL});
-		public static readonly BitSet _complex_expr_in_func_declaration1232 = new BitSet(new ulong[]{0xC19300230010080UL});
-		public static readonly BitSet _59_in_func_declaration1235 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _RETURN_in_return1296 = new BitSet(new ulong[]{0x240842010000000UL});
-		public static readonly BitSet _value_expr_in_return1299 = new BitSet(new ulong[]{0x200000000000000UL});
-		public static readonly BitSet _57_in_return1302 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _simple_expr_in_complex_expr1314 = new BitSet(new ulong[]{0x200000000000000UL});
-		public static readonly BitSet _57_in_complex_expr1316 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _func_declaration_in_complex_expr1324 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _return_in_complex_expr1330 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _block_construction_in_complex_expr1337 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _if_construction_in_complex_expr1343 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _for_construction_in_complex_expr1348 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _complex_expr_in_result1361 = new BitSet(new ulong[]{0x419300230010080UL});
-		public static readonly BitSet _EOF_in_result1364 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _result_in_execute1388 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _NUMBER_in_primitive_value593 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _STRING_in_primitive_value598 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _LOGIC_in_primitive_value603 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ID_in_primitive_value608 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _func_call_in_primitive_value613 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _55_in_value_group624 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_add_in_value_group627 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _56_in_value_group629 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _primitive_value_in_value_group634 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _value_group_in_value_mult646 = new BitSet(new ulong[]{0x10000002002UL});
+		public static readonly BitSet _set_in_value_mult650 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_group_in_value_mult661 = new BitSet(new ulong[]{0x10000002002UL});
+		public static readonly BitSet _value_mult_in_value_add676 = new BitSet(new ulong[]{0x2000000000012UL});
+		public static readonly BitSet _set_in_value_add680 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_mult_in_value_add691 = new BitSet(new ulong[]{0x2000000000012UL});
+		public static readonly BitSet _value_add_in_logic_group707 = new BitSet(new ulong[]{0x2480C008002UL});
+		public static readonly BitSet _set_in_logic_group711 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_add_in_logic_group738 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _logic_group_in_logic_mult753 = new BitSet(new ulong[]{0x1000000002UL});
+		public static readonly BitSet _LMUL_in_logic_mult757 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _logic_group_in_logic_mult760 = new BitSet(new ulong[]{0x1000000002UL});
+		public static readonly BitSet _logic_mult_in_logic_add774 = new BitSet(new ulong[]{0x400000002UL});
+		public static readonly BitSet _LADD_in_logic_add778 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _logic_mult_in_logic_add781 = new BitSet(new ulong[]{0x400000002UL});
+		public static readonly BitSet _logic_add_in_value_expr794 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ID_in_func_call832 = new BitSet(new ulong[]{0x80000000000000UL});
+		public static readonly BitSet _55_in_func_call834 = new BitSet(new ulong[]{0x180842010000000UL});
+		public static readonly BitSet _value_expr_in_func_call838 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _57_in_func_call842 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_expr_in_func_call844 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _56_in_func_call851 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ID_in_assign884 = new BitSet(new ulong[]{0x20UL});
+		public static readonly BitSet _ASSIGN_in_assign886 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_expr_in_assign889 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _type_in_var_declaration901 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _ID_in_var_declaration905 = new BitSet(new ulong[]{0x200000000000002UL});
+		public static readonly BitSet _assign_in_var_declaration909 = new BitSet(new ulong[]{0x200000000000002UL});
+		public static readonly BitSet _57_in_var_declaration915 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _ID_in_var_declaration919 = new BitSet(new ulong[]{0x200000000000002UL});
+		public static readonly BitSet _assign_in_var_declaration923 = new BitSet(new ulong[]{0x200000000000002UL});
+		public static readonly BitSet _assign_in_simple_expr972 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _var_declaration_in_simple_expr980 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _func_call_in_simple_expr987 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _READ_in_simple_expr995 = new BitSet(new ulong[]{0x80000000000000UL});
+		public static readonly BitSet _55_in_simple_expr998 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _ID_in_simple_expr1001 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _57_in_simple_expr1005 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _ID_in_simple_expr1008 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _56_in_simple_expr1012 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _WRITE_in_simple_expr1022 = new BitSet(new ulong[]{0x80000000000000UL});
+		public static readonly BitSet _55_in_simple_expr1025 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_expr_in_simple_expr1028 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _57_in_simple_expr1032 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_expr_in_simple_expr1035 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _56_in_simple_expr1039 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _FOR_in_for_construction1055 = new BitSet(new ulong[]{0x80000000000000UL});
+		public static readonly BitSet _55_in_for_construction1057 = new BitSet(new ulong[]{0x31100210000080UL});
+		public static readonly BitSet _simple_expr_in_for_construction1059 = new BitSet(new ulong[]{0x400000000000000UL});
+		public static readonly BitSet _58_in_for_construction1061 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_expr_in_for_construction1063 = new BitSet(new ulong[]{0x400000000000000UL});
+		public static readonly BitSet _58_in_for_construction1065 = new BitSet(new ulong[]{0x31100210000080UL});
+		public static readonly BitSet _simple_expr_in_for_construction1067 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _56_in_for_construction1069 = new BitSet(new ulong[]{0x831300230010080UL});
+		public static readonly BitSet _complex_expr_in_for_construction1071 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _IF_in_if_construction1123 = new BitSet(new ulong[]{0x80000000000000UL});
+		public static readonly BitSet _55_in_if_construction1125 = new BitSet(new ulong[]{0x80842010000000UL});
+		public static readonly BitSet _value_expr_in_if_construction1127 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _56_in_if_construction1129 = new BitSet(new ulong[]{0x831300230010080UL});
+		public static readonly BitSet _complex_expr_in_if_construction1131 = new BitSet(new ulong[]{0x4002UL});
+		public static readonly BitSet _ELSE_in_if_construction1135 = new BitSet(new ulong[]{0x831300230010080UL});
+		public static readonly BitSet _complex_expr_in_if_construction1137 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _59_in_block_construction1186 = new BitSet(new ulong[]{0x1831300230010080UL});
+		public static readonly BitSet _complex_expr_in_block_construction1188 = new BitSet(new ulong[]{0x1831300230010080UL});
+		public static readonly BitSet _60_in_block_construction1191 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _type_in_func_declaration1214 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _ID_in_func_declaration1216 = new BitSet(new ulong[]{0x80000000000000UL});
+		public static readonly BitSet _55_in_func_declaration1218 = new BitSet(new ulong[]{0x111000200000080UL});
+		public static readonly BitSet _type_in_func_declaration1222 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _ID_in_func_declaration1224 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _57_in_func_declaration1228 = new BitSet(new ulong[]{0x11000200000080UL});
+		public static readonly BitSet _type_in_func_declaration1230 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _ID_in_func_declaration1232 = new BitSet(new ulong[]{0x300000000000000UL});
+		public static readonly BitSet _56_in_func_declaration1241 = new BitSet(new ulong[]{0x800000000000000UL});
+		public static readonly BitSet _59_in_func_declaration1243 = new BitSet(new ulong[]{0x1831300230010080UL});
+		public static readonly BitSet _complex_expr_in_func_declaration1245 = new BitSet(new ulong[]{0x1831300230010080UL});
+		public static readonly BitSet _60_in_func_declaration1248 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _RETURN_in_return1309 = new BitSet(new ulong[]{0x480842010000000UL});
+		public static readonly BitSet _value_expr_in_return1312 = new BitSet(new ulong[]{0x400000000000000UL});
+		public static readonly BitSet _58_in_return1315 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _simple_expr_in_complex_expr1327 = new BitSet(new ulong[]{0x400000000000000UL});
+		public static readonly BitSet _58_in_complex_expr1329 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _func_declaration_in_complex_expr1337 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _return_in_complex_expr1343 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _block_construction_in_complex_expr1350 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _if_construction_in_complex_expr1356 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _for_construction_in_complex_expr1361 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _complex_expr_in_result1374 = new BitSet(new ulong[]{0x831300230010080UL});
+		public static readonly BitSet _EOF_in_result1377 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _result_in_execute1401 = new BitSet(new ulong[]{0x2UL});
 	}
 	#endregion Follow sets
 }

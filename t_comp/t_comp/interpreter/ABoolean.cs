@@ -15,9 +15,26 @@ namespace t_comp.interpreter
             Value = value;
         }
 
+        public ABoolean()
+        {
+            Value = false;
+        }
+
         public override string ToString()
         {
             return Value.ToString();
+        }
+
+        public override void Assign(AObject other)
+        {
+            if (other is ABoolean)
+            {
+                Value = (other as ABoolean).Value;
+            }
+            else
+            {
+                throw new InvalidTypeException();
+            }
         }
 
         public override AObject Eq(AObject other)

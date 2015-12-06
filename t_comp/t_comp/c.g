@@ -23,6 +23,7 @@ tokens {
 	FUNC_BODY	;
 	
 	VAR_DEC		;
+	VAR_TYPE	;
 	DEC_INITED	;
 	DEC_NOT_INITED	;
 	
@@ -159,7 +160,7 @@ assign
 	;
 	
 var_declaration
-	:	type ( ID | assign ) ( ',' ( ID | assign ) )* -> ^(VAR_DEC ^( DEC_NOT_INITED ID* ) ^( DEC_INITED assign* ) )
+	:	type ( ID | assign ) ( ',' ( ID | assign ) )* -> ^(VAR_DEC ^( VAR_TYPE type ) ^( DEC_NOT_INITED ID* ) ^( DEC_INITED assign* ) )
 	;
 
 simple_expr

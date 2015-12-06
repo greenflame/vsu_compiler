@@ -58,6 +58,8 @@
     <Compile Include="interpreter\AObject.cs" />
     <Compile Include="interpreter\AString.cs" />
     <Compile Include="interpreter\Interpreter.cs" />
+    <Compile Include="interpreter\InvalidTypeException.cs" />
+    <Compile Include="interpreter\NotDefinedOperationException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
