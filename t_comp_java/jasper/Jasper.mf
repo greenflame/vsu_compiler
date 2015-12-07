@@ -1,0 +1,152 @@
+Manifest-Version: 1.0
+Main-Class: jasper/Jasper
+
+Name: jasper/Jasper.class
+Java-Bean: False
+
+Name: jasper/Attribute.class
+Java-Bean: False
+
+Name: jasper/Attribute_Collection.class
+Java-Bean: False
+
+Name: jasper/Attribute_ConstantValue.class
+Java-Bean: False
+
+Name: jasper/Attribute_Deprecated.class
+Java-Bean: False
+
+Name: jasper/Attribute_Exceptions.class
+Java-Bean: False
+
+Name: jasper/Attribute_InnerClasses.class
+Java-Bean: False
+
+Name: jasper/Attribute_LineNumberTable.class
+Java-Bean: False
+
+Name: jasper/Attribute_LocalVariableTable.class
+Java-Bean: False
+
+Name: jasper/Attribute_SourceFile.class
+Java-Bean: False
+
+Name: jasper/Attribute_Synthetic.class
+Java-Bean: False
+
+Name: jasper/Attribute_Unknown.class
+Java-Bean: False
+
+Name: jasper/ClassFile.class
+Java-Bean: False
+
+Name: jasper/Code.class
+Java-Bean: False
+
+Name: jasper/Code_bipush.class
+Java-Bean: False
+
+Name: jasper/Code_Branch.class
+Java-Bean: False
+
+Name: jasper/Code_BranchInt.class
+Java-Bean: False
+
+Name: jasper/Code_Collection.class
+Java-Bean: False
+
+Name: jasper/Code_iinc.class
+Java-Bean: False
+
+Name: jasper/Code_invokeinterface.class
+Java-Bean: False
+
+Name: jasper/Code_ldc.class
+Java-Bean: False
+
+Name: jasper/Code_lookupswitch.class
+Java-Bean: False
+
+Name: jasper/Code_multianewarray.class
+Java-Bean: False
+
+Name: jasper/Code_newarray.class
+Java-Bean: False
+
+Name: jasper/Code_Pool.class
+Java-Bean: False
+
+Name: jasper/Code_sipush.class
+Java-Bean: False
+
+Name: jasper/Code_tableswitch.class
+Java-Bean: False
+
+Name: jasper/Code_VarTable.class
+Java-Bean: False
+
+Name: jasper/Code_wide.class
+Java-Bean: False
+
+Name: jasper/Field.class
+Java-Bean: False
+
+Name: jasper/Field_Collection.class
+Java-Bean: False
+
+Name: jasper/Interface_Collection.class
+Java-Bean: False
+
+Name: jasper/Method.class
+Java-Bean: False
+
+Name: jasper/Method_Collection.class
+Java-Bean: False
+
+Name: jasper/Pool.class
+Java-Bean: False
+
+Name: jasper/Pool_Class.class
+Java-Bean: False
+
+Name: jasper/Pool_Collection.class
+Java-Bean: False
+
+Name: jasper/Pool_Double.class
+Java-Bean: False
+
+Name: jasper/Pool_Fieldref.class
+Java-Bean: False
+
+Name: jasper/Pool_Float.class
+Java-Bean: False
+
+Name: jasper/Pool_Integer.class
+Java-Bean: False
+
+Name: jasper/Pool_InterfaceMethodref.class
+Java-Bean: False
+
+Name: jasper/Pool_Long.class
+Java-Bean: False
+
+Name: jasper/Pool_Methodref.class
+Java-Bean: False
+
+Name: jasper/Pool_NamedType.class
+Java-Bean: False
+
+Name: jasper/Pool_String.class
+Java-Bean: False
+
+Name: jasper/Pool_Unicode.class
+Java-Bean: False
+
+Name: jasper/Pool_Utf8.class
+Java-Bean: False
+
+Name: jasper/TryCatch.class
+Java-Bean: False
+
+Name: jasper/TryCatch_Collection.class
+Java-Bean: False
