@@ -1,28 +1,34 @@
 package com.moonlight;
 
+import org.antlr.runtime.*;
+import org.antlr.runtime.tree.*;
+
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String[] args) {
-        int a = 0;
-        boolean b = true;
-        float f = 2.45f;
+        String filepath = "./Input.txt";
 
-        int count = 0;
+        CharStream input = null;
+        try {
+            input = new ANTLRFileStream(filepath);
+        } catch (IOException e) {
+            e.printStackTrace();
 
-        for (int j = 0; j < 10; j++)
-        {
-            int i = 1;
-            count = count + i;
         }
 
-        for (int j = 0; j < 10; j++)
-        {
-            int i = 1;
-            count = count + i;
+        cLexer lexer = new cLexer(input);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        cParser parser = new cParser(tokens);
+
+        Tree program = null;
+        try {
+            program = (Tree) parser.execute().getTree();
+        } catch (RecognitionException e) {
+            e.printStackTrace();
         }
 
-        System.out.println(count);
-
-        System.out.println("Hello, world!");
+        AstNodePrinter.print(program);
     }
 }
