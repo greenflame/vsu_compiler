@@ -14,61 +14,26 @@
 .end method
 
 .method static public main : ([Ljava/lang/String;)V
-	; method code size: 82 bytes
-	.limit stack 2
-	.limit locals 7
-	sipush 3534
-	istore_1
-	iconst_0
-	istore_2
-	ldc 2.450000047683716F
-	fstore_3
-	ldc 123456
-	istore 4
-	iconst_0
-	istore 5
-L16:
-.stack full
-	locals Object [Ljava/lang/String; Integer Integer Float Integer Integer
-	stack 
-.end stack
-	iload 5
-	bipush 10
-	if_icmpge L39
-	iconst_1
-	istore 6
-	iload 4
-	iload 6
-	iadd
-	istore 4
-	iinc 5 1
-	goto L16
-L39:
-.stack chop 1
-	iconst_0
-	istore 5
-L42:
-.stack append
-	locals Integer
-.end stack
-	iload 5
-	bipush 10
-	if_icmpge L65
-	iconst_1
-	istore 6
-	iload 4
-	iload 6
-	iadd
-	istore 4
-	iinc 5 1
-	goto L42
-L65:
-.stack chop 1
+	; method code size: 32 bytes
+	.limit stack 6
+	.limit locals 2
+	new Test
+	dup
+	invokespecial Test <init> ()V
+	astore_1
 	getstatic java/lang/System out Ljava/io/PrintStream;
-	iload 4
-	invokevirtual java/io/PrintStream println (I)V
-	getstatic java/lang/System out Ljava/io/PrintStream;
-	ldc 'Hello, world!'
-	invokevirtual java/io/PrintStream println (Ljava/lang/String;)V
+	ldc 'Hello, world! [%d]\n'
+	iconst_1
+	anewarray java/lang/Object
+	dup
+	iconst_0
+	aload_1
+	invokevirtual Test run ()I
+	invokestatic java/lang/Integer valueOf (I)Ljava/lang/Integer;
+	aastore
+	invokevirtual java/io/PrintStream printf [_41]
+	pop
 	return
 .end method
+
+.const [_41] = Utf8 (Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;

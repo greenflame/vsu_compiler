@@ -1,25 +1,36 @@
 public class Main {
 
     public static void main(String[] args) {
-        int a = 3534;
-        boolean b = false;
-        float f = 2.45f;
-        int count = 123456;
+        
+        Test test = new Test();
+        
+        System.out.printf("Hello, world! [%d]\n", test.run());
+    }
+}
 
-        for (int j = 0; j < 10; j++)
-        {
-            int i = 1;
-            count = count + i;
-        }
-
-        for (int j = 0; j < 10; j++)
-        {
-            int i = 1;
-            count = count + i;
-        }
-
-        System.out.println(count);
-
-        System.out.println("Hello, world!");
+class Test {
+    
+    Test()
+    {
+        
+    }
+    
+    Test(int a, int b, int c)
+    {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+    
+    public int a;
+    public int b;
+    public int c;
+    
+    public int run()
+    {
+        a = 4;
+        b = 8;
+        c = a + b;
+        return c;
     }
 }
