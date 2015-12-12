@@ -23,13 +23,13 @@ public class SemanticChecker {
 
     public void checkSemantic() throws SemanticCheckerException, ScopeException {
         if (root.getType() == cLexer.PROGRAM) {
-            checkExpr(root);
+            checkDecs(root);
         } else {
             throw new SemanticCheckerException("Root type is not 'program'.");
         }
     }
 
-    private void checkExpr(Tree node) throws ScopeException {
+    private void checkDecs(Tree node) throws ScopeException {
         switch (node.getType()) {
             case cLexer.FUNC_DEC:
                 checkFuncDec(node);
@@ -39,7 +39,7 @@ public class SemanticChecker {
                 break;
             default:
                 for (int i = 0; i < node.getChildCount(); i++) {
-                    checkExpr(node.getChild(i));
+                    checkDecs(node.getChild(i));
                 }
         }
     }
@@ -85,7 +85,7 @@ public class SemanticChecker {
             scope.addArgVar(params.get(i).fst, params.get(i).snd);
         }
 
-        checkExpr(node.getChild(3));
+        checkDecs(node.getChild(3));
         scope.levelDown();
     }
 }

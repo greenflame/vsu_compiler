@@ -8,23 +8,17 @@ public class Main {
     }
 }
 
-class Test {
-    
-    Test()
-    {
-        
-    }
-    
-    Test(int a, int b, int c)
-    {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
-    
+class Test {   
     public int a;
     public int b;
     public int c;
+    
+    Test()
+    {
+        this.a = 0;
+        this.b = 0;
+        this.c = 0;
+    }
     
     public int run()
     {

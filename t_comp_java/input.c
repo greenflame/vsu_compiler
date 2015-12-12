@@ -1,27 +1,23 @@
-int q;
+int a, b;
+read(a, b);
+int c = a + b;
+write(c);
 
-void main(int a, bool b)
+int main(int b, string q, int w)
 {
-	int b;
-	int a = 3;
-
-	int firstFunc(void q, string r2d2)
+	int r, j, k;
+	
+	void toSth(int a)
 	{
-		int a, b, s;
+		string h;
+		int t;
 	}
-	
-	b = 2;
-	
-	int c = a + b;
-	write(c);	
-}
 
-main();
-
-string toStr(int i)
-{
-	string s = stoi(i);
-	return s;
+	void abc(int b, int c)
+	{
+		string r, y, u;
+		int t;
+	}
 }
 
 /*

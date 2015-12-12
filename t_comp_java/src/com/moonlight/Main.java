@@ -1,5 +1,7 @@
 package com.moonlight;
 
+import com.moonlight.CodeGenerator.CodeGenerator;
+import com.moonlight.CodeGenerator.CodeGeneratorException;
 import com.moonlight.Scope.Scope;
 import com.moonlight.Scope.ScopeException;
 import com.moonlight.SemanticChecker.SemanticChecker;
@@ -34,6 +36,9 @@ public class Main {
             e.printStackTrace();
         }
 
+        System.out.println("---------- Ast tree ----------");
+        AstNodePrinter.print(program);
+
         Scope scope = new Scope();
 
         SemanticChecker semanticChecker = new SemanticChecker(scope, program);
@@ -45,10 +50,14 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("---------- Ast tree ----------");
-        AstNodePrinter.print(program);
-
         System.out.println("---------- Scope tree ----------");
         System.out.println(scope.toString());
+
+        CodeGenerator codeGenerator = new CodeGenerator(scope, program);
+        try {
+            codeGenerator.generate();
+        } catch (CodeGeneratorException e) {
+            e.printStackTrace();
+        }
     }
 }

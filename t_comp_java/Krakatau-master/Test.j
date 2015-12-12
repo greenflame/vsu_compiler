@@ -8,28 +8,19 @@
 .field public c I
 
 .method  <init> : ()V
-	; method code size: 5 bytes
-	.limit stack 1
+	; method code size: 20 bytes
+	.limit stack 2
 	.limit locals 1
 	aload_0
 	invokespecial java/lang/Object <init> ()V
-	return
-.end method
-
-.method  <init> : (III)V
-	; method code size: 20 bytes
-	.limit stack 2
-	.limit locals 4
 	aload_0
-	invokespecial java/lang/Object <init> ()V
-	aload_0
-	iload_1
+	iconst_0
 	putfield Test a I
 	aload_0
-	iload_2
+	iconst_0
 	putfield Test b I
 	aload_0
-	iload_3
+	iconst_0
 	putfield Test c I
 	return
 .end method
