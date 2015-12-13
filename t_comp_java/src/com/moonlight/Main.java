@@ -2,10 +2,10 @@ package com.moonlight;
 
 import com.moonlight.CodeGenerator.CodeGenerator;
 import com.moonlight.CodeGenerator.CodeGeneratorException;
-import com.moonlight.Scope.Scope;
-import com.moonlight.Scope.ScopeException;
-import com.moonlight.SemanticChecker.SemanticChecker;
-import com.moonlight.SemanticChecker.SemanticCheckerException;
+import com.moonlight.ScopeTree.FuncNode;
+import com.moonlight.ScopeTree.ScopeTree;
+import com.moonlight.ScopeTree.ScopeException;
+import com.moonlight.SyntaxesAnalyser.AstTreePrinter;
 import com.moonlight.SyntaxesAnalyser.cLexer;
 import com.moonlight.SyntaxesAnalyser.cParser;
 import org.antlr.runtime.*;
@@ -37,25 +37,22 @@ public class Main {
         }
 
         System.out.println("---------- Ast tree ----------");
-        AstNodePrinter.print(program);
+        AstTreePrinter.print(program);
 
-        Scope scope = new Scope();
 
-        SemanticChecker semanticChecker = new SemanticChecker(scope, program);
+
+        FuncNode scopeTree = null;
         try {
-            semanticChecker.checkSemantic();
-        } catch (SemanticCheckerException e) {
-            e.printStackTrace();
+            scopeTree = ScopeTree.buildScopeTree(program);
         } catch (ScopeException e) {
             e.printStackTrace();
         }
 
-        System.out.println("---------- Scope tree ----------");
-        System.out.println(scope.toString());
+        System.out.println("---------- ScopeTree tree ----------");
+        ScopeTree.print(scopeTree);
 
-        CodeGenerator codeGenerator = new CodeGenerator(scope, program);
         try {
-            codeGenerator.generate();
+            CodeGenerator.generate(scopeTree);
         } catch (CodeGeneratorException e) {
             e.printStackTrace();
         }

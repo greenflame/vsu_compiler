@@ -1,4 +1,4 @@
-package com.moonlight.Scope;
+package com.moonlight.ScopeTree;
 
 /**
  * Created by Alexander on 08/12/15.
@@ -6,15 +6,17 @@ package com.moonlight.Scope;
 public class VarNode {
     private String type;
     private int index;
+    private VarLocation location;
 
-    public VarNode(String type, int index) {
+    public VarNode(String type, int index, VarLocation decType) {
         setType(type);
         setIndex(index);
+        setLocation(decType);
     }
 
     @Override
     public String toString() {
-        return String.format("%s, %d", type, index);
+        return String.format("%s, %d, %s", type, index, location);
     }
 
     public String getType() {
@@ -31,5 +33,13 @@ public class VarNode {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public VarLocation getLocation() {
+        return location;
+    }
+
+    public void setLocation(VarLocation location) {
+        this.location = location;
     }
 }

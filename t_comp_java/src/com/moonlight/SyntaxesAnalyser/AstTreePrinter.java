@@ -1,4 +1,4 @@
-package com.moonlight;
+package com.moonlight.SyntaxesAnalyser;
 
 import java.io.UnsupportedEncodingException;
 import org.antlr.runtime.tree.Tree;
@@ -6,7 +6,7 @@ import org.antlr.runtime.tree.Tree;
  *
  * @author vlad
  */
-public class AstNodePrinter
+public class AstTreePrinter
 {
     public static final int connectCharDosCode  = 0xB3;
     public static final int middleNodeCharDosCode = 0xC3;
@@ -16,7 +16,7 @@ public class AstNodePrinter
     public static char middleNodeChar = '*';
     public static char lastNodeChar   = '-';
 
-    public AstNodePrinter() {
+    public AstTreePrinter() {
         try {
             this.connectChar = (new String(Integer.toString(connectCharDosCode).getBytes("UTF-8"),"CP866")).charAt(0);
             this.middleNodeChar = (new String(Integer.toString(middleNodeCharDosCode).getBytes("UTF-8"),"CP866")).charAt(0);

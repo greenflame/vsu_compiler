@@ -25,12 +25,14 @@
 	return
 .end method
 
-.method public run : ()I
-	; method code size: 29 bytes
+.method public run : (I)I
+	; method code size: 31 bytes
 	.limit stack 3
-	.limit locals 1
-	aload_0
+	.limit locals 3
 	iconst_4
+	istore_2
+	aload_0
+	iload_1
 	putfield Test a I
 	aload_0
 	bipush 8

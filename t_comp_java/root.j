@@ -4,17 +4,34 @@
 .class super public Root
 .super java/lang/Object
 
-; ----- Fields for local vars -----
-.field public l0 I
-.field public l1 I
-.field public l2 I
+; ----- Fields for function vars-----
+.field public a I
+.field public b I
+.field public c I
 
-; ----- Fields for arguments vars -----
-
+; ----- Constructor ------
 .method  <init> : ()V
 	; ----- Call super constructor -----
-	aload_0
+	aload 0
 	invokespecial java/lang/Object <init> ()V
 	return
 .end method
 
+; ----- Main function -----
+.method public run : ()V
+	; ----- Initializing fields. Locals with 0, args with input values. -----
+	aload 0
+	ldc 0
+	putfield Root a I
+	aload 0
+	ldc 0
+	putfield Root b I
+	aload 0
+	ldc 0
+	putfield Root c I
+	; ----- Body -----
+	aload 0
+	ldc 76
+	putfield Test a I
+	return
+.end method

@@ -1,24 +1,27 @@
 int a, b;
+a = 76;
 read(a, b);
 int c = a + b;
 write(c);
 
-int main(int b, string q, int w)
-{
-	int r, j, k;
+// int main(int b, string q, int w)
+// {
+// 	int r, j, k;
 	
-	void toSth(int a)
-	{
-		string h;
-		int t;
-	}
+// 	void toSth(int a)
+// 	{
+// 		string h;
+// 		int t;
+// 	}
 
-	void abc(int b, int c)
-	{
-		string r, y, u;
-		int t;
-	}
-}
+// 	void abc(int b, int c)
+// 	{
+// 		string r, y, u;
+// 		int t;
+// 	}
+// }
+
+// a = b + c;
 
 /*
 int a = 3;

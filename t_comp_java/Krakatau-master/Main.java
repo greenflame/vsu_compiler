@@ -1,10 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
-        
-        Test test = new Test();
-        
-        System.out.printf("Hello, world! [%d]\n", test.run());
+
+        System.out.println("Hello, world!");
     }
 }
 
@@ -20,9 +18,10 @@ class Test {
         this.c = 0;
     }
     
-    public int run()
+    public int run(int e)
     {
-        a = 4;
+        int d = 4;
+        a = e;
         b = 8;
         c = a + b;
         return c;

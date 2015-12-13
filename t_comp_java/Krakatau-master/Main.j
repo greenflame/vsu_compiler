@@ -14,26 +14,11 @@
 .end method
 
 .method static public main : ([Ljava/lang/String;)V
-	; method code size: 32 bytes
-	.limit stack 6
-	.limit locals 2
-	new Test
-	dup
-	invokespecial Test <init> ()V
-	astore_1
+	; method code size: 9 bytes
+	.limit stack 2
+	.limit locals 1
 	getstatic java/lang/System out Ljava/io/PrintStream;
-	ldc 'Hello, world! [%d]\n'
-	iconst_1
-	anewarray java/lang/Object
-	dup
-	iconst_0
-	aload_1
-	invokevirtual Test run ()I
-	invokestatic java/lang/Integer valueOf (I)Ljava/lang/Integer;
-	aastore
-	invokevirtual java/io/PrintStream printf [_41]
-	pop
+	ldc 'Hello, world!'
+	invokevirtual java/io/PrintStream println (Ljava/lang/String;)V
 	return
 .end method
-
-.const [_41] = Utf8 (Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;
