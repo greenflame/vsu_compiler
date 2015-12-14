@@ -103,7 +103,6 @@ public class ScopeTree {
         result += indent + node.toString();
 
         for (Map.Entry<String, FuncNode> childFunc : node.getChildFuncs().entrySet()) {
-            result += indent + "cf: [" + childFunc.getKey() + "]\n";
             result += printTreeRecursively(childFunc.getValue(), indent + "\t");
         }
 

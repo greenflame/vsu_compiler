@@ -37,6 +37,21 @@ public class FuncNode {
         getVars().put(name, new VarNode(type, getVars().size(), decPlace));
     }
 
+    public String getSignature() {
+        String caption = "(";
+
+        for (Map.Entry<String, VarNode> var : getVars().entrySet()) {
+            if (var.getValue().getLocation().equals(VarLocation.ARGUMENT)) {
+                caption += var.getValue().getType().toUpperCase().charAt(0);
+            }
+        }
+
+        caption += ")";
+        caption += getReturnType().toUpperCase().charAt(0);
+
+        return caption;
+    }
+
     @Override
     public String toString() {
         StringJoiner varsInfo = new StringJoiner(", ", "[", "]");
@@ -45,7 +60,7 @@ public class FuncNode {
             varsInfo.add(String.format("(%s, %s)", var.getKey(), var.getValue().toString()));
         }
 
-        return String.format("return: [%s], vars: %s\n", getReturnType(), varsInfo.toString());
+        return String.format("return: [%s], name [%s] vars: %s\n", getReturnType(), getName(), varsInfo.toString());
     }
 
     public FuncNode getParentFunc() {

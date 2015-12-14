@@ -1,8 +1,50 @@
-int a, b;
-a = 76;
-read(a, b);
-int c = a + b;
-write(c);
+int sum(int a, int b)
+{
+	return a + b;
+}
+
+void incq()
+{
+	q = q + 1;
+	return;
+}
+
+int q = sum(4, 6);
+incq();
+write(q);
+return;
+
+
+// ---------------------
+// void f1(int g, int f)
+// {
+// 	write(g + f);
+// 	return;
+// }
+
+// void f2()
+// {
+// 	void f3()
+// 	{
+// 		void f4()
+// 		{
+// 			f1(3, 4);
+// 			return;
+// 		}
+// 		f4();
+// 		return;
+// 	}
+// 	f3();
+// 	return;
+// }
+
+// f2();
+// return;
+// ---------------------
+
+// read(a, b);
+// int c = a + b;
+// write(c);
 
 // int main(int b, string q, int w)
 // {

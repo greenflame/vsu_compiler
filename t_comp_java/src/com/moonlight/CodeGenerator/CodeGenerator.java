@@ -1,7 +1,7 @@
 package com.moonlight.CodeGenerator;
 
 import com.moonlight.ScopeTree.FuncNode;
-import com.moonlight.ScopeTree.ScopeTree;
+import com.moonlight.ScopeTree.VarLocation;
 import com.moonlight.ScopeTree.VarNode;
 import com.moonlight.SyntaxesAnalyser.cLexer;
 import org.antlr.runtime.tree.Tree;
@@ -18,8 +18,13 @@ import java.util.Map;
 public class CodeGenerator {
 
     public static void generate(FuncNode funcNode) throws CodeGeneratorException {
-        List<String> rootFunc = generateFuncClass(funcNode);
-        writeStrList(rootFunc, String.format("./%s.j", funcNode.getName()));
+        List<String> code = new LinkedList<>();
+        generateFuncClass(funcNode, code);
+        writeStrList(code, String.format("./%s.j", funcNode.getName()));
+
+        for (Map.Entry<String, FuncNode> childFunc : funcNode.getChildFuncs().entrySet()) {
+            generate(childFunc.getValue());
+        }
     }
 
     private static void writeStrList(List<String> stringList, String fileName) {
@@ -33,97 +38,226 @@ public class CodeGenerator {
         printWriter.close();
     }
 
-    private static List<String> generateFuncClass(FuncNode curFunc) {
-        List<String> result = new LinkedList<>();
+    private static void generateFuncClass(FuncNode curFunc, List<String> code) {
+        code.add("; ----- Class info -----");
+        code.add(".version 52 0");
+        code.add(String.format(".source %s.java", curFunc.getName()));
+        code.add(String.format(".class super public %s", curFunc.getName()));
+        code.add(".super java/lang/Object");
+        code.add("");
 
-        result.add("; ----- Class info -----");
-        result.add(".version 52 0");
-        result.add(String.format(".source %s.java", curFunc.getName()));
-        result.add(String.format(".class super public %s", curFunc.getName()));
-        result.add(".super java/lang/Object");
-        result.add("");
-
-        result.add("; ----- Fields for function vars-----");
+        code.add("; ----- Fields for function vars -----");
         for (Map.Entry<String, VarNode> var : curFunc.getVars().entrySet()) {
-            result.add(String.format(".field public %s I", var.getKey()));
+            code.add(String.format(".field public %s I", var.getKey()));
         }
-        result.add("");
+        code.add("");
 
-        result.add("; ----- Constructor ------");
-        result.add(".method  <init> : ()V");
-        result.add("\t; ----- Call super constructor -----");
-        result.add("\taload 0");    // This
-        result.add("\tinvokespecial java/lang/Object <init> ()V");
-        result.add("\treturn");
-        result.add(".end method");
-        result.add("");
+        if(curFunc.getParentFunc() != null) {
+            code.add("; ----- Reference to parent function call instance -----");
+            code.add(String.format(".field public parent L%s;", curFunc.getParentFunc().getName()));
+            code.add("");
+        }
 
-        result.add("; ----- Main function -----");
-        result.add(".method public run : ()V"); // TODO: 13/12/15 Signature generation
+        code.add("; ----- Constructor ------");
 
-        result.add("\t; ----- Initializing fields. Locals with 0, args with input values. -----");
+        if(curFunc.getParentFunc() != null) {
+            code.add(String.format(".method  <init> : (L%s;)V", curFunc.getParentFunc().getName()));
+        } else {
+            code.add(".method  <init> : ()V");
+        }
+
+        code.add("\t; ----- Call super constructor -----");
+        code.add("\taload 0");
+        code.add("\tinvokespecial java/lang/Object <init> ()V");
+
+        if(curFunc.getParentFunc() != null) {
+            code.add("; ----- Copying first parameter to parent field -----");
+            code.add("\taload_0");
+            code.add("\taload_1");
+            code.add(String.format("\tputfield %s parent L%s;",
+                    curFunc.getName(), curFunc.getParentFunc().getName()));
+        }
+
+        code.add("\treturn");
+        code.add(".end method");
+        code.add("");
+
+        code.add("; ----- Main function -----");
+        code.add(".method public run : " + curFunc.getSignature());
+
+        code.add("\t.limit stack 10");  // TODO: 13/12/15 stack size counter?
+        code.add("\t.limit locals 10");
+
+        code.add("\t; ----- Initializing fields. Locals with 0, args with input values. -----");
         for (Map.Entry<String, VarNode> var : curFunc.getVars().entrySet()) {
             switch (var.getValue().getLocation()) {
                 case LOCAL:
-                    result.add("\taload 0");    // This
-                    result.add("\tldc 0");
-                    result.add(String.format("\tputfield %s %s I", curFunc.getName(), var.getKey()));
+                    code.add("\taload 0");
+                    code.add("\tldc 0");
+                    code.add(String.format("\tputfield %s %s I", curFunc.getName(), var.getKey()));
                     break;
                 case ARGUMENT:
-                    result.add("\taload 0");    // This
-                    result.add(String.format("\taload %d", var.getValue().getIndex() + 1)); // Index shift = +1
-                    result.add(String.format("\tputfield %s %s I", curFunc.getName(), var.getKey()));
+                    code.add("\taload 0");
+                    code.add(String.format("\tiload %d", var.getValue().getIndex() + 1)); // Index shift = +1
+                    code.add(String.format("\tputfield %s %s I", curFunc.getName(), var.getKey()));
                     break;
             }
         }
 
-        result.add("\t; ----- Body -----");
+        code.add("\t; ----- Body -----");
 
-        result.addAll(generateBlock(curFunc.getBody(),  curFunc));
+        generateBlock(curFunc.getBody(), curFunc, code);
 
-        result.add("\treturn");
-        result.add(".end method");
+        code.add(".end method");
+        code.add("");
 
-
-        return result;
-    }
-
-    private static List<String> generateBlock(Tree node, FuncNode curFunc) {
-        List<String> result = new LinkedList<>();
-
-        for (int i = 0; i < node.getChildCount(); i++) {
-            result.addAll(generateExprExecution(node.getChild(i), curFunc));
+        // Entry point
+        if (curFunc.getParentFunc() == null) {
+            code.add(".method static public main : ([Ljava/lang/String;)V");
+            code.add("\t; method code size: 13 bytes");
+            code.add("\t.limit stack 2");
+            code.add("\t.limit locals 2");
+            code.add("\tnew Root");
+            code.add("\tdup");
+            code.add("\tinvokespecial Root <init> ()V");
+            code.add("\tinvokevirtual Root run ()V");
+            code.add("\treturn");
+            code.add(".end method");
+            code.add("");
         }
-
-        return result;
     }
 
-    private static List<String> generateExprExecution(Tree node, FuncNode curFunc) {
-        List<String> result = new LinkedList<>();
+    private static void generateBlock(Tree node, FuncNode curFunc, List<String> code) {
+        for (int i = 0; i < node.getChildCount(); i++) {
+            generateExprExecution(node.getChild(i), curFunc, code);
+        }
+    }
 
+    private static void generateExprExecution(Tree node, FuncNode curFunc, List<String> code) {
         switch (node.getType()) {
             case cLexer.ASSIGN:
-                result.add("\taload 0");    // This
-                result.addAll(generateExprSolution(node.getChild(1), curFunc));
-                result.add(String.format("\tputfield Test %s I", node.getChild(0).toString()));
+                generateAssign(node, curFunc, code);
+                break;
+            case cLexer.WRITE:
+                generateWrite(node, curFunc, code);
+                break;
+            case cLexer.RETURN:
+                generateReturn(node, curFunc, code);
+                break;
+            case cLexer.VAR_DEC:
+                generateVarDec(node, curFunc, code);
+                break;
+            case cLexer.FUNC_CALL:
+                generateFuncCall(node, curFunc, code);
                 break;
         }
-
-        return result;
     }
 
-    private static List<String> generateExprSolution(Tree astNode, FuncNode scopeNode) {
-        List<String> result = new LinkedList<>();
+    private static void generateVarDec(Tree node, FuncNode curFunc, List<String> code) {
+        for (int i = 0; i < node.getChild(2).getChildCount(); i++) {
+            generateExprExecution(node.getChild(2).getChild(i), curFunc, code);
+        }
+    }
 
-        switch (astNode.getType()) {
-            case cLexer.NUMBER:
-                result.add(String.format("\tldc %d", Integer.parseInt(astNode.toString())));
-                break;
-            case cLexer.ID:
-                result.add("\taload_0");
-                result.add("\tgetfield Test a I");
+    private static void generateReturn(Tree node, FuncNode curFunc, List<String> code) {
+        if (node.getChildCount() != 0) {
+            generateExprSolution(node.getChild(0), curFunc, code);
+            code.add("\tireturn");
+        } else {
+            code.add("\treturn");
+        }
+    }
+
+    private static void generateWrite(Tree node, FuncNode curFunc, List<String> code) {
+        for (int i = 0; i < node.getChildCount(); i++) {
+            code.add("\tgetstatic java/lang/System out Ljava/io/PrintStream;");
+            generateExprSolution(node.getChild(i), curFunc, code);
+            code.add("\tinvokevirtual java/io/PrintStream println (I)V");
+        }
+    }
+
+    private static void generateAssign(Tree node, FuncNode curFunc, List<String> code) {
+        code.add("\taload 0");
+
+        String varName = node.getChild(0).toString();
+        FuncNode varOwner = curFunc;
+        while (!varOwner.getVars().containsKey(varName)) {
+            code.add(String.format("\tgetfield %s parent L%s;",
+                    varOwner.getName(), varOwner.getParentFunc().getName()));
+            varOwner = varOwner.getParentFunc();
         }
 
-        return result;
+        generateExprSolution(node.getChild(1), curFunc, code);
+
+        code.add(String.format("\tputfield %s %s I", varOwner.getName(), varName));
+    }
+
+    private static void generateExprSolution(Tree node, FuncNode curFunc, List<String> code) {
+        switch (node.getType()) {
+            case cLexer.NUMBER:
+                code.add(String.format("\tldc %d", Integer.parseInt(node.toString())));
+                break;
+            case cLexer.ID:
+                code.add("\taload 0");
+
+                String varName = node.toString();
+                FuncNode varOwner = curFunc;
+                while (!varOwner.getVars().containsKey(varName)) {
+                    code.add(String.format("\tgetfield %s parent L%s;",
+                            varOwner.getName(), varOwner.getParentFunc().getName()));
+                    varOwner = varOwner.getParentFunc();
+                }
+
+                code.add(String.format("\tgetfield %s %s I", varOwner.getName(), varName));
+                break;
+            case cLexer.FUNC_CALL:
+                generateFuncCall(node, curFunc, code);
+                break;
+            case cLexer.ADD:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add("\tiadd");
+                break;
+            case cLexer.SUB:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add("\tisub");
+                break;
+            case cLexer.MUL:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add("\timul");
+                break;
+            case cLexer.DIV:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add("\tidiv");
+                break;
+        }
+    }
+
+    private static void generateFuncCall(Tree node, FuncNode curFunc, List<String> code) {
+        String callFuncName = node.getChild(0).getChild(0).toString();
+        FuncNode callFuncParent = curFunc;
+
+        code.add(String.format("\tnew %s", callFuncName));
+        code.add("\tdup");
+
+        code.add("\taload 0");
+        while(!callFuncParent.getChildFuncs().containsKey(callFuncName)) {
+            code.add(String.format("\tgetfield %s parent L%s;",
+                    callFuncParent.getName(), callFuncParent.getParentFunc().getName()));
+            callFuncParent = callFuncParent.getParentFunc();
+        }
+
+        code.add(String.format("\tinvokespecial %s <init> (L%s;)V", callFuncName, callFuncParent.getName()));
+
+        // Laying parameters onto stack
+        for (int i = 0; i < node.getChild(1).getChildCount(); i++) {
+            generateExprSolution(node.getChild(1).getChild(i), curFunc, code);
+        }
+
+        code.add(String.format("\tinvokevirtual %s run %s",
+                callFuncName, callFuncParent.getChildFuncs().get(callFuncName).getSignature()));
     }
 }
