@@ -1,31 +1,18 @@
-void f1()
+void inc(int n)
 {
-	void f2()
-	{
-		void f3()
-		{
-			test();
-			q = q + 1;
-			return;
-		}
-		f3();
-		return;
-	}
-	f2();
-	return;
-}
-
-void test()
-{
-	write(555, "Hello, world!");
 	q = q + 1;
+	if (n - 1 > 0)
+	{
+		inc(n - 1);
+	}
 	return;
 }
 
 int q = 0;
-f1();
-write(q);
 
+inc(10);
+
+write(q);
 return;
 
 

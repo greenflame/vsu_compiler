@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="t_comp_java:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/t_comp_java_jar</output-path>
+    <root id="archive" name="t_comp_java.jar">
+      <element id="module-output" name="t_comp_java" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/antlr/antlr-3.5.2-runtime.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

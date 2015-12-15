@@ -52,7 +52,7 @@ public class CodeGenerator {
     private static void generateFuncClass(FuncNode curFunc, List<String> code) {
         // Class info block
         code.add("; ----- Class info -----");
-        code.add(".version 52 0");
+        code.add(".version 51 0");
         code.add(String.format(".source %s.java", curFunc.getName()));
         code.add(String.format(".class super public %s", curFunc.getName()));
         code.add(".super java/lang/Object");
@@ -164,7 +164,23 @@ public class CodeGenerator {
             case cLexer.FUNC_CALL:
                 generateFuncCall(node, curFunc, code);
                 break;
+            case cLexer.IF:
+                generateIf(node, curFunc, code);
+                break;
         }
+    }
+
+    private static void generateIf(Tree node, FuncNode curFunc, List<String> code) {
+        generateExprSolution(node.getChild(0).getChild(0), curFunc, code);
+        code.add("\tldc 0");
+        code.add(String.format("\tif_icmpne L%d", curLabel++));
+        if (node.getChild(2).getChildCount() != 0) {
+            generateExprExecution(node.getChild(2).getChild(0), curFunc, code); // False branch
+        }
+        code.add(String.format("\tgoto L%d", curLabel++));
+        code.add(String.format("L%d:", curLabel - 2));
+        generateExprExecution(node.getChild(1).getChild(0), curFunc, code); // True branch
+        code.add(String.format("L%d:", curLabel - 1));
     }
 
     private static void generateBlock(Tree node, FuncNode curFunc, List<String> code) {
@@ -204,10 +220,10 @@ public class CodeGenerator {
 
     private static void generateWrite(Tree node, FuncNode curFunc, List<String> code) {
         for (int i = 0; i < node.getChildCount(); i++) {    // For each param
-            if (node.getChild(i).getType() == cLexer.STRING) {
+            if (node.getChild(i).getType() == cLexer.STRING) {  // String only write support
                 code.add("\tgetstatic java/lang/System out Ljava/io/PrintStream;");
                 String str = node.getChild(i).toString();
-                str = str.substring(1, str.length() - 2);
+                str = str.substring(1, str.length() - 1);
                 code.add(String.format("\tldc '%s'", str));
                 code.add("\tinvokevirtual java/io/PrintStream println (Ljava/lang/String;)V");
             } else {
@@ -224,7 +240,7 @@ public class CodeGenerator {
                 code.add(String.format("\tldc %d", Integer.parseInt(node.toString())));
                 break;
             case cLexer.ID:
-                generateIdExtraction(node, curFunc, code);
+                generateVarExtraction(node, curFunc, code);
                 break;
             case cLexer.FUNC_CALL:
                 generateFuncCall(node, curFunc, code);
@@ -261,10 +277,72 @@ public class CodeGenerator {
                 code.add("\tldc 1");
                 code.add(String.format("L%d:", curLabel - 1));
                 break;
+            case cLexer.GT:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add(String.format("\tif_icmpgt L%d", curLabel++));
+                code.add("\tldc 0");
+                code.add(String.format("\tgoto L%d", curLabel++));
+                code.add(String.format("L%d:", curLabel - 2));
+                code.add("\tldc 1");
+                code.add(String.format("L%d:", curLabel - 1));
+                break;
+            case cLexer.LE:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add(String.format("\tif_icmple L%d", curLabel++));
+                code.add("\tldc 0");
+                code.add(String.format("\tgoto L%d", curLabel++));
+                code.add(String.format("L%d:", curLabel - 2));
+                code.add("\tldc 1");
+                code.add(String.format("L%d:", curLabel - 1));
+                break;
+            case cLexer.GE:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add(String.format("\tif_icmpge L%d", curLabel++));
+                code.add("\tldc 0");
+                code.add(String.format("\tgoto L%d", curLabel++));
+                code.add(String.format("L%d:", curLabel - 2));
+                code.add("\tldc 1");
+                code.add(String.format("L%d:", curLabel - 1));
+                break;
+
+            case cLexer.EQUALS:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add(String.format("\tif_icmpeq L%d", curLabel++));
+                code.add("\tldc 0");
+                code.add(String.format("\tgoto L%d", curLabel++));
+                code.add(String.format("L%d:", curLabel - 2));
+                code.add("\tldc 1");
+                code.add(String.format("L%d:", curLabel - 1));
+                break;
+            case cLexer.NEQUALS:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add(String.format("\tif_icmpne L%d", curLabel++));
+                code.add("\tldc 0");
+                code.add(String.format("\tgoto L%d", curLabel++));
+                code.add(String.format("L%d:", curLabel - 2));
+                code.add("\tldc 1");
+                code.add(String.format("L%d:", curLabel - 1));
+                break;
+
+            case cLexer.LMUL:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add("\timul");
+                break;
+            case cLexer.LADD:
+                generateExprSolution(node.getChild(0), curFunc, code);
+                generateExprSolution(node.getChild(1), curFunc, code);
+                code.add("\tiadd");
+                break;
         }
     }
 
-    private static void generateIdExtraction(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateVarExtraction(Tree node, FuncNode curFunc, List<String> code) {
         String varName = node.toString();
         FuncNode varOwner = curFunc;
 

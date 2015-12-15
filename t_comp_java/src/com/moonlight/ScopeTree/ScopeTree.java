@@ -1,7 +1,6 @@
 package com.moonlight.ScopeTree;
 
 import com.moonlight.SyntaxesAnalyser.cLexer;
-import com.sun.tools.javac.util.Pair;
 import org.antlr.runtime.tree.Tree;
 
 import java.util.LinkedList;
@@ -88,7 +87,7 @@ public class ScopeTree {
         curFunc.getChildFuncs().put(funcName, childFunc);
 
         for (int i = 0; i < params.size(); i++) {
-            childFunc.addVar(params.get(i).fst, params.get(i).snd, VarLocation.ARGUMENT);
+            childFunc.addVar(params.get(i).getFirst(), params.get(i).getSecond(), VarLocation.ARGUMENT);
         }
 
         buildFunc(childFunc);
@@ -107,5 +106,31 @@ public class ScopeTree {
         }
 
         return result;
+    }
+}
+
+class Pair<F, S> {
+    private F first;
+    private S second;
+
+    public Pair(F first, S second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public F getFirst() {
+        return first;
+    }
+
+    public void setFirst(F first) {
+        this.first = first;
+    }
+
+    public S getSecond() {
+        return second;
+    }
+
+    public void setSecond(S second) {
+        this.second = second;
     }
 }

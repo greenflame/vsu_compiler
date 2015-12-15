@@ -1,19 +1,14 @@
 public class Main {
 
     public static void main(String[] args) {
-        int a = 2, b = 3;
-        boolean q = a < b;
-        if (a < b) {
+        int a = 2, b = 3, c = 8;
+        if (a != b) {
             System.out.println("Hello!");
         } else {
             System.out.println("Goodby!");            
+            int q = 4;
         }
         System.out.println("Later!");        
-    }
-    
-    public static void t() {
-        Test test = new Test(null);
-        test.run(12);
     }
 }
 
