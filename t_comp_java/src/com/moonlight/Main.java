@@ -11,6 +11,7 @@ import com.moonlight.SyntaxesAnalyser.cParser;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
@@ -52,8 +53,10 @@ public class Main {
         ScopeTree.print(scopeTree);
 
         try {
-            CodeGenerator.generate(scopeTree);
+            CodeGenerator.generateFuncNode(scopeTree);
         } catch (CodeGeneratorException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }

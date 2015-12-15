@@ -1,9 +1,14 @@
 public class Main {
 
     public static void main(String[] args) {
-
-        System.out.println("Hello, world!");
-        t();
+        int a = 2, b = 3;
+        boolean q = a < b;
+        if (a < b) {
+            System.out.println("Hello!");
+        } else {
+            System.out.println("Goodby!");            
+        }
+        System.out.println("Later!");        
     }
     
     public static void t() {

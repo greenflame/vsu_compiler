@@ -1,17 +1,31 @@
-int sum(int a, int b)
+void f1()
 {
-	return a + b;
+	void f2()
+	{
+		void f3()
+		{
+			test();
+			q = q + 1;
+			return;
+		}
+		f3();
+		return;
+	}
+	f2();
+	return;
 }
 
-void incq()
+void test()
 {
+	write(555, "Hello, world!");
 	q = q + 1;
 	return;
 }
 
-int q = sum(4, 6);
-incq();
+int q = 0;
+f1();
 write(q);
+
 return;
 
 

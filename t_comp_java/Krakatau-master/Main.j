@@ -14,13 +14,47 @@
 .end method
 
 .method static public main : ([Ljava/lang/String;)V
-	; method code size: 12 bytes
+	; method code size: 48 bytes
 	.limit stack 2
-	.limit locals 1
+	.limit locals 4
+	iconst_2
+	istore_1
+	iconst_3
+	istore_2
+	iload_1
+	iload_2
+	if_icmpge L13
+	iconst_1
+	goto L14
+L13:
+.stack append
+	locals Integer Integer
+.end stack
+	iconst_0
+L14:
+.stack same_locals_1_stack_item
+	stack Integer
+.end stack
+	istore_3
+	iload_1
+	iload_2
+	if_icmpge L31
 	getstatic java/lang/System out Ljava/io/PrintStream;
-	ldc 'Hello, world!'
+	ldc 'Hello!'
 	invokevirtual java/io/PrintStream println (Ljava/lang/String;)V
-	invokestatic Main t ()V
+	goto L39
+L31:
+.stack append
+	locals Integer
+.end stack
+	getstatic java/lang/System out Ljava/io/PrintStream;
+	ldc 'Goodby!'
+	invokevirtual java/io/PrintStream println (Ljava/lang/String;)V
+L39:
+.stack same
+	getstatic java/lang/System out Ljava/io/PrintStream;
+	ldc 'Later!'
+	invokevirtual java/io/PrintStream println (Ljava/lang/String;)V
 	return
 .end method
 
