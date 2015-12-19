@@ -167,20 +167,40 @@ public class CodeGenerator {
             case cLexer.IF:
                 generateIf(node, curFunc, code);
                 break;
+            case cLexer.FOR:
+                generateFor(node, curFunc, code);
         }
     }
 
+    private static void generateFor(Tree node, FuncNode curFunc, List<String> code) {
+        int l1 = curLabel++;
+        int l2 = curLabel++;
+
+        generateExprExecution(node.getChild(0).getChild(0), curFunc, code);  // Init
+        code.add(String.format("L%d:", l1));
+        generateExprSolution(node.getChild(1).getChild(0), curFunc, code);  // Condition
+        code.add("\tldc 0");
+        code.add(String.format("\tif_icmpeq L%d", l2));
+        generateBlock(node.getChild(3).getChild(0), curFunc, code); // Body
+        generateExprExecution(node.getChild(2).getChild(0), curFunc, code); // Step
+        code.add(String.format("\tgoto L%d", l1));
+        code.add(String.format("L%d:", l2));
+    }
+
     private static void generateIf(Tree node, FuncNode curFunc, List<String> code) {
+        int l1 = curLabel++;
+        int l2 = curLabel++;
+
         generateExprSolution(node.getChild(0).getChild(0), curFunc, code);
         code.add("\tldc 0");
-        code.add(String.format("\tif_icmpne L%d", curLabel++));
+        code.add(String.format("\tif_icmpne L%d", l1));
         if (node.getChild(2).getChildCount() != 0) {
             generateExprExecution(node.getChild(2).getChild(0), curFunc, code); // False branch
         }
-        code.add(String.format("\tgoto L%d", curLabel++));
-        code.add(String.format("L%d:", curLabel - 2));
+        code.add(String.format("\tgoto L%d", l2));
+        code.add(String.format("L%d:", l1));
         generateExprExecution(node.getChild(1).getChild(0), curFunc, code); // True branch
-        code.add(String.format("L%d:", curLabel - 1));
+        code.add(String.format("L%d:", l2));
     }
 
     private static void generateBlock(Tree node, FuncNode curFunc, List<String> code) {

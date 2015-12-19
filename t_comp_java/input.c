@@ -10,7 +10,11 @@ void inc(int n)
 
 int q = 0;
 
-inc(10);
+for (int i = 0; i < 10; i = i + 1)
+{
+	inc(3);
+    q = q + 1;
+}
 
 write(q);
 return;
