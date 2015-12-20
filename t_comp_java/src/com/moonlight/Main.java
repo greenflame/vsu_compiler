@@ -30,6 +30,7 @@ public class Main {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         cParser parser = new cParser(tokens);
 
+        System.out.println("[compiler]: Building ast tree.");
         Tree program = null;
         try {
             program = (Tree) parser.execute().getTree();
@@ -37,11 +38,12 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("---------- Ast tree ----------");
-        AstTreePrinter.print(program);
+//        System.out.println("---------- Ast tree ----------");
+//        AstTreePrinter.print(program);
 
 
 
+        System.out.println("[compiler]: Building scope tree.");
         FuncNode scopeTree = null;
         try {
             scopeTree = ScopeTree.buildScopeTree(program);
@@ -49,13 +51,14 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("---------- ScopeTree tree ----------");
-        ScopeTree.print(scopeTree);
+//        System.out.println("---------- ScopeTree tree ----------");
+//        ScopeTree.print(scopeTree);
 
+        System.out.println("[compiler]: Generating assembler.");
         try {
             CodeGenerator.generateFuncNode(scopeTree);
         } catch (CodeGeneratorException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

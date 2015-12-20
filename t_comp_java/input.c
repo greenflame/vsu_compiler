@@ -1,3 +1,5 @@
+int q = 0;
+
 void inc(int n)
 {
 	q = q + 1;
@@ -8,11 +10,9 @@ void inc(int n)
 	return;
 }
 
-int q = 0;
-
 for (int i = 0; i < 10; i = i + 1)
 {
-	inc(3);
+	inc(2);
     q = q + 1;
 }
 

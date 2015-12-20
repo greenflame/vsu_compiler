@@ -1,6 +1,7 @@
 package com.moonlight.CodeGenerator;
 
 import com.moonlight.ScopeTree.FuncNode;
+import com.moonlight.ScopeTree.VarLocation;
 import com.moonlight.ScopeTree.VarNode;
 import com.moonlight.SyntaxesAnalyser.cLexer;
 import org.antlr.runtime.tree.Tree;
@@ -49,7 +50,7 @@ public class CodeGenerator {
      * @param curFunc Current function node.
      * @param code String list to add commands.
      */
-    private static void generateFuncClass(FuncNode curFunc, List<String> code) {
+    private static void generateFuncClass(FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         // Class info block
         code.add("; ----- Class info -----");
         code.add(".version 51 0");
@@ -144,7 +145,7 @@ public class CodeGenerator {
      * @param curFunc Current func node.
      * @param code Code list to write.
      */
-    private static void generateExprExecution(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateExprExecution(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         switch (node.getType()) {
             case cLexer.BLOCK:
                 generateBlock(node, curFunc, code);
@@ -172,7 +173,7 @@ public class CodeGenerator {
         }
     }
 
-    private static void generateFor(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateFor(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         int l1 = curLabel++;
         int l2 = curLabel++;
 
@@ -187,7 +188,7 @@ public class CodeGenerator {
         code.add(String.format("L%d:", l2));
     }
 
-    private static void generateIf(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateIf(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         int l1 = curLabel++;
         int l2 = curLabel++;
 
@@ -203,13 +204,15 @@ public class CodeGenerator {
         code.add(String.format("L%d:", l2));
     }
 
-    private static void generateBlock(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateBlock(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         for (int i = 0; i < node.getChildCount(); i++) {
             generateExprExecution(node.getChild(i), curFunc, code);
         }
     }
 
-    private static void generateAssign(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateAssign(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
+        checkVar(node.getChild(0), curFunc);
+
         String varName = node.getChild(0).toString();
         FuncNode varOwner = curFunc;
 
@@ -223,13 +226,13 @@ public class CodeGenerator {
         code.add(String.format("\tputfield %s %s I", varOwner.getName(), varName)); // Writing value to field
     }
 
-    private static void generateVarDec(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateVarDec(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         for (int i = 0; i < node.getChild(2).getChildCount(); i++) {    // Generate expressions for assignments
             generateExprExecution(node.getChild(2).getChild(i), curFunc, code);
         }
     }
 
-    private static void generateReturn(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateReturn(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         if (node.getChildCount() != 0) {    // If there is expression after return
             generateExprSolution(node.getChild(0), curFunc, code);
             code.add("\tireturn");
@@ -238,7 +241,7 @@ public class CodeGenerator {
         }
     }
 
-    private static void generateWrite(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateWrite(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         for (int i = 0; i < node.getChildCount(); i++) {    // For each param
             if (node.getChild(i).getType() == cLexer.STRING) {  // String only write support
                 code.add("\tgetstatic java/lang/System out Ljava/io/PrintStream;");
@@ -254,7 +257,7 @@ public class CodeGenerator {
         }
     }
 
-    private static void generateExprSolution(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateExprSolution(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
         switch (node.getType()) {
             case cLexer.NUMBER:
                 code.add(String.format("\tldc %d", Integer.parseInt(node.toString())));
@@ -362,7 +365,9 @@ public class CodeGenerator {
         }
     }
 
-    private static void generateVarExtraction(Tree node, FuncNode curFunc, List<String> code) {
+    private static void generateVarExtraction(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
+        checkVar(node, curFunc);
+
         String varName = node.toString();
         FuncNode varOwner = curFunc;
 
@@ -372,10 +377,26 @@ public class CodeGenerator {
                     varOwner.getName(), varOwner.getParentFunc().getName()));
             varOwner = varOwner.getParentFunc();
         }
+
         code.add(String.format("\tgetfield %s %s I", varOwner.getName(), varName)); // Extracting field
     }
 
-    private static void generateFuncCall(Tree node, FuncNode curFunc, List<String> code) {
+    private static void checkVar(Tree node, FuncNode curFunc) throws CodeGeneratorException {
+        String varName = node.toString();
+        FuncNode varOwner = curFunc;
+
+        while (varOwner != null && !varOwner.getVars().containsKey(varName)) {
+            varOwner = varOwner.getParentFunc();
+        }
+
+        if (varOwner == null) {
+            throw new CodeGeneratorException(String.format("Var %s was not found.", varName));
+        }
+    }
+
+    private static void generateFuncCall(Tree node, FuncNode curFunc, List<String> code) throws CodeGeneratorException {
+        checkCall(node, curFunc);
+
         String callFuncName = node.getChild(0).getChild(0).toString();
         FuncNode callFuncParent = curFunc;
 
@@ -402,5 +423,26 @@ public class CodeGenerator {
         // Run call
         code.add(String.format("\tinvokevirtual %s run %s",
                 callFuncName, callFuncParent.getChildFuncs().get(callFuncName).getSignature()));
+    }
+
+    private static void checkCall(Tree node, FuncNode curFunc) throws CodeGeneratorException {
+        String funcName = node.getChild(0).getChild(0).toString();
+        FuncNode parentFunc = curFunc;
+
+        while (parentFunc != null && !parentFunc.getChildFuncs().containsKey(funcName)) {
+            parentFunc = parentFunc.getParentFunc();
+        }
+
+        if (parentFunc == null) {
+            throw new CodeGeneratorException(String.format("Func %s was not found", funcName));
+        }
+
+        FuncNode funcToCall = parentFunc.getChildFuncs().get(funcName);
+        int argumentsCount = (int) funcToCall.getVars().entrySet().stream()
+                .filter(p -> p.getValue().getLocation() == VarLocation.ARGUMENT).count();
+
+        if (node.getChild(1).getChildCount() != argumentsCount) {
+            throw new CodeGeneratorException(String.format("Incorrect number of arguments in %s call.", funcName));
+        }
     }
 }

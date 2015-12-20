@@ -1,7 +1,7 @@
 cp out/artifacts/t_comp_java_jar/t_comp_java.jar compiler.jar
 
 echo "[info]: Compiling"
-java -jar compiler.jar > /dev/null
+java -jar compiler.jar
 
 echo "[info]: Building assembler"
 
