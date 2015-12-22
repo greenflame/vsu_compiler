@@ -17,50 +17,69 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        String filepath = "./input.c";
+        // Checking arguments
+        if (args.length != 1) {
+            System.out.println("Usage: compiler.jar fileName");
+            return;
+        }
 
+        String filepath = "./" + args[0];
+        boolean printTrees = false;
+
+        // Reading file
         CharStream input = null;
         try {
             input = new ANTLRFileStream(filepath);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(String.format("File read error: %s", e.getMessage()));
+            return;
         }
 
         cLexer lexer = new cLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         cParser parser = new cParser(tokens);
 
-        System.out.println("[compiler]: Building ast tree.");
+
+        // Generating ast tree
+        System.out.println("[compiler]: Building ast tree");
         Tree program = null;
         try {
             program = (Tree) parser.execute().getTree();
         } catch (RecognitionException e) {
-            e.printStackTrace();
+            System.out.println(String.format("Error in ast tree builder: %s", e.getMessage()));
+            return;
         }
 
-//        System.out.println("---------- Ast tree ----------");
-//        AstTreePrinter.print(program);
+        // Printing ast tree
+        if (printTrees) {
+            System.out.println("---------- Ast tree ----------");
+            AstTreePrinter.print(program);
+        }
 
-
-
-        System.out.println("[compiler]: Building scope tree.");
+        // Generating scope tree
+        System.out.println("[compiler]: Building scope tree");
         FuncNode scopeTree = null;
         try {
             scopeTree = ScopeTree.buildScopeTree(program);
         } catch (ScopeException e) {
-            e.printStackTrace();
+            System.out.println(String.format("Error in scope tree builder: %s", e.getMessage()));
+            return;
         }
 
-//        System.out.println("---------- ScopeTree tree ----------");
-//        ScopeTree.print(scopeTree);
+        // Printing scope tree
+        if (printTrees) {
+            System.out.println("---------- ScopeTree tree ----------");
+            ScopeTree.print(scopeTree);
+        }
 
-        System.out.println("[compiler]: Generating assembler.");
+        // Generating assembler
+        System.out.println("[compiler]: Generating assembler");
         try {
             CodeGenerator.generateFuncNode(scopeTree);
         } catch (CodeGeneratorException e) {
-            System.out.println(e.getMessage());
+            System.out.println(String.format("Error in code generator: %s", e.getMessage()));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

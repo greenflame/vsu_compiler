@@ -1,17 +1,18 @@
-cp out/artifacts/t_comp_java_jar/t_comp_java.jar compiler.jar
+# File to compile
+file="demonstration.c";
 
+# Run compiler with java 8
 echo "[info]: Compiling"
-java -jar compiler.jar
+java -jar compiler.jar $file;
 
+# Build assembly
 echo "[info]: Building assembler"
-
 for f in *.j
 do
 	echo "[build]: $f"
 	python Krakatau-master/assemble.py $f > /dev/null
 done
 
-echo "[info]: Build ok"
+# Run root class with java 7 using flag -XX:-UseSplitVerifier
 echo "[info]: Executing"
-
 /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/bin/java -XX:-UseSplitVerifier Root
